@@ -1,5 +1,4 @@
-# Hotdrop
-This...is [hotdrop.com](https://www.thisishotdrop.com/)
+# Curtissu
 
 - [VueWordPress Theme Starter](#vuewordpress-theme-starter)
   - [Features](#features)

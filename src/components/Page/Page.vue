@@ -1,8 +1,10 @@
 <template>
   <div class="pt-10">
     <template v-if="allPagesLoaded">
-      <h1 class="text-3xl mb-5">{{ pageContent.title.rendered }}</h1>
-      <div class="page-content" v-html="pageContent.content.rendered"></div>
+      <h1>{{ pageContent.title.rendered }}</h1>
+      <div class="page-content">
+        <p class="testing">this is a test</p>
+      </div>
     </template>
     <Loader v-else />
   </div>
@@ -30,10 +32,11 @@ export default {
 };
 </script>
 
-<style type="postcss" scoped>
+<style type="scss">
+@import '../../../assets/scss/_components/home';
 .page-content {
-  & >>> p {
-    margin-bottom: 1rem;
+  .testing {
+    background: red;
   }
 }
 </style>
