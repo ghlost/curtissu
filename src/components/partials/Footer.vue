@@ -4,4 +4,8 @@
   </footer>
 </template>
 
-<style type="postcss" scoped></style>
+<style type="postcss">
+footer {
+  clear: both;
+}
+</style>

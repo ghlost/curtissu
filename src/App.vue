@@ -58,3 +58,9 @@ export default {
   },
 };
 </script>
+
+<style type="postcss">
+body {
+  font-family: 'SegoeUI', sans-serif;
+}
+</style>

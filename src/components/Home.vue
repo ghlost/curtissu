@@ -1,21 +1,24 @@
 <template>
   <div class="page page--home">
-    <h1>The Hotdrop</h1>
-    <recent-posts-widget limit="5" class="mb-10">Recent Posts</recent-posts-widget>
-    <pages-widget limit="5">Pages</pages-widget>
+    <div class="home">
+      <project-grid />
+    </div>
   </div>
 </template>
 
 <script>
-import RecentPostsWidget from './widgets/RecentPosts.vue';
-import PagesWidget from './widgets/Pages.vue';
+import ProjectGrid from './widgets/ProjectGrid.vue';
 
 export default {
   components: {
-    RecentPostsWidget,
-    PagesWidget,
+    ProjectGrid,
   },
 };
 </script>
 
-<style type="postcss"></style>
+<style type="postcss">
+  .content {
+    float: right;
+    max-width: 75%;
+  }
+</style>

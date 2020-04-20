@@ -1,5 +1,8 @@
 # Curtissu
 
+
+[![Tweet](https://img.shields.io/twitter/url/https/github.com/tterb/hyde.svg?style=social)](https://twitter.com/intent/tweet?text=Check%20out%20Hyde!%20%E2%9C%A8%20An%20accessible,%20open-source%20markdown%20editor%20for%20any%20user%20E2%9C%A8%20https://github.com/tterb/hyde%20%F0%9F%A4%97) [![Twitter Follow](https://img.shields.io/twitter/follow/VueWord.svg?style=social)](https://twitter.com/VueWord)
+
 - [VueWordPress Theme Starter](#vuewordpress-theme-starter)
   - [Features](#features)
   - [Getting started](#getting-started)
@@ -10,7 +13,7 @@
   - [Features coming soon:](#features-coming-soon)
 - [Changelog](#changelog)
 
-# [VueWordPress Theme Starter](https://github.com/EvanAgee/vuejs-wordpress-theme-starter)
+# VueWordPress Theme Starter
 
 A true WordPress theme with the guts ripped out and replaced with Vue. **Looking to create a Vue-powered WordPress plugin? [I've got a starter for that too!](https://github.com/EvanAgee/vuejs-wordpress-plugin-starter)**
 
@@ -88,3 +91,118 @@ The first thing you're probably going to want to do is start editing and compone
 - [WordPress REST API](http://v2.wp-api.org/)
 - [WordPress REST API Handbook](https://developer.wordpress.org/rest-api/)
 - [Expose ACF fields to REST API](https://github.com/airesvsg/acf-to-rest-api/)
+
+## Features coming soon:
+
+- More documentation
+
+# Changelog
+
+**2020-01-29**
+
+- Removed some legacy CSS, further integrated Tailwind.
+- Added browser-sync!
+- Reorganized and updated the webpack config and files.
+- Updated many npm packages including webpack
+- Updated webpack production minification/optimization settings.
+
+---
+
+**2020-01-28**
+
+- Updated npm packages
+- New theme screenshot
+- Updated README
+- Updated Home component
+
+---
+
+**2020-01-28**
+
+- Added [tailwindcss](https://tailwindcss.com/docs/installation#using-tailwind-with-postcss) support.
+- npm module updates
+- updated to latest version of Vuejs
+
+---
+
+**2019-02-05**
+**Added**
+
+- Support for postcss
+- New css style examples
+- Cache busters for js and css
+
+**Changed**
+
+- Updated outdated npm packages
+- Recent post and Page widgets to use router-link
+- Removed Laravel Mix and replaced with standard webpack config
+
+**Removed**
+
+- Example Firebase integration
+- jQuery
+- Several unused npm dependencies
+- Bootstrap / Bootstrap Vue
+- Several variables that were stored on the window object
+- Support for sass styling (switched to postcss)
+
+---
+
+**2018-08-20**
+**Added**
+
+- Default routing for posts and pages. @EvanAgee
+- Views for posts and pages. @EvanAgee
+- getters for pages. @EvanAgee
+- Examples for fetching pages/posts with either Vuex actions OR in component. @EvanAgee
+- Activated LocalStorage plugin in store. @EvanAgee
+- Loader component. @EvanAgee
+
+**Removed**
+
+- UglifyJS. @EvanAgee
+
+---
+
+**2017-10-24**
+**Added**
+
+- status_header(200) to keep Wordpress from returning 404 for vue-router paths.
+
+**2017-10-21**
+**Removed**
+
+- vue-slick dependency
+- vue2-google-maps dependency
+- unnecessary header/footer php files
+- the-tailor dependency
+- font-awesome dependency
+
+**Changed**
+
+- Updated webpack (Larevel Mix) config
+- Switched from Bootstrap to [Bootstrap-Vue](https://bootstrap-vue.js.org)
+
+**Fixed**
+
+- Fixed index.php
+
+---
+
+**2017-10-17**
+**Added**
+
+- More documnentation. @EvanAgee
+- Post module. @EvanAgee
+- A few code comments. @EvanAgee
+- Example widgets for posts and pages. @EvanAgee
+
+**Changed**
+
+- Home page to display the posts and pages widgets. @EvanAgee
+
+---
+
+**2017-10-11**
+Initial commit
