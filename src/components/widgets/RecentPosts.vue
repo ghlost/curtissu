@@ -1,43 +1,24 @@
 <template>
-  <div class="widget recent-posts">
-    <h3>
-      <slot></slot>
-    </h3>
-    <div v-if="recentPostsLoaded">
-      <div v-for="post in recentPosts(limit)" :key="post.id">
-        <router-link :to="post.slug" tag="div" class="max-w-sm w-full lg:max-w-full lg:flex">
-          <div
-            class="h-48 lg:h-auto lg:w-48 flex-none bg-cover bg-center rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
-            style="background-image: url('https://res.cloudinary.com/evanagee/image/upload/c_scale,h_400/v1580267636/VueWP/Youtube-bg_00240.jpg')"
-            title="Woman holding a mug"
-          ></div>
-          <div
-            class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal"
-          >
-            <div class="mb-8">
-              <div class="text-gray-900 font-bold text-xl mb-2">{{ post.title.rendered }}</div>
-              <p class="text-gray-700 text-base" v-html="post.excerpt.rendered"></p>
-            </div>
-            <div class="flex items-center">
-              <img
-                class="w-10 h-10 rounded-full mr-4"
-                src="https://res.cloudinary.com/evanagee/image/upload/c_fit,w_50/v1551277265/evanagee.com/evan-2018.jpg"
-                alt="Avatar of Jonathan Reinink"
-              />
-              <div class="text-sm">
-                <p class="text-gray-600">{{ getAuthor(post) }}</p>
-              </div>
-            </div>
-          </div>
+  <section class="project-grid">
+    <div class="project-grid__inner" v-if="recentPostsLoaded">
+      <figure class="project" v-for="(post, index) in recentPosts(limit)" :key="post.id">
+        <router-link v-if="index === 2" to="/about-us" tag="a" class="project__link">
+          <img src="/wp-content/themes/curtissu/dist/img/matcha.png" alt="project name" class="project__image">
+          <figcaption class="project__name">About Us</figcaption>
         </router-link>
-      </div>
+        <router-link :to="post.slug" tag="a" class="project__link">
+          <img :src="post.featured_image_src" alt="project name" class="project__image">
+          <figcaption class="project__name">{{ post.title.rendered }}</figcaption>
+        </router-link>
+      </figure>
     </div>
     <div v-else>Loading...</div>
-  </div>
+  </section>
 </template>
 
 <script>
 import { mapGetters } from 'vuex';
+import matcha from '../../assets/img/matcha.png';
 
 export default {
   props: ['limit'],
@@ -59,3 +40,43 @@ export default {
   },
 };
 </script>
+
+<style type="postcss">
+  .project-grid {
+    max-width: 100%;
+
+    &__inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
+
+  .project {
+    &__image {
+      filter: grayscale(1);
+      transition: filter 0.1s ease-in-out;
+    }
+
+    &__link {
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: none;
+
+        .project__image {
+          filter: grayscale(0);
+        }
+
+        .project__name {
+          opacity: 1;
+        }
+      }
+    }
+    &__name {
+      color: #000;
+      opacity: 0;
+      text-align: center;
+      transition: opacity 0.1s ease-in-out;
+    }
+  }
+</style>

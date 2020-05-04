@@ -1,17 +1,17 @@
 <template>
   <div class="page page--home">
     <div class="home">
-      <project-grid />
+      <recent-posts-widget limit="15">Recent Posts</recent-posts-widget>
     </div>
   </div>
 </template>
 
 <script>
-import ProjectGrid from './widgets/ProjectGrid.vue';
+import RecentPostsWidget from './widgets/RecentPosts.vue';
 
 export default {
   components: {
-    ProjectGrid,
+    RecentPostsWidget,
   },
 };
 </script>

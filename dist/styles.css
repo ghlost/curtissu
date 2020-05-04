@@ -1,21 +1,21 @@
 @font-face{
   font-family:SegoeUI;
 
-  src:url(fonts/SegoeUI.eot) format("embedded-opentype"),url(fonts/SegoeUI.woff) format("woff"),url(fonts/SegoeUI.ttf) format("truetype"),url(fonts/SegoeUI.svg#SegoeUI) format("svg");
+  font-weight:400;
 
   font-style:normal;
 
-  font-weight:400
+  src:url(fonts/SegoeUI.eot) format("embedded-opentype"),url(fonts/SegoeUI.woff) format("woff"),url(fonts/SegoeUI.ttf) format("truetype"),url(fonts/SegoeUI.svg#SegoeUI) format("svg")
 }
 
 @font-face{
   font-family:SegoeUI;
 
-  src:url(fonts/SegoeUI-Italic.eot) format("embedded-opentype"),url(fonts/SegoeUI-Italic.woff) format("woff"),url(fonts/SegoeUI-Italic.ttf) format("truetype"),url(fonts/SegoeUI-Italic.svg#SegoeUI) format("svg");
+  font-weight:400;
 
   font-style:italic;
 
-  font-weight:400
+  src:url(fonts/SegoeUI-Italic.eot) format("embedded-opentype"),url(fonts/SegoeUI-Italic.woff) format("woff"),url(fonts/SegoeUI-Italic.ttf) format("truetype"),url(fonts/SegoeUI-Italic.svg#SegoeUI) format("svg")
 }
 
 img{
@@ -53,10 +53,11 @@ img{
   filter:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feColorMatrix type="matrix" color-interpolation-filters="sRGB" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0" /></filter></svg>#filter');
   filter:grayscale(0)
 }
-.project__link:hover+.project__name{
+.project__link:hover .project__name{
   opacity:1
 }
 .project__name{
+  color:#000;
   opacity:0;
   text-align:center;
   transition:opacity .1s ease-in-out

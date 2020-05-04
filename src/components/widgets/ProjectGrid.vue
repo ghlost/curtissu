@@ -69,12 +69,14 @@ export default {
           filter: grayscale(0);
         }
 
-        & + .project__name {
+        .project__name {
+          color: #000;
           opacity: 1;
         }
       }
     }
     &__name {
+      color: #000;
       opacity: 0;
       text-align: center;
       transition: opacity 0.1s ease-in-out;
