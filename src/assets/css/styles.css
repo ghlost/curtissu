@@ -4,5 +4,6 @@
    your CSS as normal! */
 
 /* @import './_tailwind'; */
+@import './components/global';
 @import './components/typography';
 @import './components/image';

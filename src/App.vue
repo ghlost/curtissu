@@ -1,5 +1,6 @@
 <template>
   <div id="my-app" class="flex flex-col md:min-h-screen">
+    <svgs/>
     <app-header />
 
     <transition name="loader-animation" enter-active-class="animated fadeIn" leave-active-class="animated fadeOut">
@@ -18,6 +19,7 @@
 
 <script>
 import { mapGetters, mapActions, mapMutations } from 'vuex';
+import Svgs from './components/partials/Svgs.vue';
 import Header from './components/partials/Header.vue';
 import Footer from './components/partials/Footer.vue';
 import ProgressBar from './components/partials/ProgressBar.vue';
@@ -43,6 +45,7 @@ export default {
     appHeader: Header,
     appFooter: Footer,
     ProgressBar,
+    Svgs,
   },
 
   watch: {
