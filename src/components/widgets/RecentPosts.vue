@@ -78,9 +78,14 @@ export default {
     }
     &__name {
       color: #000;
+      font-size: 16px;
       opacity: 0;
       text-align: center;
       transition: opacity 0.1s ease-in-out;
+
+      @media screen and (min-width) {
+        font-size: 18px;
+      }
     }
   }
 </style>

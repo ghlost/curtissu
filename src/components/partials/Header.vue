@@ -1,42 +1,48 @@
 <template>
-  <nav class="nav">
+  <header class="header">
     <div class="logo">
       <h1 class="logo__wrapper"><a href="/" class="logo__link"><img src="/wp-content/themes/curtissu/dist/img/logo@2x.png" alt="" class="logo__image"></a></h1>
     </div>
     <div class="hamburger">
       <a href="#" class="hamburger__wrapper"
         :class="{'hamburger__wrapper--active': isShown}"
-        @click.prevent="showMenu">
+        @click.prevent="toggleHamburger">
         <div class="hamburger__box">
           <div class="hamburger__inner"></div>
         </div>
       </a>
     </div>
-  </nav>
+  </header>
 </template>
 <script>
 import logo from '../../assets/img/logo.png';
 import logo2x from '../../assets/img/logo@2x.png';
 
 export default {
+  props: {
+    /** @prop {boolean} - whether menu is shown */
+    isShown: {
+      default: false,
+      type: Boolean,
+    },
+  },
   data() {
     const data = {
-      isShown: false,
     };
 
     return data;
   },
 
   methods: {
-    showMenu() {
-      this.isShown = !this.isShown;
+    toggleHamburger() {
+      this.$emit('toggle-menu');
     }
   }
 }
 </script>
 
 <style type="postcss">
-.nav {
+.header {
   align-items: center;
   display: flex;
   justify-content: space-between;
@@ -45,8 +51,13 @@ export default {
 
 .logo{
   &__image {
-    height: 90px;
-    width: 320px;
+    height: auto;
+    width: 160px;
+
+    @media screen and (min-width: 768px) {
+      height: 90px;
+      width: 320px;
+    }
   }
 }
 

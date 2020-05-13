@@ -15,48 +15,76 @@
 <style type="postcss">
 .footer {
   clear: both;
-  display: flex;
-  justify-content: flex-end;
   margin: 100px 0 0 0;
   padding: 0 30px;
 
-  &__inner {
-    align-items: center;
+  @media screen and (min-width: 768px) {
     display: flex;
-    justify-content: space-between;
-    max-width: 1006px;
-    width: 100%;
+    justify-content: flex-end;
+  }
+
+  &__inner {
+    @media screen and (min-width: 768px) {
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+      max-width: 1006px;
+      width: 100%;
+    }
   }
 
   &__logos {
     align-items: center;
     display: flex;
     justify-content: space-between;
-    max-width: 195px;
+    max-width: 120px;
     width: 100%;
+
+    @media screen and (min-width: 768px) {
+      max-width: 195px;
+    }
   }
 
   &__social-links {
     .icon--insta {
-      max-height: 33px;
-      max-width: 33px;
+      max-height: 20px;
+      max-width: 20px;
+
+      @media screen and (min-width: 768px) {
+        max-height: 33px;
+        max-width: 33px;
+      }
     }
 
     .icon--email {
-      max-height: 27px;
-      max-width: 38px;
+      max-height: 21px;
+      max-width: 24px;
+
+      @media screen and (min-width: 768px) {
+        max-height: 27px;
+        max-width: 38px;
+      }
     }
 
-    .icon--phone {
-      max-height: 32px;
-      max-width: 24px;
+    .icon--phone {  
+      max-height: 23px;
+      max-width: 17px;
+
+      @media screen and (min-width: 768px) {
+        max-height: 32px;
+        max-width: 24px;
+      }
     }
   }
 
   &__copy {
     color: #AFAFAF;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 1.2;
+
+    @media screen and (min-width: 768px) {
+      font-size: 18px;
+    }
   }
 }
 </style>

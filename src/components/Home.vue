@@ -18,7 +18,11 @@ export default {
 
 <style type="postcss">
   .content {
-    float: right;
-    max-width: 75%;
+    width: 100%;
+
+    @media screen and (min-width: 768px) {
+      float: right;
+      max-width: 75%;
+    }
   }
 </style>

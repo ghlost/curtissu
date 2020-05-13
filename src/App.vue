@@ -1,7 +1,11 @@
 <template>
-  <div id="my-app" class="flex flex-col md:min-h-screen">
+  <div class="app"
+    :class="{'app--menu-open': menuOpen}">
     <svgs/>
-    <app-header />
+    <transition name="toggle">
+      <navigation :isShown="menuOpen" v-show="menuOpen"/>
+    </transition>
+    <app-header :isShown="menuOpen" v-on:toggle-menu="toggleMenu"/>
 
     <transition name="loader-animation" enter-active-class="animated fadeIn" leave-active-class="animated fadeOut">
       <progress-bar :show-loader="showLoader" :loader-style="loaderStyle" />
@@ -20,6 +24,7 @@
 <script>
 import { mapGetters, mapActions, mapMutations } from 'vuex';
 import Svgs from './components/partials/Svgs.vue';
+import Navigation from './components/partials/Navigation.vue';
 import Header from './components/partials/Header.vue';
 import Footer from './components/partials/Footer.vue';
 import ProgressBar from './components/partials/ProgressBar.vue';
@@ -28,6 +33,7 @@ export default {
   data() {
     return {
       showLoader: true,
+      menuOpen: false,
     };
   },
   computed: {
@@ -44,8 +50,15 @@ export default {
   components: {
     appHeader: Header,
     appFooter: Footer,
+    Navigation,
     ProgressBar,
     Svgs,
+  },
+
+  methods: {
+    toggleMenu: function() {
+      this.menuOpen = !this.menuOpen;
+    }
   },
 
   watch: {
@@ -65,5 +78,14 @@ export default {
 <style type="postcss">
 body {
   font-family: 'SegoeUI', sans-serif;
+}
+
+.app {
+  transform: translateX(0);
+  transition: transform 0.5s ease-in-out;
+
+  &--menu-open {
+    transform: translateX(-533px);
+  }
 }
 </style>
