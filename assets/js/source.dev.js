@@ -2314,8 +2314,6 @@ jQuery('#meerkat-wrap').replaceWith(jQuery('#meerkat-container').contents().hide
 * http://scottjehl.github.io/picturefill
 * Copyright (c) 2015 https://github.com/scottjehl/picturefill/blob/master/Authors.txt; Licensed MIT */
 window.matchMedia||(window.matchMedia=function(){"use strict";var a=window.styleMedia||window.media;if(!a){var b=document.createElement("style"),c=document.getElementsByTagName("script")[0],d=null;b.type="text/css",b.id="matchmediajs-test",c.parentNode.insertBefore(b,c),d="getComputedStyle"in window&&window.getComputedStyle(b,null)||b.currentStyle,a={matchMedium:function matchMedium(a){var c="@media "+a+"{ #matchmediajs-test { width: 1px; } }";return b.styleSheet?b.styleSheet.cssText=c:b.textContent=c,"1px"===d.width;}};}return function(b){return{matches:a.matchMedium(b||"all"),media:b||"all"};};}()),function(a,b,c){"use strict";function d(b){"object"==(typeof module==="undefined"?"undefined":_typeof(module))&&"object"==_typeof(module.exports)?module.exports=b:"function"==typeof define&&define.amd&&define("picturefill",function(){return b;}),"object"==(typeof a==="undefined"?"undefined":_typeof(a))&&(a.picturefill=b);}function e(a){var b,c,d,e,f,i=a||{};b=i.elements||g.getAllElements();for(var j=0,k=b.length;k>j;j++){if(c=b[j],d=c.parentNode,e=void 0,f=void 0,"IMG"===c.nodeName.toUpperCase()&&(c[g.ns]||(c[g.ns]={}),i.reevaluate||!c[g.ns].evaluated)){if(d&&"PICTURE"===d.nodeName.toUpperCase()){if(g.removeVideoShim(d),e=g.getMatch(c,d),e===!1)continue;}else e=void 0;(d&&"PICTURE"===d.nodeName.toUpperCase()||!g.sizesSupported&&c.srcset&&h.test(c.srcset))&&g.dodgeSrcset(c),e?(f=g.processSourceSet(e),g.applyBestCandidate(f,c)):(f=g.processSourceSet(c),(void 0===c.srcset||c[g.ns].srcset)&&g.applyBestCandidate(f,c)),c[g.ns].evaluated=!0;}}}function f(){function c(){clearTimeout(d),d=setTimeout(h,60);}g.initTypeDetects(),e();var d,f=setInterval(function(){return e(),/^loaded|^i|^c/.test(b.readyState)?void clearInterval(f):void 0;},250),h=function h(){e({reevaluate:!0});};a.addEventListener?a.addEventListener("resize",c,!1):a.attachEvent&&a.attachEvent("onresize",c);}if(a.HTMLPictureElement)return void d(function(){});b.createElement("picture");var g=a.picturefill||{},h=/\s+\+?\d+(e\d+)?w/;g.ns="picturefill",function(){g.srcsetSupported="srcset"in c,g.sizesSupported="sizes"in c,g.curSrcSupported="currentSrc"in c;}(),g.trim=function(a){return a.trim?a.trim():a.replace(/^\s+|\s+$/g,"");},g.makeUrl=function(){var a=b.createElement("a");return function(b){return a.href=b,a.href;};}(),g.restrictsMixedContent=function(){return"https:"===a.location.protocol;},g.matchesMedia=function(b){return a.matchMedia&&a.matchMedia(b).matches;},g.getDpr=function(){return a.devicePixelRatio||1;},g.getWidthFromLength=function(a){var c;if(!a||a.indexOf("%")>-1!=!1||!(parseFloat(a)>0||a.indexOf("calc(")>-1))return!1;a=a.replace("vw","%"),g.lengthEl||(g.lengthEl=b.createElement("div"),g.lengthEl.style.cssText="border:0;display:block;font-size:1em;left:0;margin:0;padding:0;position:absolute;visibility:hidden",g.lengthEl.className="helper-from-picturefill-js"),g.lengthEl.style.width="0px";try{g.lengthEl.style.width=a;}catch(d){}return b.body.appendChild(g.lengthEl),c=g.lengthEl.offsetWidth,0>=c&&(c=!1),b.body.removeChild(g.lengthEl),c;},g.detectTypeSupport=function(b,c){var d=new a.Image();return d.onerror=function(){g.types[b]=!1,e();},d.onload=function(){g.types[b]=1===d.width,e();},d.src=c,"pending";},g.types=g.types||{},g.initTypeDetects=function(){g.types["image/jpeg"]=!0,g.types["image/gif"]=!0,g.types["image/png"]=!0,g.types["image/svg+xml"]=b.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#Image","1.1"),g.types["image/webp"]=g.detectTypeSupport("image/webp","data:image/webp;base64,UklGRh4AAABXRUJQVlA4TBEAAAAvAAAAAAfQ//73v/+BiOh/AAA=");},g.verifyTypeSupport=function(a){var b=a.getAttribute("type");if(null===b||""===b)return!0;var c=g.types[b];return"string"==typeof c&&"pending"!==c?(g.types[b]=g.detectTypeSupport(b,c),"pending"):"function"==typeof c?(c(),"pending"):c;},g.parseSize=function(a){var b=/(\([^)]+\))?\s*(.+)/g.exec(a);return{media:b&&b[1],length:b&&b[2]};},g.findWidthFromSourceSize=function(c){for(var d,e=g.trim(c).split(/\s*,\s*/),f=0,h=e.length;h>f;f++){var i=e[f],j=g.parseSize(i),k=j.length,l=j.media;if(k&&(!l||g.matchesMedia(l))&&(d=g.getWidthFromLength(k)))break;}return d||Math.max(a.innerWidth||0,b.documentElement.clientWidth);},g.parseSrcset=function(a){for(var b=[];""!==a;){a=a.replace(/^\s+/g,"");var c,d=a.search(/\s/g),e=null;if(-1!==d){c=a.slice(0,d);var f=c.slice(-1);if((","===f||""===c)&&(c=c.replace(/,+$/,""),e=""),a=a.slice(d+1),null===e){var g=a.indexOf(",");-1!==g?(e=a.slice(0,g),a=a.slice(g+1)):(e=a,a="");}}else c=a,a="";(c||e)&&b.push({url:c,descriptor:e});}return b;},g.parseDescriptor=function(a,b){var c,d=b||"100vw",e=a&&a.replace(/(^\s+|\s+$)/g,""),f=g.findWidthFromSourceSize(d);if(e)for(var h=e.split(" "),i=h.length-1;i>=0;i--){var j=h[i],k=j&&j.slice(j.length-1);if("h"!==k&&"w"!==k||g.sizesSupported){if("x"===k){var l=j&&parseFloat(j,10);c=l&&!isNaN(l)?l:1;}}else c=parseFloat(parseInt(j,10)/f);}return c||1;},g.getCandidatesFromSourceSet=function(a,b){for(var c=g.parseSrcset(a),d=[],e=0,f=c.length;f>e;e++){var h=c[e];d.push({url:h.url,resolution:g.parseDescriptor(h.descriptor,b)});}return d;},g.dodgeSrcset=function(a){a.srcset&&(a[g.ns].srcset=a.srcset,a.srcset="",a.setAttribute("data-pfsrcset",a[g.ns].srcset));},g.processSourceSet=function(a){var b=a.getAttribute("srcset"),c=a.getAttribute("sizes"),d=[];return"IMG"===a.nodeName.toUpperCase()&&a[g.ns]&&a[g.ns].srcset&&(b=a[g.ns].srcset),b&&(d=g.getCandidatesFromSourceSet(b,c)),d;},g.backfaceVisibilityFix=function(a){var b=a.style||{},c="webkitBackfaceVisibility"in b,d=b.zoom;c&&(b.zoom=".999",c=a.offsetWidth,b.zoom=d);},g.setIntrinsicSize=function(){var c={},d=function d(a,b,c){b&&a.setAttribute("width",parseInt(b/c,10));};return function(e,f){var h;e[g.ns]&&!a.pfStopIntrinsicSize&&(void 0===e[g.ns].dims&&(e[g.ns].dims=e.getAttribute("width")||e.getAttribute("height")),e[g.ns].dims||(f.url in c?d(e,c[f.url],f.resolution):(h=b.createElement("img"),h.onload=function(){if(c[f.url]=h.width,!c[f.url])try{b.body.appendChild(h),c[f.url]=h.width||h.offsetWidth,b.body.removeChild(h);}catch(a){}e.src===f.url&&d(e,c[f.url],f.resolution),e=null,h.onload=null,h=null;},h.src=f.url)));};}(),g.applyBestCandidate=function(a,b){var c,d,e;a.sort(g.ascendingSort),d=a.length,e=a[d-1];for(var f=0;d>f;f++){if(c=a[f],c.resolution>=g.getDpr()){e=c;break;}}e&&(e.url=g.makeUrl(e.url),b.src!==e.url&&(g.restrictsMixedContent()&&"http:"===e.url.substr(0,"http:".length).toLowerCase()?void 0!==window.console&&console.warn("Blocked mixed content image "+e.url):(b.src=e.url,g.curSrcSupported||(b.currentSrc=b.src),g.backfaceVisibilityFix(b))),g.setIntrinsicSize(b,e));},g.ascendingSort=function(a,b){return a.resolution-b.resolution;},g.removeVideoShim=function(a){var b=a.getElementsByTagName("video");if(b.length){for(var c=b[0],d=c.getElementsByTagName("source");d.length;){a.insertBefore(d[0],c);}c.parentNode.removeChild(c);}},g.getAllElements=function(){for(var a=[],c=b.getElementsByTagName("img"),d=0,e=c.length;e>d;d++){var f=c[d];("PICTURE"===f.parentNode.nodeName.toUpperCase()||null!==f.getAttribute("srcset")||f[g.ns]&&null!==f[g.ns].srcset)&&a.push(f);}return a;},g.getMatch=function(a,b){for(var c,d=b.childNodes,e=0,f=d.length;f>e;e++){var h=d[e];if(1===h.nodeType){if(h===a)return c;if("SOURCE"===h.nodeName.toUpperCase()){null!==h.getAttribute("src")&&void 0!==(typeof console==="undefined"?"undefined":_typeof(console))&&console.warn("The `src` attribute is invalid on `picture` `source` element; instead, use `srcset`.");var i=h.getAttribute("media");if(h.getAttribute("srcset")&&(!i||g.matchesMedia(i))){var j=g.verifyTypeSupport(h);if(j===!0){c=h;break;}if("pending"===j)return!1;}}}}return c;},f(),e._=g,d(e);}(window,window.document,new window.Image());
-"use strict";/*! http://mths.be/placeholder v2.0.8 by @mathias */
-!function(a,b,c){function d(a){var b={},d=/^jQuery\d+$/;return c.each(a.attributes,function(a,c){c.specified&&!d.test(c.name)&&(b[c.name]=c.value);}),b;}function e(a,b){var d=this,e=c(d);if(d.value==e.attr("placeholder")&&e.hasClass("placeholder"))if(e.data("placeholder-password")){if(e=e.hide().next().show().attr("id",e.removeAttr("id").data("placeholder-id")),a===!0)return e[0].value=b;e.focus();}else d.value="",e.removeClass("placeholder"),d==g()&&d.select();}function f(){var a,b=this,f=c(b),g=this.id;if(""==b.value){if("password"==b.type){if(!f.data("placeholder-textinput")){try{a=f.clone().attr({type:"text"});}catch(h){a=c("<input>").attr(c.extend(d(this),{type:"text"}));}a.removeAttr("name").data({"placeholder-password":f,"placeholder-id":g}).bind("focus.placeholder",e),f.data({"placeholder-textinput":a,"placeholder-id":g}).before(a);}f=f.removeAttr("id").hide().prev().attr("id",g).show();}f.addClass("placeholder"),f[0].value=f.attr("placeholder");}else f.removeClass("placeholder");}function g(){try{return b.activeElement;}catch(a){}}var h,i,j="[object OperaMini]"==Object.prototype.toString.call(a.operamini),k="placeholder"in b.createElement("input")&&!j,l="placeholder"in b.createElement("textarea")&&!j,m=c.fn,n=c.valHooks,o=c.propHooks;k&&l?(i=m.placeholder=function(){return this;},i.input=i.textarea=!0):(i=m.placeholder=function(){var a=this;return a.filter((k?"textarea":":input")+"[placeholder]").not(".placeholder").bind({"focus.placeholder":e,"blur.placeholder":f}).data("placeholder-enabled",!0).trigger("blur.placeholder"),a;},i.input=k,i.textarea=l,h={get:function get(a){var b=c(a),d=b.data("placeholder-password");return d?d[0].value:b.data("placeholder-enabled")&&b.hasClass("placeholder")?"":a.value;},set:function set(a,b){var d=c(a),h=d.data("placeholder-password");return h?h[0].value=b:d.data("placeholder-enabled")?(""==b?(a.value=b,a!=g()&&f.call(a)):d.hasClass("placeholder")?e.call(a,!0,b)||(a.value=b):a.value=b,d):a.value=b;}},k||(n.input=h,o.value=h),l||(n.textarea=h,o.value=h),c(function(){c(b).delegate("form","submit.placeholder",function(){var a=c(".placeholder",this).each(e);setTimeout(function(){a.each(f);},10);});}),c(a).bind("beforeunload.placeholder",function(){c(".placeholder").each(function(){this.value="";});}));}(undefined,document,jQuery);
 "use strict";var _typeof2=typeof Symbol==="function"&&typeof Symbol.iterator==="symbol"?function(obj){return typeof obj;}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==Symbol.prototype?"symbol":typeof obj;};(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f;}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e);},l,l.exports,e,t,n,r);}return n[o].exports;}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++){s(r[o]);}return s;})({1:[function(require,module,exports){
 'use strict';var _typeof=typeof Symbol==="function"&&_typeof2(Symbol.iterator)==="symbol"?function(obj){return typeof obj==="undefined"?"undefined":_typeof2(obj);}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==Symbol.prototype?"symbol":typeof obj==="undefined"?"undefined":_typeof2(obj);};!function($){
 
@@ -2697,970 +2695,6 @@ return str.replace(/([a-z])([A-Z])/g,'$1-$2').toLowerCase();
 }(jQuery);
 
 },{}],2:[function(require,module,exports){
-'use strict';var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||false;descriptor.configurable=true;if("value"in descriptor)descriptor.writable=true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};}();function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}
-
-!function($){
-
-/**
-                * Drilldown module.
-                * @module foundation.drilldown
-                * @requires foundation.util.keyboard
-                * @requires foundation.util.motion
-                * @requires foundation.util.nest
-                */var
-
-Drilldown=function(){
-/**
-                            * Creates a new instance of a drilldown menu.
-                            * @class
-                            * @param {jQuery} element - jQuery object to make into an accordion menu.
-                            * @param {Object} options - Overrides to the default plugin settings.
-                            */
-function Drilldown(element,options){_classCallCheck(this,Drilldown);
-this.$element=element;
-this.options=$.extend({},Drilldown.defaults,this.$element.data(),options);
-
-Foundation.Nest.Feather(this.$element,'drilldown');
-
-this._init();
-
-Foundation.registerPlugin(this,'Drilldown');
-Foundation.Keyboard.register('Drilldown',{
-'ENTER':'open',
-'SPACE':'open',
-'ARROW_RIGHT':'next',
-'ARROW_UP':'up',
-'ARROW_DOWN':'down',
-'ARROW_LEFT':'previous',
-'ESCAPE':'close',
-'TAB':'down',
-'SHIFT_TAB':'up'});
-
-}
-
-/**
-       * Initializes the drilldown by creating jQuery collections of elements
-       * @private
-       */_createClass(Drilldown,[{key:'_init',value:function _init()
-{
-this.$submenuAnchors=this.$element.find('li.is-drilldown-submenu-parent').children('a');
-this.$submenus=this.$submenuAnchors.parent('li').children('[data-submenu]');
-this.$menuItems=this.$element.find('li').not('.js-drilldown-back').attr('role','menuitem').find('a');
-this.$element.attr('data-mutate',this.$element.attr('data-drilldown')||Foundation.GetYoDigits(6,'drilldown'));
-
-this._prepareMenu();
-this._registerEvents();
-
-this._keyboardEvents();
-}
-
-/**
-         * prepares drilldown menu by setting attributes to links and elements
-         * sets a min height to prevent content jumping
-         * wraps the element if not already wrapped
-         * @private
-         * @function
-         */},{key:'_prepareMenu',value:function _prepareMenu()
-{
-var _this=this;
-// if(!this.options.holdOpen){
-//   this._menuLinkEvents();
-// }
-this.$submenuAnchors.each(function(){
-var $link=$(this);
-var $sub=$link.parent();
-if(_this.options.parentLink){
-$link.clone().prependTo($sub.children('[data-submenu]')).wrap('<li class="is-submenu-parent-item is-submenu-item is-drilldown-submenu-item" role="menu-item"></li>');
-}
-$link.data('savedHref',$link.attr('href')).removeAttr('href').attr('tabindex',0);
-$link.children('[data-submenu]').
-attr({
-'aria-hidden':true,
-'tabindex':0,
-'role':'menu'});
-
-_this._events($link);
-});
-this.$submenus.each(function(){
-var $menu=$(this),
-$back=$menu.find('.js-drilldown-back');
-if(!$back.length){
-switch(_this.options.backButtonPosition){
-case"bottom":
-$menu.append(_this.options.backButton);
-break;
-case"top":
-$menu.prepend(_this.options.backButton);
-break;
-default:
-console.error("Unsupported backButtonPosition value '"+_this.options.backButtonPosition+"'");}
-
-}
-_this._back($menu);
-});
-
-this.$submenus.addClass('invisible');
-if(!this.options.autoHeight){
-this.$submenus.addClass('drilldown-submenu-cover-previous');
-}
-
-// create a wrapper on element if it doesn't exist.
-if(!this.$element.parent().hasClass('is-drilldown')){
-this.$wrapper=$(this.options.wrapper).addClass('is-drilldown');
-if(this.options.animateHeight)this.$wrapper.addClass('animate-height');
-this.$element.wrap(this.$wrapper);
-}
-// set wrapper
-this.$wrapper=this.$element.parent();
-this.$wrapper.css(this._getMaxDims());
-}},{key:'_resize',value:function _resize()
-
-{
-this.$wrapper.css({'max-width':'none','min-height':'none'});
-// _getMaxDims has side effects (boo) but calling it should update all other necessary heights & widths
-this.$wrapper.css(this._getMaxDims());
-}
-
-/**
-         * Adds event handlers to elements in the menu.
-         * @function
-         * @private
-         * @param {jQuery} $elem - the current menu item to add handlers to.
-         */},{key:'_events',value:function _events(
-$elem){
-var _this=this;
-
-$elem.off('click.zf.drilldown').
-on('click.zf.drilldown',function(e){
-if($(e.target).parentsUntil('ul','li').hasClass('is-drilldown-submenu-parent')){
-e.stopImmediatePropagation();
-e.preventDefault();
-}
-
-// if(e.target !== e.currentTarget.firstElementChild){
-//   return false;
-// }
-_this._show($elem.parent('li'));
-
-if(_this.options.closeOnClick){
-var $body=$('body');
-$body.off('.zf.drilldown').on('click.zf.drilldown',function(e){
-if(e.target===_this.$element[0]||$.contains(_this.$element[0],e.target)){return;}
-e.preventDefault();
-_this._hideAll();
-$body.off('.zf.drilldown');
-});
-}
-});
-this.$element.on('mutateme.zf.trigger',this._resize.bind(this));
-}
-
-/**
-         * Adds event handlers to the menu element.
-         * @function
-         * @private
-         */},{key:'_registerEvents',value:function _registerEvents()
-{
-if(this.options.scrollTop){
-this._bindHandler=this._scrollTop.bind(this);
-this.$element.on('open.zf.drilldown hide.zf.drilldown closed.zf.drilldown',this._bindHandler);
-}
-}
-
-/**
-         * Scroll to Top of Element or data-scroll-top-element
-         * @function
-         * @fires Drilldown#scrollme
-         */},{key:'_scrollTop',value:function _scrollTop()
-{
-var _this=this;
-var $scrollTopElement=_this.options.scrollTopElement!=''?$(_this.options.scrollTopElement):_this.$element,
-scrollPos=parseInt($scrollTopElement.offset().top+_this.options.scrollTopOffset);
-$('html, body').stop(true).animate({scrollTop:scrollPos},_this.options.animationDuration,_this.options.animationEasing,function(){
-/**
-                                                                                                                                                    * Fires after the menu has scrolled
-                                                                                                                                                    * @event Drilldown#scrollme
-                                                                                                                                                    */
-if(this===$('html')[0])_this.$element.trigger('scrollme.zf.drilldown');
-});
-}
-
-/**
-         * Adds keydown event listener to `li`'s in the menu.
-         * @private
-         */},{key:'_keyboardEvents',value:function _keyboardEvents()
-{
-var _this=this;
-
-this.$menuItems.add(this.$element.find('.js-drilldown-back > a, .is-submenu-parent-item > a')).on('keydown.zf.drilldown',function(e){
-var $element=$(this),
-$elements=$element.parent('li').parent('ul').children('li').children('a'),
-$prevElement,
-$nextElement;
-
-$elements.each(function(i){
-if($(this).is($element)){
-$prevElement=$elements.eq(Math.max(0,i-1));
-$nextElement=$elements.eq(Math.min(i+1,$elements.length-1));
-return;
-}
-});
-
-Foundation.Keyboard.handleKey(e,'Drilldown',{
-next:function next(){
-if($element.is(_this.$submenuAnchors)){
-_this._show($element.parent('li'));
-$element.parent('li').one(Foundation.transitionend($element),function(){
-$element.parent('li').find('ul li a').filter(_this.$menuItems).first().focus();
-});
-return true;
-}
-},
-previous:function previous(){
-_this._hide($element.parent('li').parent('ul'));
-$element.parent('li').parent('ul').one(Foundation.transitionend($element),function(){
-setTimeout(function(){
-$element.parent('li').parent('ul').parent('li').children('a').first().focus();
-},1);
-});
-return true;
-},
-up:function up(){
-$prevElement.focus();
-// Don't tap focus on first element in root ul
-return!$element.is(_this.$element.find('> li:first-child > a'));
-},
-down:function down(){
-$nextElement.focus();
-// Don't tap focus on last element in root ul
-return!$element.is(_this.$element.find('> li:last-child > a'));
-},
-close:function close(){
-// Don't close on element in root ul
-if(!$element.is(_this.$element.find('> li > a'))){
-_this._hide($element.parent().parent());
-$element.parent().parent().siblings('a').focus();
-}
-},
-open:function open(){
-if(!$element.is(_this.$menuItems)){// not menu item means back button
-_this._hide($element.parent('li').parent('ul'));
-$element.parent('li').parent('ul').one(Foundation.transitionend($element),function(){
-setTimeout(function(){
-$element.parent('li').parent('ul').parent('li').children('a').first().focus();
-},1);
-});
-return true;
-}else if($element.is(_this.$submenuAnchors)){
-_this._show($element.parent('li'));
-$element.parent('li').one(Foundation.transitionend($element),function(){
-$element.parent('li').find('ul li a').filter(_this.$menuItems).first().focus();
-});
-return true;
-}
-},
-handled:function handled(preventDefault){
-if(preventDefault){
-e.preventDefault();
-}
-e.stopImmediatePropagation();
-}});
-
-});// end keyboardAccess
-}
-
-/**
-         * Closes all open elements, and returns to root menu.
-         * @function
-         * @fires Drilldown#closed
-         */},{key:'_hideAll',value:function _hideAll()
-{
-var $elem=this.$element.find('.is-drilldown-submenu.is-active').addClass('is-closing');
-if(this.options.autoHeight)this.$wrapper.css({height:$elem.parent().closest('ul').data('calcHeight')});
-$elem.one(Foundation.transitionend($elem),function(e){
-$elem.removeClass('is-active is-closing');
-});
-/**
-             * Fires when the menu is fully closed.
-             * @event Drilldown#closed
-             */
-this.$element.trigger('closed.zf.drilldown');
-}
-
-/**
-         * Adds event listener for each `back` button, and closes open menus.
-         * @function
-         * @fires Drilldown#back
-         * @param {jQuery} $elem - the current sub-menu to add `back` event.
-         */},{key:'_back',value:function _back(
-$elem){
-var _this=this;
-$elem.off('click.zf.drilldown');
-$elem.children('.js-drilldown-back').
-on('click.zf.drilldown',function(e){
-e.stopImmediatePropagation();
-// console.log('mouseup on back');
-_this._hide($elem);
-
-// If there is a parent submenu, call show
-var parentSubMenu=$elem.parent('li').parent('ul').parent('li');
-if(parentSubMenu.length){
-_this._show(parentSubMenu);
-}
-});
-}
-
-/**
-         * Adds event listener to menu items w/o submenus to close open menus on click.
-         * @function
-         * @private
-         */},{key:'_menuLinkEvents',value:function _menuLinkEvents()
-{
-var _this=this;
-this.$menuItems.not('.is-drilldown-submenu-parent').
-off('click.zf.drilldown').
-on('click.zf.drilldown',function(e){
-// e.stopImmediatePropagation();
-setTimeout(function(){
-_this._hideAll();
-},0);
-});
-}
-
-/**
-         * Opens a submenu.
-         * @function
-         * @fires Drilldown#open
-         * @param {jQuery} $elem - the current element with a submenu to open, i.e. the `li` tag.
-         */},{key:'_show',value:function _show(
-$elem){
-if(this.options.autoHeight)this.$wrapper.css({height:$elem.children('[data-submenu]').data('calcHeight')});
-$elem.attr('aria-expanded',true);
-$elem.children('[data-submenu]').addClass('is-active').removeClass('invisible').attr('aria-hidden',false);
-/**
-                                                                                                                     * Fires when the submenu has opened.
-                                                                                                                     * @event Drilldown#open
-                                                                                                                     */
-this.$element.trigger('open.zf.drilldown',[$elem]);
-}},{key:'_hide',
-
-/**
-                            * Hides a submenu
-                            * @function
-                            * @fires Drilldown#hide
-                            * @param {jQuery} $elem - the current sub-menu to hide, i.e. the `ul` tag.
-                            */value:function _hide(
-$elem){
-if(this.options.autoHeight)this.$wrapper.css({height:$elem.parent().closest('ul').data('calcHeight')});
-var _this=this;
-$elem.parent('li').attr('aria-expanded',false);
-$elem.attr('aria-hidden',true).addClass('is-closing');
-$elem.addClass('is-closing').
-one(Foundation.transitionend($elem),function(){
-$elem.removeClass('is-active is-closing');
-$elem.blur().addClass('invisible');
-});
-/**
-             * Fires when the submenu has closed.
-             * @event Drilldown#hide
-             */
-$elem.trigger('hide.zf.drilldown',[$elem]);
-}
-
-/**
-         * Iterates through the nested menus to calculate the min-height, and max-width for the menu.
-         * Prevents content jumping.
-         * @function
-         * @private
-         */},{key:'_getMaxDims',value:function _getMaxDims()
-{
-var maxHeight=0,result={},_this=this;
-this.$submenus.add(this.$element).each(function(){
-var numOfElems=$(this).children('li').length;
-var height=Foundation.Box.GetDimensions(this).height;
-maxHeight=height>maxHeight?height:maxHeight;
-if(_this.options.autoHeight){
-$(this).data('calcHeight',height);
-if(!$(this).hasClass('is-drilldown-submenu'))result['height']=height;
-}
-});
-
-if(!this.options.autoHeight)result['min-height']=maxHeight+'px';
-
-result['max-width']=this.$element[0].getBoundingClientRect().width+'px';
-
-return result;
-}
-
-/**
-         * Destroys the Drilldown Menu
-         * @function
-         */},{key:'destroy',value:function destroy()
-{
-if(this.options.scrollTop)this.$element.off('.zf.drilldown',this._bindHandler);
-this._hideAll();
-this.$element.off('mutateme.zf.trigger');
-Foundation.Nest.Burn(this.$element,'drilldown');
-this.$element.unwrap().
-find('.js-drilldown-back, .is-submenu-parent-item').remove().
-end().find('.is-active, .is-closing, .is-drilldown-submenu').removeClass('is-active is-closing is-drilldown-submenu').
-end().find('[data-submenu]').removeAttr('aria-hidden tabindex role');
-this.$submenuAnchors.each(function(){
-$(this).off('.zf.drilldown');
-});
-
-this.$submenus.removeClass('drilldown-submenu-cover-previous');
-
-this.$element.find('a').each(function(){
-var $link=$(this);
-$link.removeAttr('tabindex');
-if($link.data('savedHref')){
-$link.attr('href',$link.data('savedHref')).removeData('savedHref');
-}else{return;}
-});
-Foundation.unregisterPlugin(this);
-}}]);return Drilldown;}();
-
-
-Drilldown.defaults={
-/**
-                          * Markup used for JS generated back button. Prepended  or appended (see backButtonPosition) to submenu lists and deleted on `destroy` method, 'js-drilldown-back' class required. Remove the backslash (`\`) if copy and pasting.
-                          * @option
-                          * @type {string}
-                          * @default '<li class="js-drilldown-back"><a tabindex="0">Back</a></li>'
-                          */
-backButton:'<li class="js-drilldown-back"><a tabindex="0">Back</a></li>',
-/**
-                                                                                * Position the back button either at the top or bottom of drilldown submenus. Can be `'left'` or `'bottom'`.
-                                                                                * @option
-                                                                                * @type {string}
-                                                                                * @default top
-                                                                                */
-backButtonPosition:'top',
-/**
-                                * Markup used to wrap drilldown menu. Use a class name for independent styling; the JS applied class: `is-drilldown` is required. Remove the backslash (`\`) if copy and pasting.
-                                * @option
-                                * @type {string}
-                                * @default '<div></div>'
-                                */
-wrapper:'<div></div>',
-/**
-                             * Adds the parent link to the submenu.
-                             * @option
-                             * @type {boolean}
-                             * @default false
-                             */
-parentLink:false,
-/**
-                        * Allow the menu to return to root list on body click.
-                        * @option
-                        * @type {boolean}
-                        * @default false
-                        */
-closeOnClick:false,
-/**
-                          * Allow the menu to auto adjust height.
-                          * @option
-                          * @type {boolean}
-                          * @default false
-                          */
-autoHeight:false,
-/**
-                        * Animate the auto adjust height.
-                        * @option
-                        * @type {boolean}
-                        * @default false
-                        */
-animateHeight:false,
-/**
-                           * Scroll to the top of the menu after opening a submenu or navigating back using the menu back button
-                           * @option
-                           * @type {boolean}
-                           * @default false
-                           */
-scrollTop:false,
-/**
-                       * String jquery selector (for example 'body') of element to take offset().top from, if empty string the drilldown menu offset().top is taken
-                       * @option
-                       * @type {string}
-                       * @default ''
-                       */
-scrollTopElement:'',
-/**
-                           * ScrollTop offset
-                           * @option
-                           * @type {number}
-                           * @default 0
-                           */
-scrollTopOffset:0,
-/**
-                         * Scroll animation duration
-                         * @option
-                         * @type {number}
-                         * @default 500
-                         */
-animationDuration:500,
-/**
-                             * Scroll animation easing. Can be `'swing'` or `'linear'`.
-                             * @option
-                             * @type {string}
-                             * @see {@link https://api.jquery.com/animate|JQuery animate}
-                             * @default 'swing'
-                             */
-animationEasing:'swing'
-// holdOpen: false
-};
-
-// Window exports
-Foundation.plugin(Drilldown,'Drilldown');
-
-}(jQuery);
-
-},{}],3:[function(require,module,exports){
-'use strict';var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||false;descriptor.configurable=true;if("value"in descriptor)descriptor.writable=true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};}();function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}
-
-!function($){
-
-/**
-                * DropdownMenu module.
-                * @module foundation.dropdown-menu
-                * @requires foundation.util.keyboard
-                * @requires foundation.util.box
-                * @requires foundation.util.nest
-                */var
-
-DropdownMenu=function(){
-/**
-                               * Creates a new instance of DropdownMenu.
-                               * @class
-                               * @fires DropdownMenu#init
-                               * @param {jQuery} element - jQuery object to make into a dropdown menu.
-                               * @param {Object} options - Overrides to the default plugin settings.
-                               */
-function DropdownMenu(element,options){_classCallCheck(this,DropdownMenu);
-this.$element=element;
-this.options=$.extend({},DropdownMenu.defaults,this.$element.data(),options);
-
-Foundation.Nest.Feather(this.$element,'dropdown');
-this._init();
-
-Foundation.registerPlugin(this,'DropdownMenu');
-Foundation.Keyboard.register('DropdownMenu',{
-'ENTER':'open',
-'SPACE':'open',
-'ARROW_RIGHT':'next',
-'ARROW_UP':'up',
-'ARROW_DOWN':'down',
-'ARROW_LEFT':'previous',
-'ESCAPE':'close'});
-
-}
-
-/**
-       * Initializes the plugin, and calls _prepareMenu
-       * @private
-       * @function
-       */_createClass(DropdownMenu,[{key:'_init',value:function _init()
-{
-var subs=this.$element.find('li.is-dropdown-submenu-parent');
-this.$element.children('.is-dropdown-submenu-parent').children('.is-dropdown-submenu').addClass('first-sub');
-
-this.$menuItems=this.$element.find('[role="menuitem"]');
-this.$tabs=this.$element.children('[role="menuitem"]');
-this.$tabs.find('ul.is-dropdown-submenu').addClass(this.options.verticalClass);
-
-if(this.$element.hasClass(this.options.rightClass)||this.options.alignment==='right'||Foundation.rtl()||this.$element.parents('.top-bar-right').is('*')){
-this.options.alignment='right';
-subs.addClass('opens-left');
-}else{
-subs.addClass('opens-right');
-}
-this.changed=false;
-this._events();
-}},{key:'_isVertical',value:function _isVertical()
-
-{
-return this.$tabs.css('display')==='block';
-}
-
-/**
-         * Adds event listeners to elements within the menu
-         * @private
-         * @function
-         */},{key:'_events',value:function _events()
-{
-var _this=this,
-hasTouch='ontouchstart'in window||typeof window.ontouchstart!=='undefined',
-parClass='is-dropdown-submenu-parent';
-
-// used for onClick and in the keyboard handlers
-var handleClickFn=function handleClickFn(e){
-var $elem=$(e.target).parentsUntil('ul','.'+parClass),
-hasSub=$elem.hasClass(parClass),
-hasClicked=$elem.attr('data-is-click')==='true',
-$sub=$elem.children('.is-dropdown-submenu');
-
-if(hasSub){
-if(hasClicked){
-if(!_this.options.closeOnClick||!_this.options.clickOpen&&!hasTouch||_this.options.forceFollow&&hasTouch){return;}else
-{
-e.stopImmediatePropagation();
-e.preventDefault();
-_this._hide($elem);
-}
-}else{
-e.preventDefault();
-e.stopImmediatePropagation();
-_this._show($sub);
-$elem.add($elem.parentsUntil(_this.$element,'.'+parClass)).attr('data-is-click',true);
-}
-}
-};
-
-if(this.options.clickOpen||hasTouch){
-this.$menuItems.on('click.zf.dropdownmenu touchstart.zf.dropdownmenu',handleClickFn);
-}
-
-// Handle Leaf element Clicks
-if(_this.options.closeOnClickInside){
-this.$menuItems.on('click.zf.dropdownmenu',function(e){
-var $elem=$(this),
-hasSub=$elem.hasClass(parClass);
-if(!hasSub){
-_this._hide();
-}
-});
-}
-
-if(!this.options.disableHover){
-this.$menuItems.on('mouseenter.zf.dropdownmenu',function(e){
-var $elem=$(this),
-hasSub=$elem.hasClass(parClass);
-
-if(hasSub){
-clearTimeout($elem.data('_delay'));
-$elem.data('_delay',setTimeout(function(){
-_this._show($elem.children('.is-dropdown-submenu'));
-},_this.options.hoverDelay));
-}
-}).on('mouseleave.zf.dropdownmenu',function(e){
-var $elem=$(this),
-hasSub=$elem.hasClass(parClass);
-if(hasSub&&_this.options.autoclose){
-if($elem.attr('data-is-click')==='true'&&_this.options.clickOpen){return false;}
-
-clearTimeout($elem.data('_delay'));
-$elem.data('_delay',setTimeout(function(){
-_this._hide($elem);
-},_this.options.closingTime));
-}
-});
-}
-this.$menuItems.on('keydown.zf.dropdownmenu',function(e){
-var $element=$(e.target).parentsUntil('ul','[role="menuitem"]'),
-isTab=_this.$tabs.index($element)>-1,
-$elements=isTab?_this.$tabs:$element.siblings('li').add($element),
-$prevElement,
-$nextElement;
-
-$elements.each(function(i){
-if($(this).is($element)){
-$prevElement=$elements.eq(i-1);
-$nextElement=$elements.eq(i+1);
-return;
-}
-});
-
-var nextSibling=function nextSibling(){
-if(!$element.is(':last-child')){
-$nextElement.children('a:first').focus();
-e.preventDefault();
-}
-},prevSibling=function prevSibling(){
-$prevElement.children('a:first').focus();
-e.preventDefault();
-},openSub=function openSub(){
-var $sub=$element.children('ul.is-dropdown-submenu');
-if($sub.length){
-_this._show($sub);
-$element.find('li > a:first').focus();
-e.preventDefault();
-}else{return;}
-},closeSub=function closeSub(){
-//if ($element.is(':first-child')) {
-var close=$element.parent('ul').parent('li');
-close.children('a:first').focus();
-_this._hide(close);
-e.preventDefault();
-//}
-};
-var functions={
-open:openSub,
-close:function close(){
-_this._hide(_this.$element);
-_this.$menuItems.find('a:first').focus();// focus to first element
-e.preventDefault();
-},
-handled:function handled(){
-e.stopImmediatePropagation();
-}};
-
-
-if(isTab){
-if(_this._isVertical()){// vertical menu
-if(Foundation.rtl()){// right aligned
-$.extend(functions,{
-down:nextSibling,
-up:prevSibling,
-next:closeSub,
-previous:openSub});
-
-}else{// left aligned
-$.extend(functions,{
-down:nextSibling,
-up:prevSibling,
-next:openSub,
-previous:closeSub});
-
-}
-}else{// horizontal menu
-if(Foundation.rtl()){// right aligned
-$.extend(functions,{
-next:prevSibling,
-previous:nextSibling,
-down:openSub,
-up:closeSub});
-
-}else{// left aligned
-$.extend(functions,{
-next:nextSibling,
-previous:prevSibling,
-down:openSub,
-up:closeSub});
-
-}
-}
-}else{// not tabs -> one sub
-if(Foundation.rtl()){// right aligned
-$.extend(functions,{
-next:closeSub,
-previous:openSub,
-down:nextSibling,
-up:prevSibling});
-
-}else{// left aligned
-$.extend(functions,{
-next:openSub,
-previous:closeSub,
-down:nextSibling,
-up:prevSibling});
-
-}
-}
-Foundation.Keyboard.handleKey(e,'DropdownMenu',functions);
-
-});
-}
-
-/**
-         * Adds an event handler to the body to close any dropdowns on a click.
-         * @function
-         * @private
-         */},{key:'_addBodyHandler',value:function _addBodyHandler()
-{
-var $body=$(document.body),
-_this=this;
-$body.off('mouseup.zf.dropdownmenu touchend.zf.dropdownmenu').
-on('mouseup.zf.dropdownmenu touchend.zf.dropdownmenu',function(e){
-var $link=_this.$element.find(e.target);
-if($link.length){return;}
-
-_this._hide();
-$body.off('mouseup.zf.dropdownmenu touchend.zf.dropdownmenu');
-});
-}
-
-/**
-         * Opens a dropdown pane, and checks for collisions first.
-         * @param {jQuery} $sub - ul element that is a submenu to show
-         * @function
-         * @private
-         * @fires DropdownMenu#show
-         */},{key:'_show',value:function _show(
-$sub){
-var idx=this.$tabs.index(this.$tabs.filter(function(i,el){
-return $(el).find($sub).length>0;
-}));
-var $sibs=$sub.parent('li.is-dropdown-submenu-parent').siblings('li.is-dropdown-submenu-parent');
-this._hide($sibs,idx);
-$sub.css('visibility','hidden').addClass('js-dropdown-active').
-parent('li.is-dropdown-submenu-parent').addClass('is-active');
-var clear=Foundation.Box.ImNotTouchingYou($sub,null,true);
-if(!clear){
-var oldClass=this.options.alignment==='left'?'-right':'-left',
-$parentLi=$sub.parent('.is-dropdown-submenu-parent');
-$parentLi.removeClass('opens'+oldClass).addClass('opens-'+this.options.alignment);
-clear=Foundation.Box.ImNotTouchingYou($sub,null,true);
-if(!clear){
-$parentLi.removeClass('opens-'+this.options.alignment).addClass('opens-inner');
-}
-this.changed=true;
-}
-$sub.css('visibility','');
-if(this.options.closeOnClick){this._addBodyHandler();}
-/**
-                                                                  * Fires when the new dropdown pane is visible.
-                                                                  * @event DropdownMenu#show
-                                                                  */
-this.$element.trigger('show.zf.dropdownmenu',[$sub]);
-}
-
-/**
-         * Hides a single, currently open dropdown pane, if passed a parameter, otherwise, hides everything.
-         * @function
-         * @param {jQuery} $elem - element with a submenu to hide
-         * @param {Number} idx - index of the $tabs collection to hide
-         * @private
-         */},{key:'_hide',value:function _hide(
-$elem,idx){
-var $toClose;
-if($elem&&$elem.length){
-$toClose=$elem;
-}else if(idx!==undefined){
-$toClose=this.$tabs.not(function(i,el){
-return i===idx;
-});
-}else
-{
-$toClose=this.$element;
-}
-var somethingToClose=$toClose.hasClass('is-active')||$toClose.find('.is-active').length>0;
-
-if(somethingToClose){
-$toClose.find('li.is-active').add($toClose).attr({
-'data-is-click':false}).
-removeClass('is-active');
-
-$toClose.find('ul.js-dropdown-active').removeClass('js-dropdown-active');
-
-if(this.changed||$toClose.find('opens-inner').length){
-var oldClass=this.options.alignment==='left'?'right':'left';
-$toClose.find('li.is-dropdown-submenu-parent').add($toClose).
-removeClass('opens-inner opens-'+this.options.alignment).
-addClass('opens-'+oldClass);
-this.changed=false;
-}
-/**
-             * Fires when the open menus are closed.
-             * @event DropdownMenu#hide
-             */
-this.$element.trigger('hide.zf.dropdownmenu',[$toClose]);
-}
-}
-
-/**
-         * Destroys the plugin.
-         * @function
-         */},{key:'destroy',value:function destroy()
-{
-this.$menuItems.off('.zf.dropdownmenu').removeAttr('data-is-click').
-removeClass('is-right-arrow is-left-arrow is-down-arrow opens-right opens-left opens-inner');
-$(document.body).off('.zf.dropdownmenu');
-Foundation.Nest.Burn(this.$element,'dropdown');
-Foundation.unregisterPlugin(this);
-}}]);return DropdownMenu;}();
-
-
-/**
-                                      * Default settings for plugin
-                                      */
-DropdownMenu.defaults={
-/**
-                             * Disallows hover events from opening submenus
-                             * @option
-                             * @type {boolean}
-                             * @default false
-                             */
-disableHover:false,
-/**
-                          * Allow a submenu to automatically close on a mouseleave event, if not clicked open.
-                          * @option
-                          * @type {boolean}
-                          * @default true
-                          */
-autoclose:true,
-/**
-                      * Amount of time to delay opening a submenu on hover event.
-                      * @option
-                      * @type {number}
-                      * @default 50
-                      */
-hoverDelay:50,
-/**
-                     * Allow a submenu to open/remain open on parent click event. Allows cursor to move away from menu.
-                     * @option
-                     * @type {boolean}
-                     * @default false
-                     */
-clickOpen:false,
-/**
-                       * Amount of time to delay closing a submenu on a mouseleave event.
-                       * @option
-                       * @type {number}
-                       * @default 500
-                       */
-
-closingTime:500,
-/**
-                       * Position of the menu relative to what direction the submenus should open. Handled by JS. Can be `'left'` or `'right'`.
-                       * @option
-                       * @type {string}
-                       * @default 'left'
-                       */
-alignment:'left',
-/**
-                        * Allow clicks on the body to close any open submenus.
-                        * @option
-                        * @type {boolean}
-                        * @default true
-                        */
-closeOnClick:true,
-/**
-                         * Allow clicks on leaf anchor links to close any open submenus.
-                         * @option
-                         * @type {boolean}
-                         * @default true
-                         */
-closeOnClickInside:true,
-/**
-                               * Class applied to vertical oriented menus, Foundation default is `vertical`. Update this if using your own class.
-                               * @option
-                               * @type {string}
-                               * @default 'vertical'
-                               */
-verticalClass:'vertical',
-/**
-                                * Class applied to right-side oriented menus, Foundation default is `align-right`. Update this if using your own class.
-                                * @option
-                                * @type {string}
-                                * @default 'align-right'
-                                */
-rightClass:'align-right',
-/**
-                                * Boolean to force overide the clicking of links to perform default action, on second touch event for mobile.
-                                * @option
-                                * @type {boolean}
-                                * @default true
-                                */
-forceFollow:true};
-
-
-// Window exports
-Foundation.plugin(DropdownMenu,'DropdownMenu');
-
-}(jQuery);
-
-},{}],4:[function(require,module,exports){
 'use strict';var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||false;descriptor.configurable=true;if("value"in descriptor)descriptor.writable=true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};}();function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}
 
 !function($){
@@ -4091,156 +3125,7 @@ trapFocus:false
 
 }(jQuery);
 
-},{}],5:[function(require,module,exports){
-'use strict';var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||false;descriptor.configurable=true;if("value"in descriptor)descriptor.writable=true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};}();function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}
-
-!function($){
-
-/**
-                * ResponsiveMenu module.
-                * @module foundation.responsiveMenu
-                * @requires foundation.util.triggers
-                * @requires foundation.util.mediaQuery
-                */var
-
-ResponsiveMenu=function(){
-/**
-                                 * Creates a new instance of a responsive menu.
-                                 * @class
-                                 * @fires ResponsiveMenu#init
-                                 * @param {jQuery} element - jQuery object to make into a dropdown menu.
-                                 * @param {Object} options - Overrides to the default plugin settings.
-                                 */
-function ResponsiveMenu(element,options){_classCallCheck(this,ResponsiveMenu);
-this.$element=$(element);
-this.rules=this.$element.data('responsive-menu');
-this.currentMq=null;
-this.currentPlugin=null;
-
-this._init();
-this._events();
-
-Foundation.registerPlugin(this,'ResponsiveMenu');
-}
-
-/**
-       * Initializes the Menu by parsing the classes from the 'data-ResponsiveMenu' attribute on the element.
-       * @function
-       * @private
-       */_createClass(ResponsiveMenu,[{key:'_init',value:function _init()
-{
-// The first time an Interchange plugin is initialized, this.rules is converted from a string of "classes" to an object of rules
-if(typeof this.rules==='string'){
-var rulesTree={};
-
-// Parse rules from "classes" pulled from data attribute
-var rules=this.rules.split(' ');
-
-// Iterate through every rule found
-for(var i=0;i<rules.length;i++){
-var rule=rules[i].split('-');
-var ruleSize=rule.length>1?rule[0]:'small';
-var rulePlugin=rule.length>1?rule[1]:rule[0];
-
-if(MenuPlugins[rulePlugin]!==null){
-rulesTree[ruleSize]=MenuPlugins[rulePlugin];
-}
-}
-
-this.rules=rulesTree;
-}
-
-if(!$.isEmptyObject(this.rules)){
-this._checkMediaQueries();
-}
-// Add data-mutate since children may need it.
-this.$element.attr('data-mutate',this.$element.attr('data-mutate')||Foundation.GetYoDigits(6,'responsive-menu'));
-}
-
-/**
-         * Initializes events for the Menu.
-         * @function
-         * @private
-         */},{key:'_events',value:function _events()
-{
-var _this=this;
-
-$(window).on('changed.zf.mediaquery',function(){
-_this._checkMediaQueries();
-});
-// $(window).on('resize.zf.ResponsiveMenu', function() {
-//   _this._checkMediaQueries();
-// });
-}
-
-/**
-         * Checks the current screen width against available media queries. If the media query has changed, and the plugin needed has changed, the plugins will swap out.
-         * @function
-         * @private
-         */},{key:'_checkMediaQueries',value:function _checkMediaQueries()
-{
-var matchedMq,_this=this;
-// Iterate through each rule and find the last matching rule
-$.each(this.rules,function(key){
-if(Foundation.MediaQuery.atLeast(key)){
-matchedMq=key;
-}
-});
-
-// No match? No dice
-if(!matchedMq)return;
-
-// Plugin already initialized? We good
-if(this.currentPlugin instanceof this.rules[matchedMq].plugin)return;
-
-// Remove existing plugin-specific CSS classes
-$.each(MenuPlugins,function(key,value){
-_this.$element.removeClass(value.cssClass);
-});
-
-// Add the CSS class for the new plugin
-this.$element.addClass(this.rules[matchedMq].cssClass);
-
-// Create an instance of the new plugin
-if(this.currentPlugin)this.currentPlugin.destroy();
-this.currentPlugin=new this.rules[matchedMq].plugin(this.$element,{});
-}
-
-/**
-         * Destroys the instance of the current plugin on this element, as well as the window resize handler that switches the plugins out.
-         * @function
-         */},{key:'destroy',value:function destroy()
-{
-this.currentPlugin.destroy();
-$(window).off('.zf.ResponsiveMenu');
-Foundation.unregisterPlugin(this);
-}}]);return ResponsiveMenu;}();
-
-
-ResponsiveMenu.defaults={};
-
-// The plugin matches the plugin classes with these plugin instances.
-var MenuPlugins={
-dropdown:{
-cssClass:'dropdown',
-plugin:Foundation._plugins['dropdown-menu']||null},
-
-drilldown:{
-cssClass:'drilldown',
-plugin:Foundation._plugins['drilldown']||null},
-
-accordion:{
-cssClass:'accordion-menu',
-plugin:Foundation._plugins['accordion-menu']||null}};
-
-
-
-// Window exports
-Foundation.plugin(ResponsiveMenu,'ResponsiveMenu');
-
-}(jQuery);
-
-},{}],6:[function(require,module,exports){
+},{}],3:[function(require,module,exports){
 'use strict';
 
 !function($){
@@ -4437,7 +3322,7 @@ top:$anchorDims.offset.top+$anchorDims.height+vOffset};}
 
 }(jQuery);
 
-},{}],7:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 /*******************************************
  *                                         *
  * This util was created by Marius Olbertz *
@@ -4591,7 +3476,7 @@ Foundation.Keyboard=Keyboard;
 
 }(jQuery);
 
-},{}],8:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 'use strict';var _typeof=typeof Symbol==="function"&&_typeof2(Symbol.iterator)==="symbol"?function(obj){return typeof obj==="undefined"?"undefined":_typeof2(obj);}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==Symbol.prototype?"symbol":typeof obj==="undefined"?"undefined":_typeof2(obj);};
 
 !function($){
@@ -4823,7 +3708,7 @@ Foundation.MediaQuery=MediaQuery;
 
 }(jQuery);
 
-},{}],9:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 'use strict';
 
 !function($){
@@ -4930,7 +3815,7 @@ Foundation.Motion=Motion;
 
 }(jQuery);
 
-},{}],10:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 'use strict';
 
 !function($){
@@ -5013,7 +3898,7 @@ Foundation.Nest=Nest;
 
 }(jQuery);
 
-},{}],11:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 'use strict';
 
 !function($){
@@ -5103,7 +3988,7 @@ Foundation.onImagesLoaded=onImagesLoaded;
 
 }(jQuery);
 
-},{}],12:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 'use strict';//**************************************************
 //**Work inspired by multiple jquery swipe plugins**
 //**Done by Yohai Ararat ***************************
@@ -5457,7 +4342,7 @@ first.target.dispatchEvent(simulatedEvent);
 })( jQuery, this );
 */
 
-},{}],13:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 'use strict';var _typeof=typeof Symbol==="function"&&_typeof2(Symbol.iterator)==="symbol"?function(obj){return typeof obj==="undefined"?"undefined":_typeof2(obj);}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==Symbol.prototype?"symbol":typeof obj==="undefined"?"undefined":_typeof2(obj);};
 
 !function($){
@@ -5716,7 +4601,1112 @@ Foundation.IHearYou=checkListeners;
 //   }
 // }
 
+},{}],11:[function(require,module,exports){
+'use strict';Object.defineProperty(exports,"__esModule",{value:true});var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||false;descriptor.configurable=true;if("value"in descriptor)descriptor.writable=true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};}();
+
+var _InViewport=require('./components/views/InViewport');var _InViewport2=_interopRequireDefault(_InViewport);
+var _ComponentMap=require('./ComponentMap');var _ComponentMap2=_interopRequireDefault(_ComponentMap);
+var _services=require('./components/services');var _services2=_interopRequireDefault(_services);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}
+
+/**
+                                                                                                                                                                                                                                                                                                                                                        * The top-level controller for the whole page. This component is responsible
+                                                                                                                                                                                                                                                                                                                                                        * for loading other controllers and views.
+                                                                                                                                                                                                                                                                                                                                                        */var
+App=function(){
+/**
+                    * Initialize all global JS components and call `loadcomponents`
+                    * to initialize all unique JS components
+                    */
+function App(){_classCallCheck(this,App);
+/**
+                                               * Services is the object which holds references to all services
+                                               * created for pages. Services should be instantiated there and
+                                               * then will be injected into each component for optional use via the
+                                               * `loadcomponents` function
+                                               *
+                                               * @type {Services}
+                                               * @property {Services}
+                                               */
+this.Services=new _services2.default();
+
+/**
+                                               * The InViewport view component which needs to run globally for all components.
+                                               * @type {InViewport}
+                                               * @property {InViewport}
+                                               */
+this.inViewport=new _InViewport2.default(this.Services);
+
+// Load each component
+this.loadPagecomponents();
+}
+
+/**
+     * This function loops over all elements in the DOM with the
+     * `data-loadcomponent` attribute and loads the specified view
+     * or controller.
+     *
+     * To attach a JS component to an HTML element, in your markup you'd
+     * do something like: <section class="example-component" data-loadcomponent='Examplecomponent'>
+     * where 'Examplecomponent' is your JS class name. You'd need to add that component to the ./componentMap.js
+     * and make sure the component exists and is a proper ES6 class, and then you'll end up with
+     * an ES6 class that is passed a reference to section.example-component on init.
+     */_createClass(App,[{key:'loadPagecomponents',value:function loadPagecomponents()
+{var _this=this;
+var attribute='data-loadcomponent';
+Array.prototype.forEach.call(document.querySelectorAll('['+attribute+']'),function(element){
+console.log('loading component ',element.getAttribute(attribute));
+new _ComponentMap2.default[element.getAttribute(attribute)](element,_this.Services);
+});
+}}]);return App;}();exports.default=App;
+
+},{"./ComponentMap":12,"./components/services":32,"./components/views/InViewport":33}],12:[function(require,module,exports){
+'use strict';
+
+// Import all required modules
+// import Header from './components/views/Header';
+Object.defineProperty(exports,"__esModule",{value:true});var _Nav=require('./components/views/Nav');var _Nav2=_interopRequireDefault(_Nav);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}
+// import Form from './components/views/Form';
+// import Filter from './components/views/Filter';
+// import Video from './components/views/Video';
+// import Slider from './components/views/Slider';
+// import Anchor from './components/views/Anchor';
+// import SocialShare from './components/views/SocialShare';
+// import InViewport from './components/views/InViewport';
+// import Banner from './components/views/Banner';
+
+// Export reference to all modules in an object
+exports.default={
+// Header,
+Nav:_Nav2.default
+// Form,
+// Filter,
+// Video
+// Anchor,
+// Slider,
+// SocialShare,
+// InViewport,
+// Banner,
+};
+
+},{"./components/views/Nav":34}],13:[function(require,module,exports){
+'use strict';Object.defineProperty(exports,"__esModule",{value:true});//* ------------------------------------*\
+//    $ARIA STRINGS
+//* ------------------------------------*/
+
+var ARIA=exports.ARIA={
+EXPANDED:'aria-expanded',
+HIDDEN:'aria-hidden',
+SELECTED:'aria-selected'};
+
 },{}],14:[function(require,module,exports){
+'use strict';Object.defineProperty(exports,"__esModule",{value:true});//* ------------------------------------*\
+//    $CLASS NAMES - for class names
+//      not CSS selectors
+//* ------------------------------------*/
+
+var CLASS_NAMES=exports.CLASS_NAMES={
+ABOVE_BOTTOM:'above-bottom',
+ABOVE_HALFWAY:'above-halfway',
+ABOVE_VIEWPORT:'above-viewport',
+ACTIVE:'active',
+BANNER_ACTIVE:'banner-active',
+BUTTON_SUBMITTING:'button--submitting',
+BUTTON_SUBMITTED:'button--submitted',
+ERROR:'error',
+CLICK:'click',
+CLOSED:'closed',
+FIRST_BATCH:'first-batch',
+FIXED:'nav-fixed',
+HIDING:'hiding',
+HIDDEN:'hidden',
+HOVER:'hover',
+INVALID:'invalid',
+IN_VIEWPORT:'in-viewport',
+LOADING:'loading',
+MINI:'mini',
+OPEN:'open',
+OPENED:'opened',
+SCROLLED:'scrolled',
+SELECTED:'selected',
+SUBMITTED:'submitted',
+VISUALLY_HIDDEN:'visually-hidden',
+VALID:'valid'};
+
+},{}],15:[function(require,module,exports){
+'use strict';Object.defineProperty(exports,"__esModule",{value:true});//* ------------------------------------*\
+//    $MISC STRINGS
+//* -----------------------------------*/
+
+var ENDPOINTS=exports.ENDPOINTS={
+SEARCH:'/wp-json/relevanssi/v1/search?',
+WPAPI:'/wp-json/wp/v2/',
+WPAPITOTAL:'X-WP-Total'};
+
+},{}],16:[function(require,module,exports){
+'use strict';Object.defineProperty(exports,"__esModule",{value:true});//* ------------------------------------*\
+//    $ERROR Messages
+//* ------------------------------------*/
+
+var ERRORS=exports.ERRORS={
+FEATURED_IMAGE:'A featured image is required'};
+
+},{}],17:[function(require,module,exports){
+'use strict';Object.defineProperty(exports,"__esModule",{value:true});//* ------------------------------------*\
+//    $EVENTS
+//* ------------------------------------*/
+
+var EVENTS=exports.EVENTS={
+ANIMATIONEND:'animationend',
+BEFOREUNLOAD:'beforeunload',
+BLUR:'blur',
+CHANGE:'change',
+CLEAR_FILTERS:'clearfilters',
+CLICK:'click',
+CUSTOM_EVENT:'customevent',
+DISPLAY_SUBHEADING:'displaysubheading',
+DROPDOWN_CHANGED:'dropdownchanged',
+FORM_ERROR:'formerror',
+FORM_SUCCESS:'formsuccess',
+FOCUS:'focus',
+HEADER_HIDING:'header-hiding',
+INPUT:'input',
+KEY_DOWN:'keydown',
+MOUSEOUT:'mouseout',
+MOUSEOVER:'mouseover',
+PAGESHOW:'pageshow',
+REQUEST_MADE:'requestmade',
+RESIZE:'resize',
+RESULTS_RETURNED:'resultsreturnd',
+SCROLL:'scroll',
+SIMULATED_CLICK:'simulated-click',
+SHOW_HIDE:'showhide',
+SUBMIT:'submit',
+TOUCH_END:'touchend',
+TOUCH_START:'touchstart',
+TRANSITIONEND:'transitionend',
+UPDATE_POST_COUNT:'updatepostcount',
+UPDATE_IN_VIEWPORT_MODULES:'updateinviewportmodules',
+UPDATE_SEARCH_WITH_NEW_ITEMS:'updatesearchwithnewitems',
+UPDATE_SETTINGS:'updatesettings',
+WHEEL:'wheel'};
+
+},{}],18:[function(require,module,exports){
+'use strict';Object.defineProperty(exports,"__esModule",{value:true});var _aria=require('./aria');Object.defineProperty(exports,'ARIA',{enumerable:true,get:function get(){return _aria.ARIA;}});var _classNames=require('./class-names');Object.defineProperty(exports,'CLASS_NAMES',{enumerable:true,get:function get(){return _classNames.
+CLASS_NAMES;}});var _endpoints=require('./endpoints');Object.defineProperty(exports,'ENDPOINTS',{enumerable:true,get:function get(){return _endpoints.
+ENDPOINTS;}});var _errors=require('./errors');Object.defineProperty(exports,'ERRORS',{enumerable:true,get:function get(){return _errors.
+ERRORS;}});var _events=require('./events');Object.defineProperty(exports,'EVENTS',{enumerable:true,get:function get(){return _events.
+EVENTS;}});var _misc=require('./misc');Object.defineProperty(exports,'MISC',{enumerable:true,get:function get(){return _misc.
+MISC;}});var _keyCodes=require('./key-codes');Object.defineProperty(exports,'KEY_CODES',{enumerable:true,get:function get(){return _keyCodes.
+KEY_CODES;}});var _selectors=require('./selectors');Object.defineProperty(exports,'SELECTORS',{enumerable:true,get:function get(){return _selectors.
+SELECTORS;}});
+
+},{"./aria":13,"./class-names":14,"./endpoints":15,"./errors":16,"./events":17,"./key-codes":19,"./misc":20,"./selectors":21}],19:[function(require,module,exports){
+"use strict";Object.defineProperty(exports,"__esModule",{value:true});//* ------------------------------------*\
+//    $KEY CODES
+//* ------------------------------------*/
+
+var KEY_CODES=exports.KEY_CODES={
+ESCAPE:27,
+ENTER:13,
+SPACEBAR:32};
+
+},{}],20:[function(require,module,exports){
+'use strict';Object.defineProperty(exports,"__esModule",{value:true});//* ------------------------------------*\
+//    $MISC STRINGS
+//* -----------------------------------*/
+
+var MISC=exports.MISC={
+BANNER_COOKIE:'banner_viewed',
+BANNER_COOKIE_VIEWED:'viewed',
+BUTTON_SUBMITTED:'Thank You',
+BUTTON_PROCESSING:'Working',
+BEFOREEND:'beforeend',
+CHANGE:'Change ',
+DATA_VISIBLE:'data-visible',
+DISABLED:'disabled',
+fURL1:'//www.facebook.com/sharer.php?u=',
+LARGE:1024,
+MEDIUM:640,
+mURL1:'mailto:',
+mURL2:'?subject=',
+mURL3:'&body=',
+tURL1:'https://twitter.com/share?url=',
+tURLText:'&text=',
+tURLVia:'&via=TheDemocrats'};
+
+},{}],21:[function(require,module,exports){
+'use strict';Object.defineProperty(exports,"__esModule",{value:true});//* --------------------------------------------------*\
+//    $SELECTORS - CSS selectors ONLY
+// -  tag names, #ids, .classnames, [attributes], etc
+//* --------------------------------------------------*/
+
+var SELECTORS=exports.SELECTORS={
+ALL:'#all',
+ANCHOR:'a',
+ANCHOR_WITH_HREF:'a[href]',
+API_RESULTS:'[data-loadcomponent="APIResults"]',
+BACKGROUND:'.background',
+BANNER_TRIGGER:'.banner-close',
+BUTTON:'button',
+CHECKED:':checked',
+CHECKED_LABEL:':checked + label',
+CHECKBOX:'checkbox',
+CHEVRON_STRIPE:'.chevron-stripe',
+CLOSE:'.close',
+CLOSE_SEARCH:'.close-search',
+DATA_BOTTOM:'data-bottomposition',
+DATA_HALFWAY:'data-halfway',
+DATA_HAS_ANIMATED:'data-has-animated',
+DATA_LAZY_LOAD:'data-lazyload',
+DATA_POSITION:'data-position',
+DATA_VISIBLE:'[data-visible]',
+DIV:'div',
+DROPDOWN:'.dropdown',
+DROPDOWN_CONTENT:'.dropdown__content',
+DROPDOWN_TOGGLE:'.dropdown__toggle',
+DROPDOWN_TOGGLE_CLICK:'.dropdown.click',
+DROPDOWN_TOGGLE_HOVER:'.dropdown.hover',
+EMAIL:'.share--email',
+FACEBOOK:'.share--fb',
+FEATUREDVIDEO:'.featured-video video',
+FILE_INPUT:'input[type=file]',
+FILTER:'.filter',
+FILTER_CHOICE:'.filter-choice',
+FILTER_OPTION:'.filter-option',
+FILTER_TRIGGER:'.filter-trigger',
+FORM:'form',
+FORM_FIELDS:'input, select, textarea',
+HTML:'html',
+INVALID:':invalid',
+LANDING_PAGE_TITLE:'.landing-page-header__title',
+LINKEDIN:'.share--li',
+LOADING:'.loading',
+LOAD_MORE:'.load-more',
+NAV:'.primary-nav',
+NAV_TRIGGER:'.nav-trigger',
+NESTED:'.nested',
+OGDESC:'meta[property="og:description"]',
+OGTITLE:'meta[property="og:title"]',
+OGURL:'meta[property="og:url"]',
+OPEN_SEARCH:'.open-search',
+OPTGROUP:'optgroup',
+PARAGRAPH:'p',
+PLAYER:'.player',
+PLAY_TRIGGER:'.video__play-trigger',
+POST_COUNT:'.post-count .count',
+POST_LISTING:'.post-listing',
+RESULTS_CONTAINER:'.results-container',
+SECONDARY_BLOG_LISTING:'.secondary-blog-listing',
+SEARCH_INPUT:'.search-field__input',
+SELECTED:'.selected',
+SITE_NAV:'.navigation',
+STATISTIC_VALUE:'.statistic__value',
+SUBMIT:'[type="submit"]',
+SVG_BG_CONTAINER:'.svg-background',
+TAB:'[role="tab"]',
+TABPANEL:'[role="tabpanel"]',
+TWITTER:'.share--tw'};
+
+},{}],22:[function(require,module,exports){
+"use strict";Object.defineProperty(exports,"__esModule",{value:true});exports.
+
+
+
+
+
+
+
+
+
+
+debounce=debounce;/**
+                      * Returns a function, that, as long as it continues to be invoked, will not
+                      * be triggered. The function will be called after it stops being called for
+                      * N milliseconds. If `immediate` is passed, trigger the function on the
+                      * leading edge, instead of the trailing.
+                      *
+                      * @param  {Function} func A function to call after N milliseconds
+                      * @param  {number} wait The number of milliseconds to wait
+                      * @param  {boolean} immediate Trigger the function on the leading edge instead of the trailing
+                      * @return {Function} A function, that, as long as it continues to be invoked, will not be triggered
+                      */function debounce(func,wait,immediate){var timeout=void 0;return function(){var context=this;var args=arguments;var later=function later(){timeout=null;if(!immediate)func.apply(context,args);};var callNow=immediate&&!timeout;clearTimeout(timeout);
+timeout=setTimeout(later,wait);
+if(callNow)func.apply(context,args);
+};
+}
+
+},{}],23:[function(require,module,exports){
+'use strict';Object.defineProperty(exports,"__esModule",{value:true});exports.
+
+
+
+
+
+getcookie=getcookie;/**
+                        * Returns the cookie or undefined if not found
+                        * 
+                        * @param {String} name of the cookie to find
+                        * @return {Object} cookie based on name passed in
+                        */function getcookie(name){var cookies={};var cookieSet=document.cookie.split('; ');cookieSet.forEach(function(cookie){return cookies[cookie.split('=')[0]]=cookie.split('=')[1];});return cookies[name];
+};
+
+},{}],24:[function(require,module,exports){
+'use strict';Object.defineProperty(exports,"__esModule",{value:true});var _debounce=require('./debounce');Object.defineProperty(exports,'debounce',{enumerable:true,get:function get(){return _debounce.
+
+
+debounce;}});var _getcookie=require('./getcookie');Object.defineProperty(exports,'getcookie',{enumerable:true,get:function get(){return _getcookie.
+getcookie;}});var _isscrolledintoview=require('./isscrolledintoview');Object.defineProperty(exports,'isscrolledintoview',{enumerable:true,get:function get(){return _isscrolledintoview.
+
+
+
+
+isscrolledintoview;}});var _openpopup=require('./openpopup');Object.defineProperty(exports,'openpopup',{enumerable:true,get:function get(){return _openpopup.
+
+openpopup;}});var _randomsecurestring=require('./randomsecurestring');Object.defineProperty(exports,'randomsecurestring',{enumerable:true,get:function get(){return _randomsecurestring.
+
+randomsecurestring;}});var _scrollto=require('./scrollto');Object.defineProperty(exports,'scrollto',{enumerable:true,get:function get(){return _scrollto.
+scrollto;}});
+
+},{"./debounce":22,"./getcookie":23,"./isscrolledintoview":25,"./openpopup":26,"./randomsecurestring":27,"./scrollto":28}],25:[function(require,module,exports){
+"use strict";Object.defineProperty(exports,"__esModule",{value:true});exports.
+
+
+
+
+
+
+
+
+isscrolledintoview=isscrolledintoview;/**
+                                          * A function which measures the elements position on the page in
+                                          * relation to the what the user can currently see on their screen
+                                          * and returns a boolean value with `true` being that the element
+                                          * is visible and `false` being that it is not visible.
+                                          *
+                                          * @param  {Object}  elem A DOM element
+                                          * @return {Boolean} isVisible A boolean value with `true` representing that the element is visible
+                                          */function isscrolledintoview(elem){var elementBounds=elem.getBoundingClientRect();return elementBounds.top<window.innerHeight&&elementBounds.bottom>=0;}
+
+},{}],26:[function(require,module,exports){
+'use strict';Object.defineProperty(exports,"__esModule",{value:true});exports.
+
+
+
+
+
+
+
+
+openpopup=openpopup;/**
+                        * A function which opens a popup window
+                        *
+                        * @param  {String} url the url to open in the popup
+                        * @param  {String} windowName a unique name for the popup
+                        * @param  {Integer} w the desired width of the popup
+                        * @param  {Integer} h the desired height of the popup
+                        * @return {Object} an object the popup function is bound to
+                        */function openpopup(url,windowName,w,h){return window.open(url,windowName,'menubar=no,status=no,toolbar=no,location=yes,resizable=yes,scrollbars=yes,status=no,width='+w+',height='+h+'');}
+
+},{}],27:[function(require,module,exports){
+'use strict';Object.defineProperty(exports,"__esModule",{value:true});exports.
+
+
+
+
+
+
+randomsecurestring=randomsecurestring;/**
+                                          * A function that takes a length and
+                                          * returns a random string
+                                          *
+                                          * @param  {Number} length of the random string
+                                          * @return {String} random string
+                                          */function randomsecurestring(length){var text='';var possible='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';for(var i=0;i<length;i++){text+=possible.charAt(Math.floor(Math.random()*possible.length));}return text;
+}
+
+},{}],28:[function(require,module,exports){
+'use strict';Object.defineProperty(exports,"__esModule",{value:true});exports.
+
+
+
+
+
+
+scrollto=scrollto;/**
+                      * A function that scrolls to a target on page
+                      *
+                      * @param  {Object} event
+                      * @param  {HTMLNode} element
+                      * @param  {Integer} offset
+                      */function scrollto(event,element){var offset=arguments.length>2&&arguments[2]!==undefined?arguments[2]:0;var hash=element.getAttribute('href').charAt(0)==='#'?element.getAttribute('href'):undefined;if(hash&&window.scroll!==undefined){var $target=document.querySelector(hash);var targetY=$target.offsetTop-offset;
+event.preventDefault();
+
+window.scrollTo({
+top:targetY,
+behavior:'smooth'});
+
+}
+}
+
+},{}],29:[function(require,module,exports){
+'use strict';Object.defineProperty(exports,"__esModule",{value:true});var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||false;descriptor.configurable=true;if("value"in descriptor)descriptor.writable=true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};}();
+
+var _Constants=require('../../Constants');function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}
+
+/**
+                                                                                                                                                                                                   * ID
+                                                                                                                                                                                                   *
+                                                                                                                                                                                                   * @type {Number}
+                                                                                                                                                                                                   * @ignore
+                                                                                                                                                                                                   */
+var id=0;
+
+/**
+             * Get ID
+             *
+             * Because file is loaded only once, this function
+             * can be used to generate a unique id every time
+             * it is called.
+             *
+             * @return {Number} Unique ID value
+             * @ignore
+             */
+function getId(){
+return id++;
+}
+
+/**
+   * Click Service
+   */var
+ClickService=function(){
+/**
+                             * Click Service constructor in which the `callbacks` array is created
+                             * as a property of the class.
+                             */
+function ClickService(){_classCallCheck(this,ClickService);
+/**
+                                                                 * An array to be populated with callback functions that will be triggered on Click
+                                                                 *
+                                                                 * @property {Array} callbacks
+                                                                 */
+this.callbacks=[];
+
+this.init();
+}
+
+/**
+    * @desc Initialize the singleton by attaching the event listener to the window
+    * @listens {Event} listens to the window Click event
+    */_createClass(ClickService,[{key:'init',value:function init()
+{
+window.addEventListener(_Constants.EVENTS.CLICK,this.onClick.bind(this));
+}
+
+/**
+      * @desc The click event handler. Iterates through the `callback` array and invokes each callback in the Array
+      * @param  {Event} event the event object
+      */},{key:'onClick',value:function onClick(
+event){
+this.callbacks.forEach(function(callback){
+if(callback.isElementMatch){
+if(event.target===callback.targetElement){
+callback.callback(event);
+}
+}else{
+callback.callback(event);
+}
+});
+}
+
+/**
+       * @desc A hook for pushing a callback function
+       * into the `callbacks` array. A unique
+       * ID value for the callback is generated
+       * and a function is returned for removing
+       * the callback if need be.
+       *
+       * @param {HTMLElement} element A reference to the DOM element that triggers the event
+       * @param {Function} callback A function to invoke by the ClickService
+       * @param {Boolean} isElementMatch A flag used to invert the conditional check for firing the callback
+       * @return {Function} `removeCallback` A function which will remove an entry from the `callbacks` array
+       */},{key:'addCallback',value:function addCallback(
+element,callback,isElementMatch){
+// Generate an id for the callback
+var id=getId();
+// module can't be undefined because it's as in identifier for the callbacks array.
+var module=element.dataset&&element.dataset.loadmodule?element.dataset.loadmodule:element;
+var flag=false;
+var targetElement=element;
+
+for(var i=0;i<this.callbacks.length;i++){
+if(this.callbacks[i].module===module){
+flag=true;
+}
+}
+
+if(!flag){
+// Push function into array with a unique id
+this.callbacks.push({
+module:module,
+id:id,
+targetElement:targetElement,
+isElementMatch:isElementMatch,
+callback:callback});
+
+}
+
+// Return the remove function
+return this.removeCallback.bind(this,id);
+}
+
+/**
+       * Filters through the `callback` array and removes
+       * the entry that corresponds to the id passed
+       * in as an argument
+       *
+       * @param  {Number} id An id value to filter by
+       */},{key:'removeCallback',value:function removeCallback(
+id){
+this.callbacks=this.callbacks.filter(function(item){
+return item.id!==id;
+});
+}}]);return ClickService;}();exports.default=ClickService;
+
+},{"../../Constants":18}],30:[function(require,module,exports){
+'use strict';Object.defineProperty(exports,"__esModule",{value:true});var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||false;descriptor.configurable=true;if("value"in descriptor)descriptor.writable=true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};}();
+
+var _Utils=require('../../Utils');
+var _Constants=require('../../Constants');function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}
+
+/**
+                                                                                                                                                                                                   * ID
+                                                                                                                                                                                                   *
+                                                                                                                                                                                                   * @type {Number}
+                                                                                                                                                                                                   * @ignore
+                                                                                                                                                                                                   */
+var id=0;
+
+/**
+             * Get ID
+             *
+             * Because file is loaded only once, this function
+             * can be used to generate a unique id every time
+             * it is called.
+             *
+             * @return {Number} Unique ID value
+             * @ignore
+             */
+function getId(){
+return id++;
+}
+
+/**
+   * Resize Service
+   */var
+ResizeService=function(){
+/**
+                              * ResizeService constructor in which the `callbacks` array is created
+                              * as a property of the class.
+                              */
+function ResizeService(){_classCallCheck(this,ResizeService);
+/**
+                                                                   * An array to be populated with callback functions that will be triggered on resize
+                                                                   *
+                                                                   * @property {Array} callbacks
+                                                                   */
+this.callbacks=[];
+
+this.init();
+}
+
+/**
+     * @desc Initialize the singleton by attaching the event listener to the window
+     * @listens {Event} listens to the window resize event
+     */_createClass(ResizeService,[{key:'init',value:function init()
+{
+window.addEventListener(_Constants.EVENTS.RESIZE,(0,_Utils.debounce)(this.onResize.bind(this),10));
+}
+
+/**
+       * @desc The resize event handler. Itertates through the `callback` array and invokes each callback in the Array
+       */},{key:'onResize',value:function onResize()
+{
+this.callbacks.forEach(function(callback){
+callback.callback();
+});
+}
+
+/**
+       * @desc A hook for pushing a callback function
+       * into the `callbacks` array. A unique
+       * ID value for the callback is generated
+       * and a function is returned for removing
+       * the callback if need be.
+       *
+       * @param {Function} callback A function to invoke by the ResizeService
+       * @return {Function} `removeCallback` A function which will remove an entry from the `callbacks` array
+       */},{key:'addCallback',value:function addCallback(
+callback){
+// Generate an id for the callback
+var id=getId();
+
+// Push function into array with a unique id
+this.callbacks.push({
+id:id,
+callback:callback});
+
+
+// Return the remove function
+return this.removeCallback.bind(this,id);
+}
+
+/**
+       * Filters through the `callback` array and removes
+       * the entry that corresponds to the id passed
+       * in as an argument
+       *
+       * @param  {Number} id An id value to filter by
+       */},{key:'removeCallback',value:function removeCallback(
+id){
+this.callbacks=this.callbacks.filter(function(item){
+return item.id!==id;
+});
+}}]);return ResizeService;}();exports.default=ResizeService;
+
+},{"../../Constants":18,"../../Utils":24}],31:[function(require,module,exports){
+'use strict';Object.defineProperty(exports,"__esModule",{value:true});var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||false;descriptor.configurable=true;if("value"in descriptor)descriptor.writable=true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};}();
+
+var _Utils=require('../../Utils');
+var _Constants=require('../../Constants');function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}
+
+/**
+                                                                                                                                                                                                   * ID
+                                                                                                                                                                                                   *
+                                                                                                                                                                                                   * @type {Number}
+                                                                                                                                                                                                   * @ignore
+                                                                                                                                                                                                   */
+var id=0;
+
+/**
+             * Get ID
+             *
+             * Because file is loaded only once, this function
+             * can be used to generate a unique id every time
+             * it is called.
+             *
+             * @return {Number} Unique ID value
+             * @ignore
+             */
+function getId(){
+return id++;
+}
+
+/**
+   * Scroll Service
+   */var
+ScrollService=function(){
+/**
+                              * Scroll Service constructor in which the `callbacks` array is created
+                              * as a property of the class.
+                              */
+function ScrollService(){_classCallCheck(this,ScrollService);
+/**
+                                                                   * An array to be populated with callback functions that will be triggered on scroll
+                                                                   *
+                                                                   * @property {Array} callbacks
+                                                                   */
+this.callbacks=[];
+
+/**
+                          * The current position of the user based on scroll, vertically
+                          *
+                          * @property {number} position
+                          */
+this.scrollY=0;
+
+this.init();
+}
+
+/**
+     * @desc Initialize the singleton by attaching the event listener to the window
+     * @listens {Event} listens to the window scroll event
+     */_createClass(ScrollService,[{key:'init',value:function init()
+{
+window.addEventListener(_Constants.EVENTS.SCROLL,(0,_Utils.debounce)(this.onScroll.bind(this),10));
+}
+
+/**
+       * @desc The scroll event handler. Iterates through the `callback` array and invokes each callback in the Array
+       */},{key:'onScroll',value:function onScroll()
+{
+this.scrollY=window.scrollY;
+this.callbacks.forEach(function(callback){
+callback.callback();
+});
+}
+
+/**
+       * @desc A hook for pushing a callback function into the `callbacks` array. A unique
+       * ID value for the callback is generated and a function is returned for removing
+       * the callback if need be.
+       *
+       * @param {Function} callback A function to invoke by the ScrollService
+       * @return {Function} `removeCallback` A function which will remove an entry from the `callbacks` array
+       */},{key:'addCallback',value:function addCallback(
+callback){
+// Generate an id for the callback
+var id=getId();
+
+// Push function into array with a unique id
+this.callbacks.push({
+id:id,
+callback:callback});
+
+
+// Return the remove function
+return this.removeCallback.bind(this,id);
+}
+
+/**
+       * Filters through the `callback` array and removes
+       * the entry that corresponds to the id passed
+       * in as an argument
+       *
+       * @param  {Number} id An id value to filter by
+       */},{key:'removeCallback',value:function removeCallback(
+id){
+this.callbacks=this.callbacks.filter(function(item){
+return item.id!==id;
+});
+}}]);return ScrollService;}();exports.default=ScrollService;
+
+},{"../../Constants":18,"../../Utils":24}],32:[function(require,module,exports){
+'use strict';
+
+// Import services
+Object.defineProperty(exports,"__esModule",{value:true});var _ClickService=require('./ClickService');var _ClickService2=_interopRequireDefault(_ClickService);
+var _ResizeService=require('./ResizeService');var _ResizeService2=_interopRequireDefault(_ResizeService);
+var _ScrollService=require('./ScrollService');var _ScrollService2=_interopRequireDefault(_ScrollService);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}
+
+/**
+                                                                                                                                                                                                                                                                                                                                                                 * A singleton whose properties are individual services.
+                                                                                                                                                                                                                                                                                                                                                                 *
+                                                                                                                                                                                                                                                                                                                                                                 * Any service singleton service that needs to be instantiated
+                                                                                                                                                                                                                                                                                                                                                                 * should be done so in the Services class.
+                                                                                                                                                                                                                                                                                                                                                                 *
+                                                                                                                                                                                                                                                                                                                                                                 * Services should not interact with the DOM, that should be
+                                                                                                                                                                                                                                                                                                                                                                 * left to the Views. Services can simply be used to consolidate
+                                                                                                                                                                                                                                                                                                                                                                 * an expensive event listener ('scroll', 'resize', etc). or
+                                                                                                                                                                                                                                                                                                                                                                 * track state (like which modal is open at which time).
+                                                                                                                                                                                                                                                                                                                                                                 */var
+Services=
+/**
+            * Services constructor that instantiates each service individually.
+            * To add another services instiate it here.
+            */
+function Services(){_classCallCheck(this,Services);
+/**
+                                                       * A service which listens to the `window` click event and
+                                                       * invokes an array of callbacks
+                                                       *
+                                                       * @property {Object} ClickService A singleton instance of the ClickService class
+                                                       */
+this.ClickService=new _ClickService2.default();
+
+/**
+                                                     * A service which listens to the `window` resize event and
+                                                     * invokes an array of callbacks
+                                                     *
+                                                     * @property {Object} ResizeService A singleton instance of the ResizeService class
+                                                     */
+this.ResizeService=new _ResizeService2.default();
+
+/**
+                                                       * A service which listens to the `window` scroll event and
+                                                       * invokes an array of callbacks
+                                                       *
+                                                       * @property {Object} ScrollService A singleton instance of the ScrollService class
+                                                       */
+this.ScrollService=new _ScrollService2.default();
+};exports.default=Services;
+
+},{"./ClickService":29,"./ResizeService":30,"./ScrollService":31}],33:[function(require,module,exports){
+'use strict';Object.defineProperty(exports,"__esModule",{value:true});var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||false;descriptor.configurable=true;if("value"in descriptor)descriptor.writable=true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};}();
+
+var _Utils=require('../../Utils');
+var _Constants=require('Constants');function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}
+
+/**
+                                                                                                                                                                                             * In Viewport
+                                                                                                                                                                                             */var
+InViewport=function(){
+/**
+                           * Constructor for inviewport which simply assigns the ScrollService
+                           * to a property on the contructor for reference.
+                           *
+                           * @param {Object} Services various services, passed in as param
+                           */
+function InViewport(Services){_classCallCheck(this,InViewport);
+/**
+                                                                     * Reference to the ScrollService singleton
+                                                                     * @property {Object}
+                                                                     */
+this.ScrollService=Services.ScrollService;
+
+// Initialize the view
+this.init();
+}
+
+/**
+     * Initializes the view by calling the functions to
+     * create DOM references, setup event handlers and
+     * then create the event listeners
+     *
+     * @return {Object} A reference to the current instance of this class
+     * @chainable
+     */_createClass(InViewport,[{key:'init',value:function init()
+{
+this.cacheDomReferences().
+setupHandlers().
+enable();
+
+return this;
+}
+
+/**
+       * Find all necessary DOM elements used in the view and cache them
+       *
+       * @return {Object} A reference to the current instance of this class
+       * @chainable
+       */},{key:'cacheDomReferences',value:function cacheDomReferences()
+{
+/**
+       * All DOM elements with the `data-visible` attribute
+       * @property {NodeList}
+       */
+this.modules=document.querySelectorAll(_Constants.SELECTORS.DATA_VISIBLE);
+
+return this;
+}
+
+/**
+       * Bind event handlers with the proper context of `this`.
+       *
+       * @return {Object} A reference to the current instance of this class
+       * @chainable
+       */},{key:'setupHandlers',value:function setupHandlers()
+{
+/**
+       * A reference to the `onScroll` function with the proper
+       * context bound to the InViewport class.
+       *
+       * @property {Function}
+       */
+this.onScrollHandler=this.onScroll.bind(this);
+
+/**
+                                                        * A reference to the `updateModules` function with the proper
+                                                        * context bound to the InViewport class.
+                                                        *
+                                                        * @property {Function}
+                                                        */
+this.onModuleUpdateHandler=this.updateModules.bind(this);
+
+return this;
+}
+
+/**
+       * Create event handlers to enable interaction with view
+       *
+       * @return {Object} A reference to the current instance of this class
+       * @chainable
+       */},{key:'enable',value:function enable()
+{
+// Call scroll handler on load to get initial viewable elements
+window.setTimeout(this.onScrollHandler,300);
+
+// Add to ScrollSerive callbacks
+this.ScrollService.addCallback(this.onScrollHandler);
+
+document.body.addEventListener(_Constants.EVENTS.UPDATE_IN_VIEWPORT_MODULES,this.onModuleUpdateHandler);
+
+return this;
+}
+
+/**
+       * A function which loops over the current modules and determines
+       * which are currently in the viewport. Depending on whether or
+       * not they are visible a data attribute boolean is toggled
+       *
+       * @return {Object} A reference to the current instance of this class
+       * @chainable
+       */},{key:'onScroll',value:function onScroll()
+{
+Array.prototype.forEach.call(this.modules,function(module){
+if((0,_Utils.isscrolledintoview)(module)){
+if(module.getAttribute(_Constants.MISC.DATA_VISIBLE)==='false'){
+module.setAttribute(_Constants.MISC.DATA_VISIBLE,true);
+}
+if(!module.hasAttribute(_Constants.SELECTORS.DATA_HAS_ANIMATED)&&module.getAttribute(_Constants.SELECTORS.DATA_BOTTOM)==='above-bottom'){
+module.setAttribute(_Constants.SELECTORS.DATA_HAS_ANIMATED,true);
+}
+}else{
+if(module.getAttribute(_Constants.MISC.DATA_VISIBLE)==='true'){
+module.setAttribute(_Constants.MISC.DATA_VISIBLE,false);
+}
+}
+var rect=module.getBoundingClientRect();
+var currentDataPosition=module.getAttribute(_Constants.SELECTORS.DATA_POSITION);
+var calculatedDataPosition=rect.bottom<0?_Constants.CLASS_NAMES.ABOVE_VIEWPORT:rect.top>=window.innerHeight?_Constants.CLASS_NAMES.BELOW_VIEWPORT:_Constants.CLASS_NAMES.IN_VIEWPORT;
+var calculatedBottomPosition=rect.bottom>window.innerHeight?_Constants.CLASS_NAMES.BELOW_BOTTOM:_Constants.CLASS_NAMES.ABOVE_BOTTOM;
+var halfwayPosition=rect.bottom<=window.innerHeight/1.25?_Constants.CLASS_NAMES.ABOVE_HALFWAY:_Constants.CLASS_NAMES.BELOW_HALFWAY;
+if(currentDataPosition!==calculatedDataPosition){
+module.setAttribute(_Constants.SELECTORS.DATA_POSITION,calculatedDataPosition);
+}
+module.setAttribute(_Constants.SELECTORS.DATA_BOTTOM,calculatedBottomPosition);
+module.setAttribute(_Constants.SELECTORS.DATA_HALFWAY,halfwayPosition);
+});
+
+return this;
+}
+
+/**
+       * A function which updates the list of data-visible modules by calling `cacheDomReferences` and calls `onScroll`
+       *
+       * @return {Object} A reference to the current instance of this class
+       * @chainable
+       */},{key:'updateModules',value:function updateModules()
+{
+// console.log('scroll');
+this.cacheDomReferences().onScroll();
+
+return this;
+}}]);return InViewport;}();exports.default=InViewport;
+
+},{"../../Utils":24,"Constants":18}],34:[function(require,module,exports){
+'use strict';Object.defineProperty(exports,"__esModule",{value:true});var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||false;descriptor.configurable=true;if("value"in descriptor)descriptor.writable=true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};}();
+
+var _Constants=require('../../Constants');function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}
+
+
+/**
+                                                                                                                                                                                                   * A class which hides and reveals hidden menu content based on user click of a button.
+                                                                                                                                                                                                   */var
+Nav=function(){
+/**
+                    * Constructor for Nav which simply assigns the ScrollService
+                    * to a property on the contructor for reference.
+                    *
+                    * @param {HTMLElement} element - REQUIRED - the module's container
+                    * @param {Object} Services various services, passed in as param
+                    */
+function Nav(element,Services){_classCallCheck(this,Nav);
+/**
+                                                                * DOM node that is passed into the constructor
+                                                                *
+                                                                * @property {Object} element DOM node that is passed into the constructor
+                                                                */
+this.element=element;
+
+
+// Initialize the view
+this.init();
+}
+
+/**
+     * Initializes the view by calling the functions to
+     * create DOM references, setup event handlers and
+     * then create the event listeners
+     *
+     * @return {Object} Header A reference to the current instance of the class
+     * @chainable
+     */_createClass(Nav,[{key:'init',value:function init()
+{
+this.cacheDomReferences().
+setupHandlers().
+enable();
+
+return this;
+}
+
+/**
+       * Cache DOM References
+       *
+       * Find all necessary DOM elements used in the view and cache them
+       *
+       * @return {Object} Header A reference to the current instance of the class
+       * @chainable
+       */},{key:'cacheDomReferences',value:function cacheDomReferences()
+{
+this.navTrigger=this.element.querySelector(_Constants.SELECTORS.NAV_TRIGGER);
+this.siteNav=document.querySelector(_Constants.SELECTORS.SITE_NAV);
+
+return this;
+}
+
+/**
+       * Bind event handlers with the proper context of `this`.
+       *
+       * @return {Object} Nav A reference to the current instance of the class
+       * @chainable
+       */},{key:'setupHandlers',value:function setupHandlers()
+{
+/**
+       * A reference to the `onClick` function with the proper
+       * context bound to the SVGScrollAnimations class.
+       *
+       * @property {Function}
+       */
+this.onClickHandler=this.onClick.bind(this);
+
+return this;
+}
+
+/**
+       * Create event handlers to enable interaction with view
+       *
+       * @return {Object} Nav A reference to the current instance of the class
+       * @chainable
+       */},{key:'enable',value:function enable()
+{
+// handle nav trigger click
+this.navTrigger.addEventListener(_Constants.EVENTS.CLICK,this.onClickHandler);
+this.navTrigger.addEventListener(_Constants.EVENTS.KEY_DOWN,this.onClickHandler);
+window.addEventListener(_Constants.EVENTS.KEY_DOWN,this.onClickHandler);
+
+return this;
+}
+
+/**
+       * Scrolling beyond the height of the nav will trigger a class change
+       * and vice versa.
+       *
+       * @return {Object} A reference to the current instance of this class
+       * @chainable
+       */},{key:'onClick',value:function onClick()
+{
+var isOpen=this.element.classList.contains(_Constants.CLASS_NAMES.OPEN);
+this.headerOpen=!isOpen;
+if(event.type===_Constants.EVENTS.KEY_DOWN&&(
+event.target.nodeName.match(/a|input|textarea|select|button/i)||
+isOpen&&event.keyCode!==_Constants.KEY_CODES.ESCAPE&&(event.keyCode!==_Constants.KEY_CODES.SPACEBAR||event.currentTarget===window)||
+!isOpen&&event.keyCode!==_Constants.KEY_CODES.SPACEBAR))
+{
+return;
+}
+if(event.type===_Constants.EVENTS.KEY_DOWN&&event.keyCode===_Constants.KEY_CODES.SPACEBAR){
+return;
+}
+event.preventDefault();
+this.element.classList.toggle(_Constants.CLASS_NAMES.OPEN);
+this.navTrigger.classList.toggle(_Constants.CLASS_NAMES.OPEN);
+this.siteNav.classList.toggle(_Constants.CLASS_NAMES.OPEN);
+this.navTrigger.setAttribute(_Constants.ARIA.EXPANDED,isOpen);
+this.siteNav.setAttribute(_Constants.ARIA.HIDDEN,isOpen);
+document.body.classList.toggle(_Constants.CLASS_NAMES.OPENED);
+}}]);return Nav;}();exports.default=Nav;
+
+},{"../../Constants":18}],35:[function(require,module,exports){
 (function(global){
 /* eslint-env browser */
 'use strict';
@@ -5733,99 +5723,35 @@ require('foundation-sites/js/foundation.util.timerAndImageLoader.js');
 require('foundation-sites/js/foundation.util.touch.js');
 require('foundation-sites/js/foundation.util.triggers.js');
 
-require('foundation-sites/js/foundation.drilldown.js');
-require('foundation-sites/js/foundation.dropdownMenu.js');
-require('foundation-sites/js/foundation.responsiveMenu.js');
+
+
+
 require('foundation-sites/js/foundation.offcanvas.js');
 
 var _jquery=typeof window!=="undefined"?window['jQuery']:typeof global!=="undefined"?global['jQuery']:null;var _jquery2=_interopRequireDefault(_jquery);
-var _prepinputs=require('modules/prepinputs.js');var _prepinputs2=_interopRequireDefault(_prepinputs);
-var _socialShare=require('modules/socialShare.js');var _socialShare2=_interopRequireDefault(_socialShare);
-var _carousel=require('modules/carousel.js');var _carousel2=_interopRequireDefault(_carousel);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}// Foundation Plugins. Add or remove as needed for your site
-// Foundation Utilities
-(function($){
-// Initialize Foundation
-$(document).foundation();
 
-// Prepare form inputs
-(0,_prepinputs2.default)();
+var _socialShare=require('modules/socialShare.js');var _socialShare2=_interopRequireDefault(_socialShare);
+
+
+var _App=require('./App');var _App2=_interopRequireDefault(_App);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}// import prepInputs from 'modules/prepinputs.js';
+// Foundation Plugins. Add or remove as needed for your site
+// import 'foundation-sites/js/foundation.drilldown.js';
+// import 'foundation-sites/js/foundation.dropdownMenu.js';
+// import 'foundation-sites/js/foundation.responsiveMenu.js';
+// Foundation Utilities
+(function($){// Initialize Foundation
+$(document).foundation();// Prepare form inputs
+// prepInputs();
 // Initialize social share functionality
 // Replace the empty string parameter with your Facebook ID
 (0,_socialShare2.default)('');
-
-// Initialize carousels
-(0,_carousel2.default)();
-
-// Initialize Plugins
-$('.magnific-trigger').magnificPopup({
-type:'inline'});
-
-
-$('.meerkat-cta').meerkat({
-background:'rgb(21, 76, 102) repeat-x left top',
-height:'120px',
-width:'100%',
-position:'bottom',
-close:'.close-meerkat',
-dontShowAgain:'.dont-show',
-animationIn:'fade',
-animationSpeed:500,
-opacity:0.9});
-
-})(_jquery2.default);
+// Attach App to the window
+window.App=new _App2.default();
+})(_jquery2.default);// import carousel from 'modules/carousel.js';
 
 }).call(this,typeof global!=="undefined"?global:typeof self!=="undefined"?self:typeof window!=="undefined"?window:{});
 
-},{"foundation-sites/js/foundation.core.js":1,"foundation-sites/js/foundation.drilldown.js":2,"foundation-sites/js/foundation.dropdownMenu.js":3,"foundation-sites/js/foundation.offcanvas.js":4,"foundation-sites/js/foundation.responsiveMenu.js":5,"foundation-sites/js/foundation.util.box.js":6,"foundation-sites/js/foundation.util.keyboard.js":7,"foundation-sites/js/foundation.util.mediaQuery.js":8,"foundation-sites/js/foundation.util.motion.js":9,"foundation-sites/js/foundation.util.nest.js":10,"foundation-sites/js/foundation.util.timerAndImageLoader.js":11,"foundation-sites/js/foundation.util.touch.js":12,"foundation-sites/js/foundation.util.triggers.js":13,"modules/carousel.js":15,"modules/prepinputs.js":16,"modules/socialShare.js":17}],15:[function(require,module,exports){
-(function(global){
-/* eslint-env browser */
-'use strict';Object.defineProperty(exports,"__esModule",{value:true});
-
-var _jquery=typeof window!=="undefined"?window['jQuery']:typeof global!=="undefined"?global['jQuery']:null;var _jquery2=_interopRequireDefault(_jquery);
-require('vendor/jquery.slick.js');function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}
-
-var carousel=function carousel(){
-(0,_jquery2.default)('.js-carousel').slick({
-adaptiveHeight:true,
-dots:false,
-centerMode:true,
-slidesToShow:1,
-arrows:true,
-centerPadding:'0px',
-infinite:false,
-prevArrow:'<button type="button" class="tiny">'+
-'<i class="fa fa-chevron-left"></i></button>',
-nextArrow:'<button type="button" class="tiny">'+
-'<i class="fa fa-chevron-right"></i></button>'});
-
-};exports.default=
-
-carousel;
-
-}).call(this,typeof global!=="undefined"?global:typeof self!=="undefined"?self:typeof window!=="undefined"?window:{});
-
-},{"vendor/jquery.slick.js":18}],16:[function(require,module,exports){
-(function(global){
-/* eslint-env browser */
-'use strict';Object.defineProperty(exports,"__esModule",{value:true});
-
-var _jquery=typeof window!=="undefined"?window['jQuery']:typeof global!=="undefined"?global['jQuery']:null;var _jquery2=_interopRequireDefault(_jquery);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}
-
-var prepinputs=function prepinputs(){
-(0,_jquery2.default)('input, textarea').placeholder().
-filter('[type="text"], [type="email"], [type="tel"], [type="password"]').
-addClass('text').end().
-filter('[type="checkbox"]').addClass('checkbox').end().
-filter('[type="radio"]').addClass('radiobutton').end().
-filter('[type="submit"]').addClass('submit').end().
-filter('[type="image"]').addClass('buttonImage');
-};exports.default=
-
-prepinputs;
-
-}).call(this,typeof global!=="undefined"?global:typeof self!=="undefined"?self:typeof window!=="undefined"?window:{});
-
-},{}],17:[function(require,module,exports){
+},{"./App":11,"foundation-sites/js/foundation.core.js":1,"foundation-sites/js/foundation.offcanvas.js":2,"foundation-sites/js/foundation.util.box.js":3,"foundation-sites/js/foundation.util.keyboard.js":4,"foundation-sites/js/foundation.util.mediaQuery.js":5,"foundation-sites/js/foundation.util.motion.js":6,"foundation-sites/js/foundation.util.nest.js":7,"foundation-sites/js/foundation.util.timerAndImageLoader.js":8,"foundation-sites/js/foundation.util.touch.js":9,"foundation-sites/js/foundation.util.triggers.js":10,"modules/socialShare.js":36}],36:[function(require,module,exports){
 (function(global){
 /* eslint-env browser */
 'use strict';Object.defineProperty(exports,"__esModule",{value:true});
@@ -5936,2314 +5862,4 @@ socialShare;
 
 }).call(this,typeof global!=="undefined"?global:typeof self!=="undefined"?self:typeof window!=="undefined"?window:{});
 
-},{}],18:[function(require,module,exports){
-(function(global){
-'use strict';var _typeof=typeof Symbol==="function"&&_typeof2(Symbol.iterator)==="symbol"?function(obj){return typeof obj==="undefined"?"undefined":_typeof2(obj);}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==Symbol.prototype?"symbol":typeof obj==="undefined"?"undefined":_typeof2(obj);};/*
-                                                                                                                                                                                                                                                                                            _ _      _       _
-                                                                                                                                                                                                                                                                                        ___| (_) ___| | __  (_)___
-                                                                                                                                                                                                                                                                                       / __| | |/ __| |/ /  | / __|
-                                                                                                                                                                                                                                                                                       \__ \ | | (__|   < _ | \__ \
-                                                                                                                                                                                                                                                                                       |___/_|_|\___|_|\_(_)/ |___/
-                                                                                                                                                                                                                                                                                                          |__/
-                                                                                                                                                                                                                                                                                       
-                                                                                                                                                                                                                                                                                        Version: 1.5.0
-                                                                                                                                                                                                                                                                                         Author: Ken Wheeler
-                                                                                                                                                                                                                                                                                        Website: http://kenwheeler.github.io
-                                                                                                                                                                                                                                                                                           Docs: http://kenwheeler.github.io/slick
-                                                                                                                                                                                                                                                                                           Repo: http://github.com/kenwheeler/slick
-                                                                                                                                                                                                                                                                                         Issues: http://github.com/kenwheeler/slick/issues
-                                                                                                                                                                                                                                                                                       
-                                                                                                                                                                                                                                                                                        */
-/* global window, document, define, jQuery, setInterval, clearInterval */
-(function(factory){
-'use strict';
-if(typeof define==='function'&&define.amd){
-define(['jquery'],factory);
-}else if(typeof exports!=='undefined'){
-module.exports=factory(typeof window!=="undefined"?window['jQuery']:typeof global!=="undefined"?global['jQuery']:null);
-}else{
-factory(jQuery);
-}
-
-})(function($){
-'use strict';
-var Slick=window.Slick||{};
-
-Slick=function(){
-
-var instanceUid=0;
-
-function Slick(element,settings){
-
-var _=this,
-dataSettings,responsiveSettings,breakpoint;
-
-_.defaults={
-accessibility:true,
-adaptiveHeight:false,
-appendArrows:$(element),
-appendDots:$(element),
-arrows:true,
-asNavFor:null,
-prevArrow:'<button type="button" data-role="none" class="slick-prev" aria-label="previous">Previous</button>',
-nextArrow:'<button type="button" data-role="none" class="slick-next" aria-label="next">Next</button>',
-autoplay:false,
-autoplaySpeed:3000,
-centerMode:false,
-centerPadding:'50px',
-cssEase:'ease',
-customPaging:function customPaging(slider,i){
-return'<button type="button" data-role="none">'+(i+1)+'</button>';
-},
-dots:false,
-dotsClass:'slick-dots',
-draggable:true,
-easing:'linear',
-edgeFriction:0.35,
-fade:false,
-focusOnSelect:false,
-infinite:true,
-initialSlide:0,
-lazyLoad:'ondemand',
-mobileFirst:false,
-pauseOnHover:true,
-pauseOnDotsHover:false,
-respondTo:'window',
-responsive:null,
-rows:1,
-rtl:false,
-slide:'',
-slidesPerRow:1,
-slidesToShow:1,
-slidesToScroll:1,
-speed:500,
-swipe:true,
-swipeToSlide:false,
-touchMove:true,
-touchThreshold:5,
-useCSS:true,
-variableWidth:false,
-vertical:false,
-verticalSwiping:false,
-waitForAnimate:true};
-
-
-_.initials={
-animating:false,
-dragging:false,
-autoPlayTimer:null,
-currentDirection:0,
-currentLeft:null,
-currentSlide:0,
-direction:1,
-$dots:null,
-listWidth:null,
-listHeight:null,
-loadIndex:0,
-$nextArrow:null,
-$prevArrow:null,
-slideCount:null,
-slideWidth:null,
-$slideTrack:null,
-$slides:null,
-sliding:false,
-slideOffset:0,
-swipeLeft:null,
-$list:null,
-touchObject:{},
-transformsEnabled:false};
-
-
-$.extend(_,_.initials);
-
-_.activeBreakpoint=null;
-_.animType=null;
-_.animProp=null;
-_.breakpoints=[];
-_.breakpointSettings=[];
-_.cssTransitions=false;
-_.hidden='hidden';
-_.paused=false;
-_.positionProp=null;
-_.respondTo=null;
-_.rowCount=1;
-_.shouldClick=true;
-_.$slider=$(element);
-_.$slidesCache=null;
-_.transformType=null;
-_.transitionType=null;
-_.visibilityChange='visibilitychange';
-_.windowWidth=0;
-_.windowTimer=null;
-
-dataSettings=$(element).data('slick')||{};
-
-_.options=$.extend({},_.defaults,dataSettings,settings);
-
-_.currentSlide=_.options.initialSlide;
-
-_.originalSettings=_.options;
-responsiveSettings=_.options.responsive||null;
-
-if(responsiveSettings&&responsiveSettings.length>-1){
-_.respondTo=_.options.respondTo||'window';
-for(breakpoint in responsiveSettings){
-if(responsiveSettings.hasOwnProperty(breakpoint)){
-_.breakpoints.push(responsiveSettings[
-breakpoint].breakpoint);
-_.breakpointSettings[responsiveSettings[
-breakpoint].breakpoint]=
-responsiveSettings[breakpoint].settings;
-}
-}
-_.breakpoints.sort(function(a,b){
-if(_.options.mobileFirst===true){
-return a-b;
-}else{
-return b-a;
-}
-});
-}
-
-if(typeof document.mozHidden!=='undefined'){
-_.hidden='mozHidden';
-_.visibilityChange='mozvisibilitychange';
-}else if(typeof document.msHidden!=='undefined'){
-_.hidden='msHidden';
-_.visibilityChange='msvisibilitychange';
-}else if(typeof document.webkitHidden!=='undefined'){
-_.hidden='webkitHidden';
-_.visibilityChange='webkitvisibilitychange';
-}
-
-_.autoPlay=$.proxy(_.autoPlay,_);
-_.autoPlayClear=$.proxy(_.autoPlayClear,_);
-_.changeSlide=$.proxy(_.changeSlide,_);
-_.clickHandler=$.proxy(_.clickHandler,_);
-_.selectHandler=$.proxy(_.selectHandler,_);
-_.setPosition=$.proxy(_.setPosition,_);
-_.swipeHandler=$.proxy(_.swipeHandler,_);
-_.dragHandler=$.proxy(_.dragHandler,_);
-_.keyHandler=$.proxy(_.keyHandler,_);
-_.autoPlayIterator=$.proxy(_.autoPlayIterator,_);
-
-_.instanceUid=instanceUid++;
-
-// A simple way to check for HTML strings
-// Strict HTML recognition (must start with <)
-// Extracted from jQuery v1.11 source
-_.htmlExpr=/^(?:\s*(<[\w\W]+>)[^>]*)$/;
-
-_.init();
-
-_.checkResponsive(true);
-
-}
-
-return Slick;
-
-}();
-
-Slick.prototype.addSlide=Slick.prototype.slickAdd=function(markup,index,addBefore){
-
-var _=this;
-
-if(typeof index==='boolean'){
-addBefore=index;
-index=null;
-}else if(index<0||index>=_.slideCount){
-return false;
-}
-
-_.unload();
-
-if(typeof index==='number'){
-if(index===0&&_.$slides.length===0){
-$(markup).appendTo(_.$slideTrack);
-}else if(addBefore){
-$(markup).insertBefore(_.$slides.eq(index));
-}else{
-$(markup).insertAfter(_.$slides.eq(index));
-}
-}else{
-if(addBefore===true){
-$(markup).prependTo(_.$slideTrack);
-}else{
-$(markup).appendTo(_.$slideTrack);
-}
-}
-
-_.$slides=_.$slideTrack.children(this.options.slide);
-
-_.$slideTrack.children(this.options.slide).detach();
-
-_.$slideTrack.append(_.$slides);
-
-_.$slides.each(function(index,element){
-$(element).attr('data-slick-index',index);
-});
-
-_.$slidesCache=_.$slides;
-
-_.reinit();
-
-};
-
-Slick.prototype.animateHeight=function(){
-var _=this;
-if(_.options.slidesToShow===1&&_.options.adaptiveHeight===true&&_.options.vertical===false){
-var targetHeight=_.$slides.eq(_.currentSlide).outerHeight(true);
-_.$list.animate({
-height:targetHeight},
-_.options.speed);
-}
-};
-
-Slick.prototype.animateSlide=function(targetLeft,callback){
-
-var animProps={},
-_=this;
-
-_.animateHeight();
-
-if(_.options.rtl===true&&_.options.vertical===false){
-targetLeft=-targetLeft;
-}
-if(_.transformsEnabled===false){
-if(_.options.vertical===false){
-_.$slideTrack.animate({
-left:targetLeft},
-_.options.speed,_.options.easing,callback);
-}else{
-_.$slideTrack.animate({
-top:targetLeft},
-_.options.speed,_.options.easing,callback);
-}
-
-}else{
-
-if(_.cssTransitions===false){
-if(_.options.rtl===true){
-_.currentLeft=-_.currentLeft;
-}
-$({
-animStart:_.currentLeft}).
-animate({
-animStart:targetLeft},
-{
-duration:_.options.speed,
-easing:_.options.easing,
-step:function step(now){
-now=Math.ceil(now);
-if(_.options.vertical===false){
-animProps[_.animType]='translate('+
-now+'px, 0px)';
-_.$slideTrack.css(animProps);
-}else{
-animProps[_.animType]='translate(0px,'+
-now+'px)';
-_.$slideTrack.css(animProps);
-}
-},
-complete:function complete(){
-if(callback){
-callback.call();
-}
-}});
-
-
-}else{
-
-_.applyTransition();
-targetLeft=Math.ceil(targetLeft);
-
-if(_.options.vertical===false){
-animProps[_.animType]='translate3d('+targetLeft+'px, 0px, 0px)';
-}else{
-animProps[_.animType]='translate3d(0px,'+targetLeft+'px, 0px)';
-}
-_.$slideTrack.css(animProps);
-
-if(callback){
-setTimeout(function(){
-
-_.disableTransition();
-
-callback.call();
-},_.options.speed);
-}
-
-}
-
-}
-
-};
-
-Slick.prototype.asNavFor=function(index){
-var _=this,
-asNavFor=_.options.asNavFor!==null?$(_.options.asNavFor).slick('getSlick'):null;
-if(asNavFor!==null)asNavFor.slideHandler(index,true);
-};
-
-Slick.prototype.applyTransition=function(slide){
-
-var _=this,
-transition={};
-
-if(_.options.fade===false){
-transition[_.transitionType]=_.transformType+' '+_.options.speed+'ms '+_.options.cssEase;
-}else{
-transition[_.transitionType]='opacity '+_.options.speed+'ms '+_.options.cssEase;
-}
-
-if(_.options.fade===false){
-_.$slideTrack.css(transition);
-}else{
-_.$slides.eq(slide).css(transition);
-}
-
-};
-
-Slick.prototype.autoPlay=function(){
-
-var _=this;
-
-if(_.autoPlayTimer){
-clearInterval(_.autoPlayTimer);
-}
-
-if(_.slideCount>_.options.slidesToShow&&_.paused!==true){
-_.autoPlayTimer=setInterval(_.autoPlayIterator,
-_.options.autoplaySpeed);
-}
-
-};
-
-Slick.prototype.autoPlayClear=function(){
-
-var _=this;
-if(_.autoPlayTimer){
-clearInterval(_.autoPlayTimer);
-}
-
-};
-
-Slick.prototype.autoPlayIterator=function(){
-
-var _=this;
-
-if(_.options.infinite===false){
-
-if(_.direction===1){
-
-if(_.currentSlide+1===_.slideCount-
-1){
-_.direction=0;
-}
-
-_.slideHandler(_.currentSlide+_.options.slidesToScroll);
-
-}else{
-
-if(_.currentSlide-1===0){
-
-_.direction=1;
-
-}
-
-_.slideHandler(_.currentSlide-_.options.slidesToScroll);
-
-}
-
-}else{
-
-_.slideHandler(_.currentSlide+_.options.slidesToScroll);
-
-}
-
-};
-
-Slick.prototype.buildArrows=function(){
-
-var _=this;
-
-if(_.options.arrows===true&&_.slideCount>_.options.slidesToShow){
-
-_.$prevArrow=$(_.options.prevArrow);
-_.$nextArrow=$(_.options.nextArrow);
-
-if(_.htmlExpr.test(_.options.prevArrow)){
-_.$prevArrow.appendTo(_.options.appendArrows);
-}
-
-if(_.htmlExpr.test(_.options.nextArrow)){
-_.$nextArrow.appendTo(_.options.appendArrows);
-}
-
-if(_.options.infinite!==true){
-_.$prevArrow.addClass('slick-disabled');
-}
-
-}
-
-};
-
-Slick.prototype.buildDots=function(){
-
-var _=this,
-i,dotString;
-
-if(_.options.dots===true&&_.slideCount>_.options.slidesToShow){
-
-dotString='<ul class="'+_.options.dotsClass+'">';
-
-for(i=0;i<=_.getDotCount();i+=1){
-dotString+='<li>'+_.options.customPaging.call(this,_,i)+'</li>';
-}
-
-dotString+='</ul>';
-
-_.$dots=$(dotString).appendTo(
-_.options.appendDots);
-
-_.$dots.find('li').first().addClass('slick-active').attr('aria-hidden','false');
-
-}
-
-};
-
-Slick.prototype.buildOut=function(){
-
-var _=this;
-
-_.$slides=_.$slider.children(
-':not(.slick-cloned)').addClass(
-'slick-slide');
-_.slideCount=_.$slides.length;
-
-_.$slides.each(function(index,element){
-$(element).attr('data-slick-index',index);
-});
-
-_.$slidesCache=_.$slides;
-
-_.$slider.addClass('slick-slider');
-
-_.$slideTrack=_.slideCount===0?
-$('<div class="slick-track"/>').appendTo(_.$slider):
-_.$slides.wrapAll('<div class="slick-track"/>').parent();
-
-_.$list=_.$slideTrack.wrap(
-'<div aria-live="polite" class="slick-list"/>').parent();
-_.$slideTrack.css('opacity',0);
-
-if(_.options.centerMode===true||_.options.swipeToSlide===true){
-_.options.slidesToScroll=1;
-}
-
-$('img[data-lazy]',_.$slider).not('[src]').addClass('slick-loading');
-
-_.setupInfinite();
-
-_.buildArrows();
-
-_.buildDots();
-
-_.updateDots();
-
-if(_.options.accessibility===true){
-_.$list.prop('tabIndex',0);
-}
-
-_.setSlideClasses(typeof this.currentSlide==='number'?this.currentSlide:0);
-
-if(_.options.draggable===true){
-_.$list.addClass('draggable');
-}
-
-};
-
-Slick.prototype.buildRows=function(){
-
-var _=this,a,b,c,newSlides,numOfSlides,originalSlides,slidesPerSection;
-
-newSlides=document.createDocumentFragment();
-originalSlides=_.$slider.children();
-
-if(_.options.rows>1){
-slidesPerSection=_.options.slidesPerRow*_.options.rows;
-numOfSlides=Math.ceil(
-originalSlides.length/slidesPerSection);
-
-
-for(a=0;a<numOfSlides;a++){
-var slide=document.createElement('div');
-for(b=0;b<_.options.rows;b++){
-var row=document.createElement('div');
-for(c=0;c<_.options.slidesPerRow;c++){
-var target=a*slidesPerSection+(b*_.options.slidesPerRow+c);
-if(originalSlides.get(target)){
-row.appendChild(originalSlides.get(target));
-}
-}
-slide.appendChild(row);
-}
-newSlides.appendChild(slide);
-};
-_.$slider.html(newSlides);
-_.$slider.children().children().children().
-width(100/_.options.slidesPerRow+"%").
-css({'display':'inline-block'});
-};
-
-};
-
-Slick.prototype.checkResponsive=function(initial){
-
-var _=this,
-breakpoint,targetBreakpoint,respondToWidth;
-var sliderWidth=_.$slider.width();
-var windowWidth=window.innerWidth||$(window).width();
-if(_.respondTo==='window'){
-respondToWidth=windowWidth;
-}else if(_.respondTo==='slider'){
-respondToWidth=sliderWidth;
-}else if(_.respondTo==='min'){
-respondToWidth=Math.min(windowWidth,sliderWidth);
-}
-
-if(_.originalSettings.responsive&&_.originalSettings.
-responsive.length>-1&&_.originalSettings.responsive!==null){
-
-targetBreakpoint=null;
-
-for(breakpoint in _.breakpoints){
-if(_.breakpoints.hasOwnProperty(breakpoint)){
-if(_.originalSettings.mobileFirst===false){
-if(respondToWidth<_.breakpoints[breakpoint]){
-targetBreakpoint=_.breakpoints[breakpoint];
-}
-}else{
-if(respondToWidth>_.breakpoints[breakpoint]){
-targetBreakpoint=_.breakpoints[breakpoint];
-}
-}
-}
-}
-
-if(targetBreakpoint!==null){
-if(_.activeBreakpoint!==null){
-if(targetBreakpoint!==_.activeBreakpoint){
-_.activeBreakpoint=
-targetBreakpoint;
-if(_.breakpointSettings[targetBreakpoint]==='unslick'){
-_.unslick();
-}else{
-_.options=$.extend({},_.originalSettings,
-_.breakpointSettings[
-targetBreakpoint]);
-if(initial===true)
-_.currentSlide=_.options.initialSlide;
-_.refresh();
-}
-}
-}else{
-_.activeBreakpoint=targetBreakpoint;
-if(_.breakpointSettings[targetBreakpoint]==='unslick'){
-_.unslick();
-}else{
-_.options=$.extend({},_.originalSettings,
-_.breakpointSettings[
-targetBreakpoint]);
-if(initial===true)
-_.currentSlide=_.options.initialSlide;
-_.refresh();
-}
-}
-}else{
-if(_.activeBreakpoint!==null){
-_.activeBreakpoint=null;
-_.options=_.originalSettings;
-if(initial===true)
-_.currentSlide=_.options.initialSlide;
-_.refresh();
-}
-}
-
-}
-
-};
-
-Slick.prototype.changeSlide=function(event,dontAnimate){
-
-var _=this,
-$target=$(event.target),
-indexOffset,slideOffset,unevenOffset;
-
-// If target is a link, prevent default action.
-$target.is('a')&&event.preventDefault();
-
-unevenOffset=_.slideCount%_.options.slidesToScroll!==0;
-indexOffset=unevenOffset?0:(_.slideCount-_.currentSlide)%_.options.slidesToScroll;
-
-switch(event.data.message){
-
-case'previous':
-slideOffset=indexOffset===0?_.options.slidesToScroll:_.options.slidesToShow-indexOffset;
-if(_.slideCount>_.options.slidesToShow){
-_.slideHandler(_.currentSlide-slideOffset,false,dontAnimate);
-}
-break;
-
-case'next':
-slideOffset=indexOffset===0?_.options.slidesToScroll:indexOffset;
-if(_.slideCount>_.options.slidesToShow){
-_.slideHandler(_.currentSlide+slideOffset,false,dontAnimate);
-}
-break;
-
-case'index':
-var index=event.data.index===0?0:
-event.data.index||$(event.target).parent().index()*_.options.slidesToScroll;
-
-_.slideHandler(_.checkNavigable(index),false,dontAnimate);
-break;
-
-default:
-return;}
-
-
-};
-
-Slick.prototype.checkNavigable=function(index){
-
-var _=this,
-navigables,prevNavigable;
-
-navigables=_.getNavigableIndexes();
-prevNavigable=0;
-if(index>navigables[navigables.length-1]){
-index=navigables[navigables.length-1];
-}else{
-for(var n in navigables){
-if(index<navigables[n]){
-index=prevNavigable;
-break;
-}
-prevNavigable=navigables[n];
-}
-}
-
-return index;
-};
-
-Slick.prototype.cleanUpEvents=function(){
-
-var _=this;
-
-if(_.options.dots===true&&_.slideCount>_.options.slidesToShow){
-$('li',_.$dots).off('click.slick',_.changeSlide);
-}
-
-if(_.options.dots===true&&_.options.pauseOnDotsHover===true&&_.options.autoplay===true){
-$('li',_.$dots).
-off('mouseenter.slick',_.setPaused.bind(_,true)).
-off('mouseleave.slick',_.setPaused.bind(_,false));
-}
-
-if(_.options.arrows===true&&_.slideCount>_.options.slidesToShow){
-_.$prevArrow&&_.$prevArrow.off('click.slick',_.changeSlide);
-_.$nextArrow&&_.$nextArrow.off('click.slick',_.changeSlide);
-}
-
-_.$list.off('touchstart.slick mousedown.slick',_.swipeHandler);
-_.$list.off('touchmove.slick mousemove.slick',_.swipeHandler);
-_.$list.off('touchend.slick mouseup.slick',_.swipeHandler);
-_.$list.off('touchcancel.slick mouseleave.slick',_.swipeHandler);
-
-_.$list.off('click.slick',_.clickHandler);
-
-if(_.options.autoplay===true){
-$(document).off(_.visibilityChange,_.visibility);
-}
-
-_.$list.off('mouseenter.slick',_.setPaused.bind(_,true));
-_.$list.off('mouseleave.slick',_.setPaused.bind(_,false));
-
-if(_.options.accessibility===true){
-_.$list.off('keydown.slick',_.keyHandler);
-}
-
-if(_.options.focusOnSelect===true){
-$(_.$slideTrack).children().off('click.slick',_.selectHandler);
-}
-
-$(window).off('orientationchange.slick.slick-'+_.instanceUid,_.orientationChange);
-
-$(window).off('resize.slick.slick-'+_.instanceUid,_.resize);
-
-$('[draggable!=true]',_.$slideTrack).off('dragstart',_.preventDefault);
-
-$(window).off('load.slick.slick-'+_.instanceUid,_.setPosition);
-$(document).off('ready.slick.slick-'+_.instanceUid,_.setPosition);
-};
-
-Slick.prototype.cleanUpRows=function(){
-
-var _=this,originalSlides;
-
-if(_.options.rows>1){
-originalSlides=_.$slides.children().children();
-originalSlides.removeAttr('style');
-_.$slider.html(originalSlides);
-}
-
-};
-
-Slick.prototype.clickHandler=function(event){
-
-var _=this;
-
-if(_.shouldClick===false){
-event.stopImmediatePropagation();
-event.stopPropagation();
-event.preventDefault();
-}
-
-};
-
-Slick.prototype.destroy=function(){
-
-var _=this;
-
-_.autoPlayClear();
-
-_.touchObject={};
-
-_.cleanUpEvents();
-
-$('.slick-cloned',_.$slider).remove();
-
-if(_.$dots){
-_.$dots.remove();
-}
-if(_.$prevArrow&&_typeof(_.options.prevArrow)!=='object'){
-_.$prevArrow.remove();
-}
-if(_.$nextArrow&&_typeof(_.options.nextArrow)!=='object'){
-_.$nextArrow.remove();
-}
-
-if(_.$slides){
-_.$slides.removeClass('slick-slide slick-active slick-center slick-visible').
-attr('aria-hidden','true').
-removeAttr('data-slick-index').
-css({
-position:'',
-left:'',
-top:'',
-zIndex:'',
-opacity:'',
-width:''});
-
-
-_.$slider.html(_.$slides);
-}
-
-_.cleanUpRows();
-
-_.$slider.removeClass('slick-slider');
-_.$slider.removeClass('slick-initialized');
-
-};
-
-Slick.prototype.disableTransition=function(slide){
-
-var _=this,
-transition={};
-
-transition[_.transitionType]='';
-
-if(_.options.fade===false){
-_.$slideTrack.css(transition);
-}else{
-_.$slides.eq(slide).css(transition);
-}
-
-};
-
-Slick.prototype.fadeSlide=function(slideIndex,callback){
-
-var _=this;
-
-if(_.cssTransitions===false){
-
-_.$slides.eq(slideIndex).css({
-zIndex:1000});
-
-
-_.$slides.eq(slideIndex).animate({
-opacity:1},
-_.options.speed,_.options.easing,callback);
-
-}else{
-
-_.applyTransition(slideIndex);
-
-_.$slides.eq(slideIndex).css({
-opacity:1,
-zIndex:1000});
-
-
-if(callback){
-setTimeout(function(){
-
-_.disableTransition(slideIndex);
-
-callback.call();
-},_.options.speed);
-}
-
-}
-
-};
-
-Slick.prototype.filterSlides=Slick.prototype.slickFilter=function(filter){
-
-var _=this;
-
-if(filter!==null){
-
-_.unload();
-
-_.$slideTrack.children(this.options.slide).detach();
-
-_.$slidesCache.filter(filter).appendTo(_.$slideTrack);
-
-_.reinit();
-
-}
-
-};
-
-Slick.prototype.getCurrent=Slick.prototype.slickCurrentSlide=function(){
-
-var _=this;
-return _.currentSlide;
-
-};
-
-Slick.prototype.getDotCount=function(){
-
-var _=this;
-
-var breakPoint=0;
-var counter=0;
-var pagerQty=0;
-
-if(_.options.infinite===true){
-pagerQty=Math.ceil(_.slideCount/_.options.slidesToScroll);
-}else if(_.options.centerMode===true){
-pagerQty=_.slideCount;
-}else{
-while(breakPoint<_.slideCount){
-++pagerQty;
-breakPoint=counter+_.options.slidesToShow;
-counter+=_.options.slidesToScroll<=_.options.slidesToShow?_.options.slidesToScroll:_.options.slidesToShow;
-}
-}
-
-return pagerQty-1;
-
-};
-
-Slick.prototype.getLeft=function(slideIndex){
-
-var _=this,
-targetLeft,
-verticalHeight,
-verticalOffset=0,
-targetSlide;
-
-_.slideOffset=0;
-verticalHeight=_.$slides.first().outerHeight();
-
-if(_.options.infinite===true){
-if(_.slideCount>_.options.slidesToShow){
-_.slideOffset=_.slideWidth*_.options.slidesToShow*-1;
-verticalOffset=verticalHeight*_.options.slidesToShow*-1;
-}
-if(_.slideCount%_.options.slidesToScroll!==0){
-if(slideIndex+_.options.slidesToScroll>_.slideCount&&_.slideCount>_.options.slidesToShow){
-if(slideIndex>_.slideCount){
-_.slideOffset=(_.options.slidesToShow-(slideIndex-_.slideCount))*_.slideWidth*-1;
-verticalOffset=(_.options.slidesToShow-(slideIndex-_.slideCount))*verticalHeight*-1;
-}else{
-_.slideOffset=_.slideCount%_.options.slidesToScroll*_.slideWidth*-1;
-verticalOffset=_.slideCount%_.options.slidesToScroll*verticalHeight*-1;
-}
-}
-}
-}else{
-if(slideIndex+_.options.slidesToShow>_.slideCount){
-_.slideOffset=(slideIndex+_.options.slidesToShow-_.slideCount)*_.slideWidth;
-verticalOffset=(slideIndex+_.options.slidesToShow-_.slideCount)*verticalHeight;
-}
-}
-
-if(_.slideCount<=_.options.slidesToShow){
-_.slideOffset=0;
-verticalOffset=0;
-}
-
-if(_.options.centerMode===true&&_.options.infinite===true){
-_.slideOffset+=_.slideWidth*Math.floor(_.options.slidesToShow/2)-_.slideWidth;
-}else if(_.options.centerMode===true){
-_.slideOffset=0;
-_.slideOffset+=_.slideWidth*Math.floor(_.options.slidesToShow/2);
-}
-
-if(_.options.vertical===false){
-targetLeft=slideIndex*_.slideWidth*-1+_.slideOffset;
-}else{
-targetLeft=slideIndex*verticalHeight*-1+verticalOffset;
-}
-
-if(_.options.variableWidth===true){
-
-if(_.slideCount<=_.options.slidesToShow||_.options.infinite===false){
-targetSlide=_.$slideTrack.children('.slick-slide').eq(slideIndex);
-}else{
-targetSlide=_.$slideTrack.children('.slick-slide').eq(slideIndex+_.options.slidesToShow);
-}
-
-targetLeft=targetSlide[0]?targetSlide[0].offsetLeft*-1:0;
-
-if(_.options.centerMode===true){
-if(_.options.infinite===false){
-targetSlide=_.$slideTrack.children('.slick-slide').eq(slideIndex);
-}else{
-targetSlide=_.$slideTrack.children('.slick-slide').eq(slideIndex+_.options.slidesToShow+1);
-}
-targetLeft=targetSlide[0]?targetSlide[0].offsetLeft*-1:0;
-targetLeft+=(_.$list.width()-targetSlide.outerWidth())/2;
-}
-}
-
-return targetLeft;
-
-};
-
-Slick.prototype.getOption=Slick.prototype.slickGetOption=function(option){
-
-var _=this;
-
-return _.options[option];
-
-};
-
-Slick.prototype.getNavigableIndexes=function(){
-
-var _=this,
-breakPoint=0,
-counter=0,
-indexes=[],
-max;
-
-if(_.options.infinite===false){
-max=_.slideCount-_.options.slidesToShow+1;
-if(_.options.centerMode===true)max=_.slideCount;
-}else{
-breakPoint=_.options.slidesToScroll*-1;
-counter=_.options.slidesToScroll*-1;
-max=_.slideCount*2;
-}
-
-while(breakPoint<max){
-indexes.push(breakPoint);
-breakPoint=counter+_.options.slidesToScroll;
-counter+=_.options.slidesToScroll<=_.options.slidesToShow?_.options.slidesToScroll:_.options.slidesToShow;
-}
-
-return indexes;
-
-};
-
-Slick.prototype.getSlick=function(){
-
-return this;
-
-};
-
-Slick.prototype.getSlideCount=function(){
-
-var _=this,
-slidesTraversed,swipedSlide,centerOffset;
-
-centerOffset=_.options.centerMode===true?_.slideWidth*Math.floor(_.options.slidesToShow/2):0;
-
-if(_.options.swipeToSlide===true){
-_.$slideTrack.find('.slick-slide').each(function(index,slide){
-if(slide.offsetLeft-centerOffset+$(slide).outerWidth()/2>_.swipeLeft*-1){
-swipedSlide=slide;
-return false;
-}
-});
-
-slidesTraversed=Math.abs($(swipedSlide).attr('data-slick-index')-_.currentSlide)||1;
-
-return slidesTraversed;
-
-}else{
-return _.options.slidesToScroll;
-}
-
-};
-
-Slick.prototype.goTo=Slick.prototype.slickGoTo=function(slide,dontAnimate){
-
-var _=this;
-
-_.changeSlide({
-data:{
-message:'index',
-index:parseInt(slide)}},
-
-dontAnimate);
-
-};
-
-Slick.prototype.init=function(){
-
-var _=this;
-
-if(!$(_.$slider).hasClass('slick-initialized')){
-
-$(_.$slider).addClass('slick-initialized');
-_.buildRows();
-_.buildOut();
-_.setProps();
-_.startLoad();
-_.loadSlider();
-_.initializeEvents();
-_.updateArrows();
-_.updateDots();
-}
-
-_.$slider.trigger('init',[_]);
-
-};
-
-Slick.prototype.initArrowEvents=function(){
-
-var _=this;
-
-if(_.options.arrows===true&&_.slideCount>_.options.slidesToShow){
-_.$prevArrow.on('click.slick',{
-message:'previous'},
-_.changeSlide);
-_.$nextArrow.on('click.slick',{
-message:'next'},
-_.changeSlide);
-}
-
-};
-
-Slick.prototype.initDotEvents=function(){
-
-var _=this;
-
-if(_.options.dots===true&&_.slideCount>_.options.slidesToShow){
-$('li',_.$dots).on('click.slick',{
-message:'index'},
-_.changeSlide);
-}
-
-if(_.options.dots===true&&_.options.pauseOnDotsHover===true&&_.options.autoplay===true){
-$('li',_.$dots).
-on('mouseenter.slick',_.setPaused.bind(_,true)).
-on('mouseleave.slick',_.setPaused.bind(_,false));
-}
-
-};
-
-Slick.prototype.initializeEvents=function(){
-
-var _=this;
-
-_.initArrowEvents();
-
-_.initDotEvents();
-
-_.$list.on('touchstart.slick mousedown.slick',{
-action:'start'},
-_.swipeHandler);
-_.$list.on('touchmove.slick mousemove.slick',{
-action:'move'},
-_.swipeHandler);
-_.$list.on('touchend.slick mouseup.slick',{
-action:'end'},
-_.swipeHandler);
-_.$list.on('touchcancel.slick mouseleave.slick',{
-action:'end'},
-_.swipeHandler);
-
-_.$list.on('click.slick',_.clickHandler);
-
-if(_.options.autoplay===true){
-$(document).on(_.visibilityChange,_.visibility.bind(_));
-}
-
-_.$list.on('mouseenter.slick',_.setPaused.bind(_,true));
-_.$list.on('mouseleave.slick',_.setPaused.bind(_,false));
-
-if(_.options.accessibility===true){
-_.$list.on('keydown.slick',_.keyHandler);
-}
-
-if(_.options.focusOnSelect===true){
-$(_.$slideTrack).children().on('click.slick',_.selectHandler);
-}
-
-$(window).on('orientationchange.slick.slick-'+_.instanceUid,_.orientationChange.bind(_));
-
-$(window).on('resize.slick.slick-'+_.instanceUid,_.resize.bind(_));
-
-$('[draggable!=true]',_.$slideTrack).on('dragstart',_.preventDefault);
-
-$(window).on('load.slick.slick-'+_.instanceUid,_.setPosition);
-$(document).on('ready.slick.slick-'+_.instanceUid,_.setPosition);
-
-};
-
-Slick.prototype.initUI=function(){
-
-var _=this;
-
-if(_.options.arrows===true&&_.slideCount>_.options.slidesToShow){
-
-_.$prevArrow.show();
-_.$nextArrow.show();
-
-}
-
-if(_.options.dots===true&&_.slideCount>_.options.slidesToShow){
-
-_.$dots.show();
-
-}
-
-if(_.options.autoplay===true){
-
-_.autoPlay();
-
-}
-
-};
-
-Slick.prototype.keyHandler=function(event){
-
-var _=this;
-
-if(event.keyCode===37&&_.options.accessibility===true){
-_.changeSlide({
-data:{
-message:'previous'}});
-
-
-}else if(event.keyCode===39&&_.options.accessibility===true){
-_.changeSlide({
-data:{
-message:'next'}});
-
-
-}
-
-};
-
-Slick.prototype.lazyLoad=function(){
-
-var _=this,
-loadRange,cloneRange,rangeStart,rangeEnd;
-
-function loadImages(imagesScope){
-$('img[data-lazy]',imagesScope).each(function(){
-var image=$(this),
-imageSource=$(this).attr('data-lazy'),
-imageToLoad=document.createElement('img');
-
-imageToLoad.onload=function(){
-image.animate({
-opacity:1},
-200);
-};
-imageToLoad.src=imageSource;
-
-image.
-css({
-opacity:0}).
-
-attr('src',imageSource).
-removeAttr('data-lazy').
-removeClass('slick-loading');
-});
-}
-
-if(_.options.centerMode===true){
-if(_.options.infinite===true){
-rangeStart=_.currentSlide+(_.options.slidesToShow/2+1);
-rangeEnd=rangeStart+_.options.slidesToShow+2;
-}else{
-rangeStart=Math.max(0,_.currentSlide-(_.options.slidesToShow/2+1));
-rangeEnd=2+(_.options.slidesToShow/2+1)+_.currentSlide;
-}
-}else{
-rangeStart=_.options.infinite?_.options.slidesToShow+_.currentSlide:_.currentSlide;
-rangeEnd=rangeStart+_.options.slidesToShow;
-if(_.options.fade===true){
-if(rangeStart>0)rangeStart--;
-if(rangeEnd<=_.slideCount)rangeEnd++;
-}
-}
-
-loadRange=_.$slider.find('.slick-slide').slice(rangeStart,rangeEnd);
-loadImages(loadRange);
-
-if(_.slideCount<=_.options.slidesToShow){
-cloneRange=_.$slider.find('.slick-slide');
-loadImages(cloneRange);
-}else
-if(_.currentSlide>=_.slideCount-_.options.slidesToShow){
-cloneRange=_.$slider.find('.slick-cloned').slice(0,_.options.slidesToShow);
-loadImages(cloneRange);
-}else if(_.currentSlide===0){
-cloneRange=_.$slider.find('.slick-cloned').slice(_.options.slidesToShow*-1);
-loadImages(cloneRange);
-}
-
-};
-
-Slick.prototype.loadSlider=function(){
-
-var _=this;
-
-_.setPosition();
-
-_.$slideTrack.css({
-opacity:1});
-
-
-_.$slider.removeClass('slick-loading');
-
-_.initUI();
-
-if(_.options.lazyLoad==='progressive'){
-_.progressiveLazyLoad();
-}
-
-};
-
-Slick.prototype.next=Slick.prototype.slickNext=function(){
-
-var _=this;
-
-_.changeSlide({
-data:{
-message:'next'}});
-
-
-
-};
-
-Slick.prototype.orientationChange=function(){
-
-var _=this;
-
-_.checkResponsive();
-_.setPosition();
-
-};
-
-Slick.prototype.pause=Slick.prototype.slickPause=function(){
-
-var _=this;
-
-_.autoPlayClear();
-_.paused=true;
-
-};
-
-Slick.prototype.play=Slick.prototype.slickPlay=function(){
-
-var _=this;
-
-_.paused=false;
-_.autoPlay();
-
-};
-
-Slick.prototype.postSlide=function(index){
-
-var _=this;
-
-_.$slider.trigger('afterChange',[_,index]);
-
-_.animating=false;
-
-_.setPosition();
-
-_.swipeLeft=null;
-
-if(_.options.autoplay===true&&_.paused===false){
-_.autoPlay();
-}
-
-};
-
-Slick.prototype.prev=Slick.prototype.slickPrev=function(){
-
-var _=this;
-
-_.changeSlide({
-data:{
-message:'previous'}});
-
-
-
-};
-
-Slick.prototype.preventDefault=function(e){
-e.preventDefault();
-};
-
-Slick.prototype.progressiveLazyLoad=function(){
-
-var _=this,
-imgCount,targetImage;
-
-imgCount=$('img[data-lazy]',_.$slider).length;
-
-if(imgCount>0){
-targetImage=$('img[data-lazy]',_.$slider).first();
-targetImage.attr('src',targetImage.attr('data-lazy')).removeClass('slick-loading').load(function(){
-targetImage.removeAttr('data-lazy');
-_.progressiveLazyLoad();
-
-if(_.options.adaptiveHeight===true){
-_.setPosition();
-}
-}).
-error(function(){
-targetImage.removeAttr('data-lazy');
-_.progressiveLazyLoad();
-});
-}
-
-};
-
-Slick.prototype.refresh=function(){
-
-var _=this,
-currentSlide=_.currentSlide;
-
-_.destroy();
-
-$.extend(_,_.initials);
-
-_.init();
-
-_.changeSlide({
-data:{
-message:'index',
-index:currentSlide}},
-
-false);
-
-};
-
-Slick.prototype.reinit=function(){
-
-var _=this;
-
-_.$slides=_.$slideTrack.children(_.options.slide).addClass(
-'slick-slide');
-
-_.slideCount=_.$slides.length;
-
-if(_.currentSlide>=_.slideCount&&_.currentSlide!==0){
-_.currentSlide=_.currentSlide-_.options.slidesToScroll;
-}
-
-if(_.slideCount<=_.options.slidesToShow){
-_.currentSlide=0;
-}
-
-_.setProps();
-
-_.setupInfinite();
-
-_.buildArrows();
-
-_.updateArrows();
-
-_.initArrowEvents();
-
-_.buildDots();
-
-_.updateDots();
-
-_.initDotEvents();
-
-if(_.options.focusOnSelect===true){
-$(_.$slideTrack).children().on('click.slick',_.selectHandler);
-}
-
-_.setSlideClasses(0);
-
-_.setPosition();
-
-_.$slider.trigger('reInit',[_]);
-
-};
-
-Slick.prototype.resize=function(){
-
-var _=this;
-
-if($(window).width()!==_.windowWidth){
-clearTimeout(_.windowDelay);
-_.windowDelay=window.setTimeout(function(){
-_.windowWidth=$(window).width();
-_.checkResponsive();
-_.setPosition();
-},50);
-}
-};
-
-Slick.prototype.removeSlide=Slick.prototype.slickRemove=function(index,removeBefore,removeAll){
-
-var _=this;
-
-if(typeof index==='boolean'){
-removeBefore=index;
-index=removeBefore===true?0:_.slideCount-1;
-}else{
-index=removeBefore===true?--index:index;
-}
-
-if(_.slideCount<1||index<0||index>_.slideCount-1){
-return false;
-}
-
-_.unload();
-
-if(removeAll===true){
-_.$slideTrack.children().remove();
-}else{
-_.$slideTrack.children(this.options.slide).eq(index).remove();
-}
-
-_.$slides=_.$slideTrack.children(this.options.slide);
-
-_.$slideTrack.children(this.options.slide).detach();
-
-_.$slideTrack.append(_.$slides);
-
-_.$slidesCache=_.$slides;
-
-_.reinit();
-
-};
-
-Slick.prototype.setCSS=function(position){
-
-var _=this,
-positionProps={},
-x,y;
-
-if(_.options.rtl===true){
-position=-position;
-}
-x=_.positionProp=='left'?Math.ceil(position)+'px':'0px';
-y=_.positionProp=='top'?Math.ceil(position)+'px':'0px';
-
-positionProps[_.positionProp]=position;
-
-if(_.transformsEnabled===false){
-_.$slideTrack.css(positionProps);
-}else{
-positionProps={};
-if(_.cssTransitions===false){
-positionProps[_.animType]='translate('+x+', '+y+')';
-_.$slideTrack.css(positionProps);
-}else{
-positionProps[_.animType]='translate3d('+x+', '+y+', 0px)';
-_.$slideTrack.css(positionProps);
-}
-}
-
-};
-
-Slick.prototype.setDimensions=function(){
-
-var _=this;
-
-if(_.options.vertical===false){
-if(_.options.centerMode===true){
-_.$list.css({
-padding:'0px '+_.options.centerPadding});
-
-}
-}else{
-_.$list.height(_.$slides.first().outerHeight(true)*_.options.slidesToShow);
-if(_.options.centerMode===true){
-_.$list.css({
-padding:_.options.centerPadding+' 0px'});
-
-}
-}
-
-_.listWidth=_.$list.width();
-_.listHeight=_.$list.height();
-
-
-if(_.options.vertical===false&&_.options.variableWidth===false){
-_.slideWidth=Math.ceil(_.listWidth/_.options.slidesToShow);
-_.$slideTrack.width(Math.ceil(_.slideWidth*_.$slideTrack.children('.slick-slide').length));
-
-}else if(_.options.variableWidth===true){
-_.$slideTrack.width(5000*_.slideCount);
-}else{
-_.slideWidth=Math.ceil(_.listWidth);
-_.$slideTrack.height(Math.ceil(_.$slides.first().outerHeight(true)*_.$slideTrack.children('.slick-slide').length));
-}
-
-var offset=_.$slides.first().outerWidth(true)-_.$slides.first().width();
-if(_.options.variableWidth===false)_.$slideTrack.children('.slick-slide').width(_.slideWidth-offset);
-
-};
-
-Slick.prototype.setFade=function(){
-
-var _=this,
-targetLeft;
-
-_.$slides.each(function(index,element){
-targetLeft=_.slideWidth*index*-1;
-if(_.options.rtl===true){
-$(element).css({
-position:'relative',
-right:targetLeft,
-top:0,
-zIndex:800,
-opacity:0});
-
-}else{
-$(element).css({
-position:'relative',
-left:targetLeft,
-top:0,
-zIndex:800,
-opacity:0});
-
-}
-});
-
-_.$slides.eq(_.currentSlide).css({
-zIndex:900,
-opacity:1});
-
-
-};
-
-Slick.prototype.setHeight=function(){
-
-var _=this;
-
-if(_.options.slidesToShow===1&&_.options.adaptiveHeight===true&&_.options.vertical===false){
-var targetHeight=_.$slides.eq(_.currentSlide).outerHeight(true);
-_.$list.css('height',targetHeight);
-}
-
-};
-
-Slick.prototype.setOption=Slick.prototype.slickSetOption=function(option,value,refresh){
-
-var _=this;
-_.options[option]=value;
-
-if(refresh===true){
-_.unload();
-_.reinit();
-}
-
-};
-
-Slick.prototype.setPosition=function(){
-
-var _=this;
-
-_.setDimensions();
-
-_.setHeight();
-
-if(_.options.fade===false){
-_.setCSS(_.getLeft(_.currentSlide));
-}else{
-_.setFade();
-}
-
-_.$slider.trigger('setPosition',[_]);
-
-};
-
-Slick.prototype.setProps=function(){
-
-var _=this,
-bodyStyle=document.body.style;
-
-_.positionProp=_.options.vertical===true?'top':'left';
-
-if(_.positionProp==='top'){
-_.$slider.addClass('slick-vertical');
-}else{
-_.$slider.removeClass('slick-vertical');
-}
-
-if(bodyStyle.WebkitTransition!==undefined||
-bodyStyle.MozTransition!==undefined||
-bodyStyle.msTransition!==undefined){
-if(_.options.useCSS===true){
-_.cssTransitions=true;
-}
-}
-
-if(bodyStyle.OTransform!==undefined){
-_.animType='OTransform';
-_.transformType='-o-transform';
-_.transitionType='OTransition';
-if(bodyStyle.perspectiveProperty===undefined&&bodyStyle.webkitPerspective===undefined)_.animType=false;
-}
-if(bodyStyle.MozTransform!==undefined){
-_.animType='MozTransform';
-_.transformType='-moz-transform';
-_.transitionType='MozTransition';
-if(bodyStyle.perspectiveProperty===undefined&&bodyStyle.MozPerspective===undefined)_.animType=false;
-}
-if(bodyStyle.webkitTransform!==undefined){
-_.animType='webkitTransform';
-_.transformType='-webkit-transform';
-_.transitionType='webkitTransition';
-if(bodyStyle.perspectiveProperty===undefined&&bodyStyle.webkitPerspective===undefined)_.animType=false;
-}
-if(bodyStyle.msTransform!==undefined){
-_.animType='msTransform';
-_.transformType='-ms-transform';
-_.transitionType='msTransition';
-if(bodyStyle.msTransform===undefined)_.animType=false;
-}
-if(bodyStyle.transform!==undefined&&_.animType!==false){
-_.animType='transform';
-_.transformType='transform';
-_.transitionType='transition';
-}
-_.transformsEnabled=_.animType!==null&&_.animType!==false;
-
-};
-
-
-Slick.prototype.setSlideClasses=function(index){
-
-var _=this,
-centerOffset,allSlides,indexOffset,remainder;
-
-_.$slider.find('.slick-slide').removeClass('slick-active').attr('aria-hidden','true').removeClass('slick-center');
-allSlides=_.$slider.find('.slick-slide');
-
-if(_.options.centerMode===true){
-
-centerOffset=Math.floor(_.options.slidesToShow/2);
-
-if(_.options.infinite===true){
-
-if(index>=centerOffset&&index<=_.slideCount-1-centerOffset){
-_.$slides.slice(index-centerOffset,index+centerOffset+1).addClass('slick-active').attr('aria-hidden','false');
-}else{
-indexOffset=_.options.slidesToShow+index;
-allSlides.slice(indexOffset-centerOffset+1,indexOffset+centerOffset+2).addClass('slick-active').attr('aria-hidden','false');
-}
-
-if(index===0){
-allSlides.eq(allSlides.length-1-_.options.slidesToShow).addClass('slick-center');
-}else if(index===_.slideCount-1){
-allSlides.eq(_.options.slidesToShow).addClass('slick-center');
-}
-
-}
-
-_.$slides.eq(index).addClass('slick-center');
-
-}else{
-
-if(index>=0&&index<=_.slideCount-_.options.slidesToShow){
-_.$slides.slice(index,index+_.options.slidesToShow).addClass('slick-active').attr('aria-hidden','false');
-}else if(allSlides.length<=_.options.slidesToShow){
-allSlides.addClass('slick-active').attr('aria-hidden','false');
-}else{
-remainder=_.slideCount%_.options.slidesToShow;
-indexOffset=_.options.infinite===true?_.options.slidesToShow+index:index;
-if(_.options.slidesToShow==_.options.slidesToScroll&&_.slideCount-index<_.options.slidesToShow){
-allSlides.slice(indexOffset-(_.options.slidesToShow-remainder),indexOffset+remainder).addClass('slick-active').attr('aria-hidden','false');
-}else{
-allSlides.slice(indexOffset,indexOffset+_.options.slidesToShow).addClass('slick-active').attr('aria-hidden','false');
-}
-}
-
-}
-
-if(_.options.lazyLoad==='ondemand'){
-_.lazyLoad();
-}
-
-};
-
-Slick.prototype.setupInfinite=function(){
-
-var _=this,
-i,slideIndex,infiniteCount;
-
-if(_.options.fade===true){
-_.options.centerMode=false;
-}
-
-if(_.options.infinite===true&&_.options.fade===false){
-
-slideIndex=null;
-
-if(_.slideCount>_.options.slidesToShow){
-
-if(_.options.centerMode===true){
-infiniteCount=_.options.slidesToShow+1;
-}else{
-infiniteCount=_.options.slidesToShow;
-}
-
-for(i=_.slideCount;i>_.slideCount-
-infiniteCount;i-=1){
-slideIndex=i-1;
-$(_.$slides[slideIndex]).clone(true).attr('id','').
-attr('data-slick-index',slideIndex-_.slideCount).
-prependTo(_.$slideTrack).addClass('slick-cloned');
-}
-for(i=0;i<infiniteCount;i+=1){
-slideIndex=i;
-$(_.$slides[slideIndex]).clone(true).attr('id','').
-attr('data-slick-index',slideIndex+_.slideCount).
-appendTo(_.$slideTrack).addClass('slick-cloned');
-}
-_.$slideTrack.find('.slick-cloned').find('[id]').each(function(){
-$(this).attr('id','');
-});
-
-}
-
-}
-
-};
-
-Slick.prototype.setPaused=function(paused){
-
-var _=this;
-
-if(_.options.autoplay===true&&_.options.pauseOnHover===true){
-_.paused=paused;
-_.autoPlayClear();
-}
-};
-
-Slick.prototype.selectHandler=function(event){
-
-var _=this;
-
-var targetElement=$(event.target).is('.slick-slide')?
-$(event.target):
-$(event.target).parents('.slick-slide');
-
-var index=parseInt(targetElement.attr('data-slick-index'));
-
-if(!index)index=0;
-
-if(_.slideCount<=_.options.slidesToShow){
-_.$slider.find('.slick-slide').removeClass('slick-active').attr('aria-hidden','true');
-_.$slides.eq(index).addClass('slick-active').attr("aria-hidden","false");
-if(_.options.centerMode===true){
-_.$slider.find('.slick-slide').removeClass('slick-center');
-_.$slides.eq(index).addClass('slick-center');
-}
-_.asNavFor(index);
-return;
-}
-_.slideHandler(index);
-
-};
-
-Slick.prototype.slideHandler=function(index,sync,dontAnimate){
-
-var targetSlide,animSlide,oldSlide,slideLeft,targetLeft=null,
-_=this;
-
-sync=sync||false;
-
-if(_.animating===true&&_.options.waitForAnimate===true){
-return;
-}
-
-if(_.options.fade===true&&_.currentSlide===index){
-return;
-}
-
-if(_.slideCount<=_.options.slidesToShow){
-return;
-}
-
-if(sync===false){
-_.asNavFor(index);
-}
-
-targetSlide=index;
-targetLeft=_.getLeft(targetSlide);
-slideLeft=_.getLeft(_.currentSlide);
-
-_.currentLeft=_.swipeLeft===null?slideLeft:_.swipeLeft;
-
-if(_.options.infinite===false&&_.options.centerMode===false&&(index<0||index>_.getDotCount()*_.options.slidesToScroll)){
-if(_.options.fade===false){
-targetSlide=_.currentSlide;
-if(dontAnimate!==true){
-_.animateSlide(slideLeft,function(){
-_.postSlide(targetSlide);
-});
-}else{
-_.postSlide(targetSlide);
-}
-}
-return;
-}else if(_.options.infinite===false&&_.options.centerMode===true&&(index<0||index>_.slideCount-_.options.slidesToScroll)){
-if(_.options.fade===false){
-targetSlide=_.currentSlide;
-if(dontAnimate!==true){
-_.animateSlide(slideLeft,function(){
-_.postSlide(targetSlide);
-});
-}else{
-_.postSlide(targetSlide);
-}
-}
-return;
-}
-
-if(_.options.autoplay===true){
-clearInterval(_.autoPlayTimer);
-}
-
-if(targetSlide<0){
-if(_.slideCount%_.options.slidesToScroll!==0){
-animSlide=_.slideCount-_.slideCount%_.options.slidesToScroll;
-}else{
-animSlide=_.slideCount+targetSlide;
-}
-}else if(targetSlide>=_.slideCount){
-if(_.slideCount%_.options.slidesToScroll!==0){
-animSlide=0;
-}else{
-animSlide=targetSlide-_.slideCount;
-}
-}else{
-animSlide=targetSlide;
-}
-
-_.animating=true;
-
-_.$slider.trigger("beforeChange",[_,_.currentSlide,animSlide]);
-
-oldSlide=_.currentSlide;
-_.currentSlide=animSlide;
-
-_.setSlideClasses(_.currentSlide);
-
-_.updateDots();
-_.updateArrows();
-
-if(_.options.fade===true){
-if(dontAnimate!==true){
-_.fadeSlide(animSlide,function(){
-_.postSlide(animSlide);
-});
-}else{
-_.postSlide(animSlide);
-}
-_.animateHeight();
-return;
-}
-
-if(dontAnimate!==true){
-_.animateSlide(targetLeft,function(){
-_.postSlide(animSlide);
-});
-}else{
-_.postSlide(animSlide);
-}
-
-};
-
-Slick.prototype.startLoad=function(){
-
-var _=this;
-
-if(_.options.arrows===true&&_.slideCount>_.options.slidesToShow){
-
-_.$prevArrow.hide();
-_.$nextArrow.hide();
-
-}
-
-if(_.options.dots===true&&_.slideCount>_.options.slidesToShow){
-
-_.$dots.hide();
-
-}
-
-_.$slider.addClass('slick-loading');
-
-};
-
-Slick.prototype.swipeDirection=function(){
-
-var xDist,yDist,r,swipeAngle,_=this;
-
-xDist=_.touchObject.startX-_.touchObject.curX;
-yDist=_.touchObject.startY-_.touchObject.curY;
-r=Math.atan2(yDist,xDist);
-
-swipeAngle=Math.round(r*180/Math.PI);
-if(swipeAngle<0){
-swipeAngle=360-Math.abs(swipeAngle);
-}
-
-if(swipeAngle<=45&&swipeAngle>=0){
-return _.options.rtl===false?'left':'right';
-}
-if(swipeAngle<=360&&swipeAngle>=315){
-return _.options.rtl===false?'left':'right';
-}
-if(swipeAngle>=135&&swipeAngle<=225){
-return _.options.rtl===false?'right':'left';
-}
-if(_.options.verticalSwiping===true){
-if(swipeAngle>=35&&swipeAngle<=135){
-return'left';
-}else{
-return'right';
-}
-}
-
-return'vertical';
-
-};
-
-Slick.prototype.swipeEnd=function(event){
-
-var _=this,
-slideCount;
-
-_.dragging=false;
-
-_.shouldClick=_.touchObject.swipeLength>10?false:true;
-
-if(_.touchObject.curX===undefined){
-return false;
-}
-
-if(_.touchObject.edgeHit===true){
-_.$slider.trigger("edge",[_,_.swipeDirection()]);
-}
-
-if(_.touchObject.swipeLength>=_.touchObject.minSwipe){
-
-switch(_.swipeDirection()){
-case'left':
-slideCount=_.options.swipeToSlide?_.checkNavigable(_.currentSlide+_.getSlideCount()):_.currentSlide+_.getSlideCount();
-_.slideHandler(slideCount);
-_.currentDirection=0;
-_.touchObject={};
-_.$slider.trigger("swipe",[_,"left"]);
-break;
-
-case'right':
-slideCount=_.options.swipeToSlide?_.checkNavigable(_.currentSlide-_.getSlideCount()):_.currentSlide-_.getSlideCount();
-_.slideHandler(slideCount);
-_.currentDirection=1;
-_.touchObject={};
-_.$slider.trigger("swipe",[_,"right"]);
-break;}
-
-}else{
-if(_.touchObject.startX!==_.touchObject.curX){
-_.slideHandler(_.currentSlide);
-_.touchObject={};
-}
-}
-
-};
-
-Slick.prototype.swipeHandler=function(event){
-
-var _=this;
-
-if(_.options.swipe===false||'ontouchend'in document&&_.options.swipe===false){
-return;
-}else if(_.options.draggable===false&&event.type.indexOf('mouse')!==-1){
-return;
-}
-
-_.touchObject.fingerCount=event.originalEvent&&event.originalEvent.touches!==undefined?
-event.originalEvent.touches.length:1;
-
-_.touchObject.minSwipe=_.listWidth/_.options.
-touchThreshold;
-
-if(_.options.verticalSwiping===true){
-_.touchObject.minSwipe=_.listHeight/_.options.
-touchThreshold;
-}
-
-switch(event.data.action){
-
-case'start':
-_.swipeStart(event);
-break;
-
-case'move':
-_.swipeMove(event);
-break;
-
-case'end':
-_.swipeEnd(event);
-break;}
-
-
-
-};
-
-Slick.prototype.swipeMove=function(event){
-
-var _=this,
-edgeWasHit=false,
-curLeft,swipeDirection,swipeLength,positionOffset,touches;
-
-touches=event.originalEvent!==undefined?event.originalEvent.touches:null;
-
-if(!_.dragging||touches&&touches.length!==1){
-return false;
-}
-
-curLeft=_.getLeft(_.currentSlide);
-
-_.touchObject.curX=touches!==undefined?touches[0].pageX:event.clientX;
-_.touchObject.curY=touches!==undefined?touches[0].pageY:event.clientY;
-
-_.touchObject.swipeLength=Math.round(Math.sqrt(
-Math.pow(_.touchObject.curX-_.touchObject.startX,2)));
-
-if(_.options.verticalSwiping===true){
-_.touchObject.swipeLength=Math.round(Math.sqrt(
-Math.pow(_.touchObject.curY-_.touchObject.startY,2)));
-}
-
-swipeDirection=_.swipeDirection();
-
-if(swipeDirection==='vertical'){
-return;
-}
-
-if(event.originalEvent!==undefined&&_.touchObject.swipeLength>4){
-event.preventDefault();
-}
-
-positionOffset=(_.options.rtl===false?1:-1)*(_.touchObject.curX>_.touchObject.startX?1:-1);
-if(_.options.verticalSwiping===true){
-positionOffset=_.touchObject.curY>_.touchObject.startY?1:-1;
-}
-
-
-swipeLength=_.touchObject.swipeLength;
-
-_.touchObject.edgeHit=false;
-
-if(_.options.infinite===false){
-if(_.currentSlide===0&&swipeDirection==="right"||_.currentSlide>=_.getDotCount()&&swipeDirection==="left"){
-swipeLength=_.touchObject.swipeLength*_.options.edgeFriction;
-_.touchObject.edgeHit=true;
-}
-}
-
-if(_.options.vertical===false){
-_.swipeLeft=curLeft+swipeLength*positionOffset;
-}else{
-_.swipeLeft=curLeft+swipeLength*(_.$list.height()/_.listWidth)*positionOffset;
-}
-if(_.options.verticalSwiping===true){
-_.swipeLeft=curLeft+swipeLength*positionOffset;
-}
-
-if(_.options.fade===true||_.options.touchMove===false){
-return false;
-}
-
-if(_.animating===true){
-_.swipeLeft=null;
-return false;
-}
-
-_.setCSS(_.swipeLeft);
-
-};
-
-Slick.prototype.swipeStart=function(event){
-
-var _=this,
-touches;
-
-if(_.touchObject.fingerCount!==1||_.slideCount<=_.options.slidesToShow){
-_.touchObject={};
-return false;
-}
-
-if(event.originalEvent!==undefined&&event.originalEvent.touches!==undefined){
-touches=event.originalEvent.touches[0];
-}
-
-_.touchObject.startX=_.touchObject.curX=touches!==undefined?touches.pageX:event.clientX;
-_.touchObject.startY=_.touchObject.curY=touches!==undefined?touches.pageY:event.clientY;
-
-_.dragging=true;
-
-};
-
-Slick.prototype.unfilterSlides=Slick.prototype.slickUnfilter=function(){
-
-var _=this;
-
-if(_.$slidesCache!==null){
-
-_.unload();
-
-_.$slideTrack.children(this.options.slide).detach();
-
-_.$slidesCache.appendTo(_.$slideTrack);
-
-_.reinit();
-
-}
-
-};
-
-Slick.prototype.unload=function(){
-
-var _=this;
-
-$('.slick-cloned',_.$slider).remove();
-if(_.$dots){
-_.$dots.remove();
-}
-if(_.$prevArrow&&_typeof(_.options.prevArrow)!=='object'){
-_.$prevArrow.remove();
-}
-if(_.$nextArrow&&_typeof(_.options.nextArrow)!=='object'){
-_.$nextArrow.remove();
-}
-_.$slides.removeClass('slick-slide slick-active slick-visible').attr("aria-hidden","true").css('width','');
-
-};
-
-Slick.prototype.unslick=function(){
-
-var _=this;
-_.destroy();
-
-};
-
-Slick.prototype.updateArrows=function(){
-
-var _=this,
-centerOffset;
-
-centerOffset=Math.floor(_.options.slidesToShow/2);
-
-if(_.options.arrows===true&&_.options.infinite!==
-true&&_.slideCount>_.options.slidesToShow){
-_.$prevArrow.removeClass('slick-disabled');
-_.$nextArrow.removeClass('slick-disabled');
-if(_.currentSlide===0){
-_.$prevArrow.addClass('slick-disabled');
-_.$nextArrow.removeClass('slick-disabled');
-}else if(_.currentSlide>=_.slideCount-_.options.slidesToShow&&_.options.centerMode===false){
-_.$nextArrow.addClass('slick-disabled');
-_.$prevArrow.removeClass('slick-disabled');
-}else if(_.currentSlide>=_.slideCount-1&&_.options.centerMode===true){
-_.$nextArrow.addClass('slick-disabled');
-_.$prevArrow.removeClass('slick-disabled');
-}
-}
-
-};
-
-Slick.prototype.updateDots=function(){
-
-var _=this;
-
-if(_.$dots!==null){
-
-_.$dots.find('li').removeClass('slick-active').attr("aria-hidden","true");
-_.$dots.find('li').eq(Math.floor(_.currentSlide/_.options.slidesToScroll)).addClass('slick-active').attr("aria-hidden","false");
-
-}
-
-};
-
-Slick.prototype.visibility=function(){
-
-var _=this;
-
-if(document[_.hidden]){
-_.paused=true;
-_.autoPlayClear();
-}else{
-_.paused=false;
-_.autoPlay();
-}
-
-};
-
-$.fn.slick=function(){
-var _=this,
-opt=arguments[0],
-args=Array.prototype.slice.call(arguments,1),
-l=_.length,
-i=0,
-ret;
-for(i;i<l;i++){
-if((typeof opt==='undefined'?'undefined':_typeof(opt))=='object'||typeof opt=='undefined')
-_[i].slick=new Slick(_[i],opt);else
-
-ret=_[i].slick[opt].apply(_[i].slick,args);
-if(typeof ret!='undefined')return ret;
-}
-return _;
-};
-
-});
-
-}).call(this,typeof global!=="undefined"?global:typeof self!=="undefined"?self:typeof window!=="undefined"?window:{});
-
-},{}]},{},[14]);
+},{}]},{},[35]);

@@ -19,10 +19,8 @@
             <div class="logo">
               <h1 class="logo__wrapper"><a href="/" class="logo__link"><img src="/wp-content/themes/curtissu/dist/img/logo@2x.png" alt="" class="logo__image"></a></h1>
             </div>
-            <div class="hamburger">
-              <a href="#" class="hamburger__wrapper"
-                :class="{'hamburger__wrapper--active': isShown}"
-                @click.prevent="toggleHamburger">
+            <div class="hamburger" data-loadcomponent="Nav">
+              <a href="#" class="hamburger__wrapper nav-trigger">
                 <div class="hamburger__box">
                   <div class="hamburger__inner"></div>
                 </div>

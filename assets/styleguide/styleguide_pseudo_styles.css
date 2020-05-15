@@ -1,3 +1,8 @@
+.navigation__link.pseudo-class-focus,
+.navigation__link.pseudo-class-hover {
+  color: #fecb00;
+}
+
 .project__link.pseudo-class-hover {
   text-decoration: none;
 }

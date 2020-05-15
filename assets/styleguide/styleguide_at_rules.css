@@ -1,0 +1,13 @@
+@font-face {
+  font-family: 'SegoeUI';
+  font-style: normal;
+  font-weight: normal;
+  src: url("assets/fonts/SegoeUI.eot") format("embedded-opentype"), url("assets/fonts/SegoeUI.woff") format("woff"), url("assets/fonts/SegoeUI.ttf") format("truetype"), url("assets/fonts/SegoeUI.svg#SegoeUI") format("svg");
+}
+
+@font-face {
+  font-family: 'SegoeUI';
+  font-style: italic;
+  font-weight: normal;
+  src: url("assets/fonts/SegoeUI-Italic.eot") format("embedded-opentype"), url("assets/fonts/SegoeUI-Italic.woff") format("woff"), url("assets/fonts/SegoeUI-Italic.ttf") format("truetype"), url("assets/fonts/SegoeUI-Italic.svg#SegoeUI") format("svg");
+}

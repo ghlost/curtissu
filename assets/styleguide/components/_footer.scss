@@ -3,13 +3,13 @@
   margin: 100px 0 0;
   padding: 0 30px;
 
-  @media screen and (min-width: 768px) {
+  @include breakpoint($tablet) {
     display: flex;
     justify-content: flex-end;
   }
 
   &__inner {
-    @media screen and (min-width: 768px) {
+    @include breakpoint($tablet) {
       align-items: center;
       display: flex;
       justify-content: space-between;
@@ -25,7 +25,7 @@
     max-width: 120px;
     width: 100%;
 
-    @media screen and (min-width: 768px) {
+    @include breakpoint($tablet) {
       max-width: 195px;
     }
   }
@@ -35,7 +35,7 @@
       max-height: 20px;
       max-width: 20px;
 
-      @media screen and (min-width: 768px) {
+      @include breakpoint($tablet) {
         max-height: 33px;
         max-width: 33px;
       }
@@ -45,7 +45,7 @@
       max-height: 21px;
       max-width: 24px;
 
-      @media screen and (min-width: 768px) {
+      @include breakpoint($tablet) {
         max-height: 27px;
         max-width: 38px;
       }
@@ -55,7 +55,7 @@
       max-height: 23px;
       max-width: 17px;
 
-      @media screen and (min-width: 768px) {
+      @include breakpoint($tablet) {
         max-height: 32px;
         max-width: 24px;
       }
@@ -63,11 +63,11 @@
   }
 
   &__copy {
-    color: #afafaf;
+    color: $gray-light;
     font-size: 16px;
     line-height: 1.2;
 
-    @media screen and (min-width: 768px) {
+    @include breakpoint($tablet) {
       font-size: 18px;
     }
   }

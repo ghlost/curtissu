@@ -1,0 +1,39 @@
+//* ------------------------------------*\
+//    $EVENTS
+//* ------------------------------------*/
+
+export const EVENTS = {
+  ANIMATIONEND:                   'animationend',
+  BEFOREUNLOAD:                   'beforeunload',
+  BLUR:                           'blur',
+  CHANGE:                         'change',
+  CLEAR_FILTERS:                  'clearfilters',
+  CLICK:                          'click',
+  CUSTOM_EVENT:                   'customevent',
+  DISPLAY_SUBHEADING:             'displaysubheading',
+  DROPDOWN_CHANGED:               'dropdownchanged',
+  FORM_ERROR:                     'formerror',
+  FORM_SUCCESS:                   'formsuccess',
+  FOCUS:                          'focus',
+  HEADER_HIDING:                  'header-hiding',
+  INPUT:                          'input',
+  KEY_DOWN:                       'keydown',
+  MOUSEOUT:                       'mouseout',
+  MOUSEOVER:                      'mouseover',
+  PAGESHOW:                       'pageshow',
+  REQUEST_MADE:                   'requestmade',
+  RESIZE:                         'resize',
+  RESULTS_RETURNED:               'resultsreturnd',
+  SCROLL:                         'scroll',
+  SIMULATED_CLICK:                'simulated-click',
+  SHOW_HIDE:                      'showhide',
+  SUBMIT:                         'submit',
+  TOUCH_END:                      'touchend',
+  TOUCH_START:                    'touchstart',
+  TRANSITIONEND:                  'transitionend',
+  UPDATE_POST_COUNT:              'updatepostcount',
+  UPDATE_IN_VIEWPORT_MODULES:     'updateinviewportmodules',
+  UPDATE_SEARCH_WITH_NEW_ITEMS:   'updatesearchwithnewitems',
+  UPDATE_SETTINGS:                'updatesettings',
+  WHEEL:                          'wheel'
+};

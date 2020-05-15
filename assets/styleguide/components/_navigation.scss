@@ -1,6 +1,6 @@
 .navigation {
   background: #ececec;
-  color: #707070;
+  color: $gray-dark;
   height: 100%;
   max-width: 100%;
   min-height: 100vh;
@@ -9,7 +9,50 @@
   right: -533px;
   top: 0;
   transform: translateX(0);
-  transition: transform 0.5s ease-in-out;
+  transition: transform 0.3s ease-in-out;
   width: 533px;
   z-index: 2;
+
+  &__set {
+    list-style: none;
+    padding-left: 0;
+
+    &--nested {
+      border-left: 1.5px solid $black-light;
+      margin-left: 20px;
+      padding-left: 20px;
+    }
+  }
+
+  &__item {
+    font-size: 20px;
+    font-weight: 400;
+
+    &--nested {
+      margin-bottom: 10px;
+    }
+
+    @include breakpoint($tablet) {
+      font-size: 24px;
+    }
+  }
+
+  &__header {
+    font-size: 30px;
+    font-weight: 400;
+
+    @include breakpoint($tablet) {
+      font-size: 40px;
+    }
+  }
+
+  &__link {
+    color: $black-light;
+    text-decoration: none;
+
+    &:focus,
+    &:hover {
+      color: $yellow;
+    }
+  }
 }

@@ -5,13 +5,31 @@
 }
 
 body {
+  font-family: 'SegoeUI', sans-serif;
+  font-size: 18px;
   height: 100%;
   margin: 0;
   overflow-x: hidden;
   width: 100%;
 }
 
+p {
+  font-family: 'SegoeUI', sans-serif;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+a {
+  transition: all 0.1s ease-in-out;
+}
+
 .off-canvas-wrapper-inner {
   position: relative;
+  transform: translateX(0);
+  transition: transform 0.3s ease-in-out;
   width: 100%;
+
+  .opened & {
+    transform: translateX(-533px);
+  }
 }

@@ -9,11 +9,13 @@ Description: Custom theme starter kit
 // General Settings
 // =====================
 @import "variables";
+@import "mixins";
 
 // Site Styles
 // ======================
 @import "base/global";
 @import "base/icons";
+@import "base/typography";
 @import "components/header";
 @import "components/footer";
 @import "components/navigation";

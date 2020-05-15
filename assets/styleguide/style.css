@@ -11,17 +11,43 @@ Description: Custom theme starter kit
   box-sizing: border-box; }
 
 body {
+  font-family: 'SegoeUI', sans-serif;
+  font-size: 18px;
   height: 100%;
   margin: 0;
   overflow-x: hidden;
   width: 100%; }
 
+p {
+  font-family: 'SegoeUI', sans-serif;
+  font-size: 18px;
+  line-height: 1.6; }
+
+a {
+  transition: all 0.1s ease-in-out; }
+
 .off-canvas-wrapper-inner {
   position: relative;
+  transform: translateX(0);
+  transition: transform 0.3s ease-in-out;
   width: 100%; }
+  .opened .off-canvas-wrapper-inner {
+    transform: translateX(-533px); }
 
 .icon {
   display: inline-block; }
+
+@font-face {
+  font-family: 'SegoeUI';
+  font-style: normal;
+  font-weight: normal;
+  src: url("assets/fonts/SegoeUI.eot") format("embedded-opentype"), url("assets/fonts/SegoeUI.woff") format("woff"), url("assets/fonts/SegoeUI.ttf") format("truetype"), url("assets/fonts/SegoeUI.svg#SegoeUI") format("svg"); }
+
+@font-face {
+  font-family: 'SegoeUI';
+  font-style: italic;
+  font-weight: normal;
+  src: url("assets/fonts/SegoeUI-Italic.eot") format("embedded-opentype"), url("assets/fonts/SegoeUI-Italic.woff") format("woff"), url("assets/fonts/SegoeUI-Italic.ttf") format("truetype"), url("assets/fonts/SegoeUI-Italic.svg#SegoeUI") format("svg"); }
 
 .header {
   align-items: center;
@@ -163,9 +189,35 @@ body {
   right: -533px;
   top: 0;
   transform: translateX(0);
-  transition: transform 0.5s ease-in-out;
+  transition: transform 0.3s ease-in-out;
   width: 533px;
   z-index: 2; }
+  .navigation__set {
+    list-style: none;
+    padding-left: 0; }
+    .navigation__set--nested {
+      border-left: 1.5px solid #2d2d2d;
+      margin-left: 20px;
+      padding-left: 20px; }
+  .navigation__item {
+    font-size: 20px;
+    font-weight: 400; }
+    .navigation__item--nested {
+      margin-bottom: 10px; }
+    @media screen and (min-width: 768px) {
+      .navigation__item {
+        font-size: 24px; } }
+  .navigation__header {
+    font-size: 30px;
+    font-weight: 400; }
+    @media screen and (min-width: 768px) {
+      .navigation__header {
+        font-size: 40px; } }
+  .navigation__link {
+    color: #2d2d2d;
+    text-decoration: none; }
+    .navigation__link:focus, .navigation__link:hover {
+      color: #fecb00; }
 
 .project-grid {
   display: flex;
@@ -196,13 +248,49 @@ body {
   opacity: 0;
   text-align: center;
   transition: opacity 0.1s ease-in-out; }
-  @media screen and (min-width) {
+  @media screen and (min-width: 768px) {
     .project__name {
       font-size: 18px; } }
 
 .post__inner {
   margin: 60px auto;
   max-width: 1200px; }
+  @media screen and (min-width: 1440px) {
+    .post__inner {
+      max-width: 100%;
+      padding: 0 30px;
+      width: 100%; } }
+
+.post__hero {
+  margin-bottom: 40px; }
+  .post__hero img {
+    object-fit: cover;
+    width: 100%; }
+
+.post__content {
+  display: flex;
+  justify-content: space-between; }
+
+.post__title {
+  font-size: 45px;
+  font-weight: 400;
+  margin: 0 0 5px; }
+
+.post__location {
+  margin: 0; }
+
+@media screen and (min-width: 768px) {
+  .post__blurb {
+    max-width: 650px;
+    width: 40%; } }
+
+@media screen and (min-width: 1440px) {
+  .post__blurb {
+    max-width: 650px;
+    width: 100%; } }
+
+.post__gallery {
+  margin: 100px 0; }
 
 .gallery {
   display: grid;

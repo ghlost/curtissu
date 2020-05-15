@@ -39,8 +39,11 @@
         </picture>
       </section>
       <section class="post__content">
-        <div class="post__location">
-          {{ post.location }}
+        <div class="post__headline">
+          <h2 class="post__title">{{ post.title }}</h2>
+          <p class="post__location">
+            <em>{{ post.location }}</em>
+          </p>
         </div>
         <div class="post__blurb">
           {{ post.content }}
