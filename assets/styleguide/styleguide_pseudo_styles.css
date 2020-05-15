@@ -1,0 +1,11 @@
+.project__link.pseudo-class-hover {
+  text-decoration: none;
+}
+
+.project__link.pseudo-class-hover .project__image {
+  filter: grayscale(0);
+}
+
+.project__link.pseudo-class-hover .project__name {
+  opacity: 1;
+}
