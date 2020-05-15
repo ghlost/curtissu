@@ -69,7 +69,7 @@
     "browserify": "^11.0.0",
     "browserify-shim": "^3.8.10",
     "del": "^1.2.0",
-    "eslint": "^3.19.0",
+    "eslint": "^4.18.2",
     "eslint-config-google": "^0.7.1",
     "gulp": "^3.9.0",
     "gulp-autoprefixer": "^3.1.0",
