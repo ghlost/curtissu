@@ -50,6 +50,7 @@ export default {
 .navigation {
   background: #ECECEC;
   color: #707070;
+  height: 100%;
   max-width: 100%;
   min-height: 100vh;
   padding: 59px;
