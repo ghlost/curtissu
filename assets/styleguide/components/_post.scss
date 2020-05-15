@@ -1,0 +1,52 @@
+.post {
+  &__inner {
+    margin: 60px auto;
+    max-width: 1200px;
+
+    @include breakpoint($xldesktop) {
+      max-width: 100%;
+      padding: 0 30px;
+      width: 100%;
+    }
+  }
+
+  &__hero {
+    margin-bottom: 40px;
+
+    img {
+      object-fit: cover;
+      width: 100%;
+    }
+  }
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__title {
+    font-size: 45px;
+    font-weight: 400;
+    margin: 0 0 5px;
+  }
+
+  &__location {
+    margin: 0;
+  }
+
+  &__blurb {
+    @include breakpoint($tablet) {
+      max-width: 650px;
+      width: 40%;
+    }
+
+    @include breakpoint($xldesktop) {
+      max-width: 650px;
+      width: 100%;
+    }
+  }
+
+  &__gallery {
+    margin: 100px 0;
+  }
+}

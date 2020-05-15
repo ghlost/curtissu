@@ -1,12 +1,13 @@
-<?php wp_footer(); ?>
-<?php if ( preg_match("/(.*.local|.*.loc|localhost:.*)/i", $_SERVER['HTTP_HOST']) ) : ?>
-	<!-- HMR Reloader -->
-	<script id="__bs_script__">
-		//<![CDATA[
-      document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.js?v=2.26.5'><\/script>".replace("HOST", location.hostname));
-		//]]>
-	</script>
-<?php endif; ?>
-</body>
-
-</html>
+<?php
+/*
+ * Third party plugins that hijack the theme will call wp_footer() to get the footer template.
+ * We use this to end our output buffer (started in header.php) and render into the views/page-plugin.twig template.
+ */
+$timberContext = $GLOBALS['timberContext'];
+if (! isset($timberContext)) {
+    throw new \Exception('Timber context not set in footer.');
+}
+$timberContext['content'] = ob_get_contents();
+ob_end_clean();
+$templates = array( 'page-plugin.twig' );
+Timber::render($templates, $timberContext);

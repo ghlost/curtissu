@@ -1,0 +1,47 @@
+.project-grid {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+
+  &__inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    max-width: 1200px;
+    width: 100%;
+  }
+}
+
+.project {
+  &__image {
+    filter: grayscale(1);
+    transition: filter 0.1s ease-in-out;
+  }
+
+  &__link {
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: none;
+
+      .project__image {
+        filter: grayscale(0);
+      }
+
+      .project__name {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__name {
+    color: #000;
+    font-size: 16px;
+    opacity: 0;
+    text-align: center;
+    transition: opacity 0.1s ease-in-out;
+
+    @include breakpoint($tablet) {
+      font-size: 18px;
+    }
+  }
+}

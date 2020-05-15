@@ -1,0 +1,66 @@
+{% extends "base.twig" %}
+
+{% block content %}
+  {# <main id="content" class="row">
+    <div class="page-content small-12 large-8 columns">
+      <article id="post-{{post.ID}}" class="article post-type-{{post.post_type}}" role="article" itemscope itemtype="http://schema.org/BlogPosting">
+        <header class="article-header">
+          {% block article_header %}
+            <h1 class="page-title">{{post.title}}</h1>
+          {% endblock %}
+        </header> <!-- /.article-header -->
+        <section class="entry-content" itemprop="articleBody">
+          {% if post.get_thumbnail %} 
+            <img src="{{post.thumbnail.src}}" alt="{{post.thumbnail.alt}}">
+          {% endif %}
+          {{post.content}}
+        </section> <!-- /.entry-content -->
+        {% block article_footer %}
+        {% endblock %}
+      </article> <!-- /.article -->
+    </div> <!-- /.page-content.small-12.large-8.columns -->
+
+    {% block sidebar %}
+      <aside class="page-sidebar small-12 large-4 columns">
+        {{sidebar}}
+      </aside> <!-- /.page-sidebar -->
+    {% endblock %}
+  </main> <!-- /#content --> #}
+  <article class="post">
+    <div class="post__inner">
+      <section class="post__hero">
+        <picture class="post__hero-picture">
+          <!--[if IE 9]><hero style="display: none;"><![endif]-->
+          <source srcset="{{ Image(post.hero).src|resize(600, 300) }}, {{ Image(post.hero).src|resize(600, 300)|retina(2) }} 2x" media="(max-width: 599px)">
+          <source srcset="{{ Image(post.hero).src|resize(1200) }}, {{ Image(post.hero).src|resize(1200)|retina(2) }} 2x" media="(min-width: 600px)">
+          <source srcset="{{ Image(post.hero).src|resize(1400) }}, {{ Image(post.hero).src|resize(1400)|retina(2) }} 2x" media="(min-width: 1200px)">
+          <!--[if IE 9]></hero><![endif]-->
+          <img srcset="{{ Image(post.hero).src|resize(1400) }}, {{ Image(post.hero).src|resize(1400)|retina(2) }} 2x" alt="{{ post.hero.alt }}">
+        </picture>
+      </section>
+      <section class="post__content">
+        <div class="post__headline">
+          <h2 class="post__title">{{ post.title }}</h2>
+          <p class="post__location">
+            <em>{{ post.location }}</em>
+          </p>
+        </div>
+        <div class="post__blurb">
+          {{ post.content }}
+        </div>
+      </section>
+  
+      <section class="post__gallery">
+        <div class="gallery__inner">
+          <div class="gallery">
+            {% for image in post.image_set %}
+              <figure class="gallery__item gallery__item--{{ loop.index }}">
+                <img class="gallery__image" srcset="{{ Image(image).src|resize(500) }}, {{ Image(image).src|resize(500)|retina(2) }} 2x" alt="{{ image.alt }}">
+              </figure>
+            {% endfor %}
+          </div>
+        </div>
+      </section>
+    </div>
+  </article>
+{% endblock %}

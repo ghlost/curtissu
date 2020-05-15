@@ -1,0 +1,11 @@
+{% extends "base.twig" %}
+
+{% block content %}
+  <section class="project-grid">
+    <div class="project-grid__inner">
+      {% for post in recent_posts %}
+        {% include ['components/_teaser-'~item.post_type~'.twig', 'components/_teaser.twig'] %}
+      {% endfor %}
+    </div>
+  </section>
+{% endblock %}
