@@ -1,6 +1,6 @@
 <?php
 /**
-* Index template
+* Template Name: Home
 *
 * A fallback list template used if a more specific template is not available
 *
@@ -23,7 +23,7 @@ $postArgs = array(
 );
 
 $context['posts'] = new Timber\PostQuery($postArgs);
-$templates = array( 'index.twig' );
+$templates = array( 'home.twig' );
 
 if (is_post_type_archive('people')) {
     array_unshift($templates, 'index-grid.twig');

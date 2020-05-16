@@ -230,6 +230,7 @@ a {
     width: 100%; }
 
 .project__image {
+  border-radius: 50%;
   filter: grayscale(1);
   transition: filter 0.1s ease-in-out; }
 
