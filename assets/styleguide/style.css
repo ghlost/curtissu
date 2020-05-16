@@ -235,17 +235,20 @@ a {
   width: 100%; }
   .project-grid__inner {
     display: grid;
+    grid-row-gap: 20px;
     grid-template-columns: 1fr;
     max-width: 1200px;
     width: 100%; }
     @media screen and (min-width: 768px) {
       .project-grid__inner {
+        grid-column-gap: 20px;
         grid-template-columns: 1fr 1fr; } }
-    @media screen and (min-width: 1024px) {
+    @media screen and (min-width: 1280px) {
       .project-grid__inner {
         grid-template-columns: 1fr 1fr 1fr; } }
 
 .project {
+  margin: 0;
   text-align: center; }
   .project__image {
     border-radius: 50%;
