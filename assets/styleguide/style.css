@@ -32,7 +32,10 @@ a {
   transition: transform 0.3s ease-in-out;
   width: 100%; }
   .opened .off-canvas-wrapper-inner {
-    transform: translateX(-533px); }
+    transform: translateX(-75vw); }
+    @media screen and (min-width: 768px) {
+      .opened .off-canvas-wrapper-inner {
+        transform: translateX(-533px); } }
 
 .icon {
   display: inline-block; }
@@ -53,7 +56,10 @@ a {
   align-items: center;
   display: flex;
   justify-content: space-between;
-  padding: 0 30px; }
+  padding: 0 25px; }
+  @media screen and (min-width: 768px) {
+    .header {
+      padding: 0 30px; } }
 
 .logo__image {
   height: auto;
@@ -186,12 +192,16 @@ a {
   min-height: 100vh;
   padding: 59px;
   position: absolute;
-  right: -533px;
+  right: -75vw;
   top: 0;
   transform: translateX(0);
   transition: transform 0.3s ease-in-out;
-  width: 533px;
+  width: 75vw;
   z-index: 2; }
+  @media screen and (min-width: 768px) {
+    .navigation {
+      right: -533px;
+      width: 533px; } }
   .navigation__set {
     list-style: none;
     padding-left: 0; }
@@ -225,39 +235,46 @@ a {
   width: 100%; }
   .project-grid__inner {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr;
     max-width: 1200px;
     width: 100%; }
+    @media screen and (min-width: 768px) {
+      .project-grid__inner {
+        grid-template-columns: 1fr 1fr; } }
+    @media screen and (min-width: 1024px) {
+      .project-grid__inner {
+        grid-template-columns: 1fr 1fr 1fr; } }
 
-.project__image {
-  border-radius: 50%;
-  filter: grayscale(1);
-  transition: filter 0.1s ease-in-out; }
-
-.project__link {
-  text-decoration: none; }
-  .project__link:hover {
+.project {
+  text-align: center; }
+  .project__image {
+    border-radius: 50%;
+    filter: grayscale(1);
+    transition: filter 0.1s ease-in-out; }
+  .project__link {
     text-decoration: none; }
-    .project__link:hover .project__image {
-      filter: grayscale(0); }
-    .project__link:hover .project__name {
-      opacity: 1; }
-
-.project__name {
-  color: #000;
-  font-size: 16px;
-  opacity: 0;
-  text-align: center;
-  transition: opacity 0.1s ease-in-out; }
-  @media screen and (min-width: 768px) {
-    .project__name {
-      font-size: 18px; } }
+    .project__link:hover {
+      text-decoration: none; }
+      .project__link:hover .project__image {
+        filter: grayscale(0); }
+      .project__link:hover .project__name {
+        opacity: 1; }
+  .project__name {
+    color: #000;
+    font-size: 16px;
+    opacity: 0;
+    text-align: center;
+    transition: opacity 0.1s ease-in-out; }
+    @media screen and (min-width: 768px) {
+      .project__name {
+        font-size: 18px; } }
 
 .post__inner {
-  margin: 60px auto;
+  margin: 30px auto;
   max-width: 1200px; }
   @media screen and (min-width: 1440px) {
     .post__inner {
+      margin: 60px auto;
       max-width: 100%;
       padding: 0 30px;
       width: 100%; } }
@@ -269,8 +286,11 @@ a {
     width: 100%; }
 
 .post__content {
-  display: flex;
-  justify-content: space-between; }
+  padding: 20px; }
+  @media screen and (min-width: 768px) {
+    .post__content {
+      display: flex;
+      justify-content: space-between; } }
 
 .post__title {
   font-size: 45px;
@@ -296,20 +316,26 @@ a {
 .gallery {
   display: grid;
   grid-gap: 15px;
-  grid-template-columns: repeat(8, 1fr); }
+  padding: 20px; }
+  @media screen and (min-width: 768px) {
+    .gallery {
+      grid-template-columns: repeat(8, 1fr);
+      padding: 0; } }
   .gallery__inner {
     margin: auto;
     max-width: 1700px; }
   .gallery__item {
-    grid-column-end: span 4;
-    grid-row-end: span 9;
     margin: 0; }
-    .gallery__item--3 {
-      grid-column-end: 6;
-      grid-column-start: 1; }
-    .gallery__item--4 {
-      grid-column-end: 9;
-      grid-column-start: 6; }
+    @media screen and (min-width: 768px) {
+      .gallery__item {
+        grid-column-end: span 4;
+        grid-row-end: span 9; }
+        .gallery__item--3 {
+          grid-column-end: 6;
+          grid-column-start: 1; }
+        .gallery__item--4 {
+          grid-column-end: 9;
+          grid-column-start: 6; } }
   .gallery__image {
     height: 100%;
     object-fit: cover;

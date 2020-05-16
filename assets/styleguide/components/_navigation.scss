@@ -6,12 +6,17 @@
   min-height: 100vh;
   padding: 59px;
   position: absolute;
-  right: -533px;
+  right: -75vw;
   top: 0;
   transform: translateX(0);
   transition: transform 0.3s ease-in-out;
-  width: 533px;
+  width: 75vw;
   z-index: 2;
+
+  @include breakpoint($tablet) {
+    right: -533px;
+    width: 533px;
+  }
 
   &__set {
     list-style: none;

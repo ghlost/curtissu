@@ -30,6 +30,10 @@ a {
   width: 100%;
 
   .opened & {
-    transform: translateX(-533px);
+    transform: translateX(-75vw);
+
+    @include breakpoint($tablet) {
+      transform: translateX(-533px);
+    }
   }
 }

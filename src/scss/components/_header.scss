@@ -2,7 +2,11 @@
   align-items: center;
   display: flex;
   justify-content: space-between;
-  padding: 0 30px;
+  padding: 0 25px;
+
+  @include breakpoint($tablet) {
+    padding: 0 30px;
+  }
 }
 
 .logo {
@@ -10,7 +14,7 @@
     height: auto;
     width: 160px;
 
-    @include breakpoint(768px) {
+    @include breakpoint($tablet) {
       height: 90px;
       width: 320px;
     }

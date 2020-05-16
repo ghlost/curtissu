@@ -5,13 +5,23 @@
 
   &__inner {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr;
     max-width: 1200px;
     width: 100%;
+
+    @include breakpoint($tablet) {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @include breakpoint($desktop) {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
   }
 }
 
 .project {
+  text-align: center;
+
   &__image {
     border-radius: 50%;
     filter: grayscale(1);

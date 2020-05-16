@@ -1,7 +1,12 @@
 .gallery {
   display: grid;
   grid-gap: 15px;
-  grid-template-columns: repeat(8, 1fr);
+  padding: 20px;
+
+  @include breakpoint($tablet) {
+    grid-template-columns: repeat(8, 1fr);
+    padding: 0;
+  }
 
   &__inner {
     margin: auto;
@@ -9,18 +14,21 @@
   }
 
   &__item {
-    grid-column-end: span 4;
-    grid-row-end: span 9;
     margin: 0;
 
-    &--3 {
-      grid-column-end: 6;
-      grid-column-start: 1;
-    }
+    @include breakpoint($tablet) {
+      grid-column-end: span 4;
+      grid-row-end: span 9;
 
-    &--4 {
-      grid-column-end: 9;
-      grid-column-start: 6;
+      &--3 {
+        grid-column-end: 6;
+        grid-column-start: 1;
+      }
+
+      &--4 {
+        grid-column-end: 9;
+        grid-column-start: 6;
+      }
     }
   }
 
