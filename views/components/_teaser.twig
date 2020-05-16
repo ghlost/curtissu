@@ -1,4 +1,4 @@
-<figure class="project" v-for="(post) in recentPosts(limit)" :key="post.id">
+<figure class="project">
   <a href="{{post.link}}" class="project__link">
     <img srcset="{{post.thumbnail.src|resize(330,330)}}, {{post.thumbnail.src|resize(330,330)|retina(2)}} 2x" alt="{{post.thumbnail.alt}}"  alt="project name" class="project__image">
     <figcaption class="project__name">{{ post.title }}{% if post.location %}, {{ post.location }}{% endif %}</figcaption>
