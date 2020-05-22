@@ -16,12 +16,15 @@ Description: Custom theme starter kit
 @import "base/global";
 @import "base/icons";
 @import "base/typography";
-@import "components/header";
 @import "components/footer";
-@import "components/navigation";
-@import "components/project-grid";
-@import "components/post";
+@import "components/header";
 @import "components/gallery";
+@import "components/navigation";
+@import "components/project-block";
+@import "components/project-grid";
+@import "components/project-list";
+@import "components/post";
+@import "components/video";
 // @import "components/quote";
 // @import "components/ctas";
 

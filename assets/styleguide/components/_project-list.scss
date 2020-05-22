@@ -1,0 +1,12 @@
+.project-list {
+  max-width: 1500px;
+  padding: 0 25px;
+  position: relative;
+  width: 100%;
+
+  &__inner {
+    align-items: flex-end;
+    display: flex;
+    flex-wrap: wrap;
+  }
+}

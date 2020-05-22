@@ -1,37 +1,26 @@
 'use strict';
 
-import { ARIA, SELECTORS, CLASS_NAMES, EVENTS, MISC, KEY_CODES } from '../../Constants';
-import { randomsecurestring } from '../../Utils';
+import { ARIA, SELECTORS, CLASS_NAMES, EVENTS, KEY_CODES } from '../../Constants';
+
+
 /**
- * A class that creates the functionality for video blocks. A clickable button that expands a player area using the youtube iframe api
+ * A class which hides and reveals hidden menu content based on user click of a button.
  */
 export default class Video {
   /**
-   * Constructor for Video
+   * Constructor for Video which simply assigns the ScrollService
+   * to a property on the contructor for reference.
    *
    * @param {HTMLElement} element - REQUIRED - the module's container
+   * @param {Object} Services various services, passed in as param
    */
-  constructor(element) {
+  constructor(element, Services ) {
     /**
      * DOM node that is passed into the constructor
      *
      * @property {Object} element DOM node that is passed into the constructor
      */
     this.element = element;
-
-    /**
-     * ID of the YT video
-     *
-     * @property {String}
-     */
-    this.videoId = this.element.dataset.url;
-
-    /**
-     * Create ID for player
-     *
-     * @property {String}
-     */
-    this.playerId = 'player-';
 
 
     // Initialize the view
@@ -49,8 +38,9 @@ export default class Video {
   init() {
     this.cacheDomReferences()
       .setupHandlers()
-      .enable()
-      .scriptInject();
+      .enable();
+
+    document.body.classList.add('video-open');
 
     return this;
   }
@@ -64,40 +54,23 @@ export default class Video {
    * @chainable
    */
   cacheDomReferences() {
-    this.trigger = this.element.querySelector(SELECTORS.PLAY_TRIGGER);
-    this.player = this.element.querySelector(SELECTORS.PLAYER);
-    this.playerId += randomsecurestring(16);
-    this.element.setAttribute('id', this.playerId);
-
-    return this;
-  }
-
-  /**
-   * scriptInject
-   *
-   * Pull the YT iframe API if the object doesn't exist
-   *
-   * @return {Object} A reference to the current instance of the class
-   * @chainable
-   */
-  scriptInject() {
-    const tag = document.createElement('script');
-
-    tag.src = "https://www.youtube.com/iframe_api";
-    const firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
     return this;
   }
 
   /**
    * Bind event handlers with the proper context of `this`.
    *
-   * @return {Object} A reference to the current instance of the class
+   * @return {Object} Video A reference to the current instance of the class
    * @chainable
    */
   setupHandlers() {
-    this.onButtonClickHandler = this.onButtonClick.bind(this);
+    /**
+     * A reference to the `onClick` function with the proper
+     * context bound
+     *
+     * @property {Function}
+     */
+    this.onClickHandler = this.onClick.bind(this);
 
     return this;
   }
@@ -105,57 +78,26 @@ export default class Video {
   /**
    * Create event handlers to enable interaction with view
    *
-   * @return {Object} From A reference to the current instance of the class
+   * @return {Object} Video A reference to the current instance of the class
    * @chainable
    */
   enable() {
-    this.trigger.addEventListener(EVENTS.CLICK, this.onButtonClickHandler, false);
-    this.trigger.addEventListener(EVENTS.TOUCH_START, this.onButtonClickHandler, false);
-    this.trigger.addEventListener(EVENTS.KEY_DOWN, this.onButtonClickHandler, false);
+    // handle Video trigger click
+    this.element.addEventListener(EVENTS.CLICK, this.onClickHandler);
+    this.element.addEventListener(EVENTS.KEY_DOWN, this.onClickHandler);
 
     return this;
   }
 
   /**
-   * Turn form fields into serialized data
-   * 
-   * @return {String} serialized data
-   */
-  onYouTubeIframeAPIReady() {
-    this.player = new YT.Player(this.playerId, {
-      height: '390',
-      width: '640',
-      videoId: this.videoId,
-      events: {
-        'onReady': this.onPlayerReady
-      }
-    });
-  }
-
-  onPlayerReady(event) {
-    event.target.playVideo();
-  }
-
-  /**
-   * Click the button
+   * Clicking the content will cause it to be removed from sight
    *
    * @return {Object} A reference to the current instance of this class
    * @chainable
    */
-  onButtonClick(event) {
+  onClick() {
     event.preventDefault();
-
-    if (event.type === EVENTS.KEY_DOWN && (event.keyCode !== KEY_CODES.ENTER)) {
-      return this;
-    }
-
-    this.element.classList.add('fullscreen');
-
-    const that = this;
-    setTimeout(() => {
-      that.onYouTubeIframeAPIReady();
-    }, 600);
-
-    return this;
+    this.element.classList.add('fade');
+    document.body.classList.remove('video-open');
   }
 }

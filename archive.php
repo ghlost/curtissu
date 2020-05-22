@@ -22,11 +22,11 @@ $postArgs = array(
   )
 );
 
+if ( is_category() ) {
+  $context['cat_title'] = single_cat_title( '', false );
+}
+
 $context['posts'] = new Timber\PostQuery();
 $templates = array( 'projects.twig' );
-
-if (is_post_type_archive('people')) {
-    array_unshift($templates, 'index-grid.twig');
-}
 
 Timber::render($templates, $context);

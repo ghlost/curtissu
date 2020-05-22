@@ -5,7 +5,7 @@
     <section class="post-list small-12 columns">
       {% block post_list %}
         {% for post in posts %}
-          {% include ['teaser-'~post.post_type~'.twig', 'teaser.twig'] %}
+          {% include ['components/_teaser-'~post.post_type~'.twig', 'components/_teaser.twig'] %}
         {% endfor %}
       {% endblock %}
     </section> <!-- /.post-list.small-12.columns -->

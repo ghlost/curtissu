@@ -11,6 +11,10 @@ body {
   margin: 0;
   overflow-x: hidden;
   width: 100%;
+
+  &.video-open {
+    overflow: hidden;
+  }
 }
 
 p {
@@ -25,7 +29,6 @@ a {
 
 .off-canvas-wrapper-inner {
   position: relative;
-  transform: translateX(0);
   transition: transform 0.3s ease-in-out;
   width: 100%;
 

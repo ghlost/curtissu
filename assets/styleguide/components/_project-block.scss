@@ -1,0 +1,81 @@
+.project-block {
+  &__inner {
+    align-items: flex-end;
+    display: flex;
+    margin: 20px 0;
+  }
+
+  &__category {
+    color: $black-other;
+    font-size: 22px;
+    line-height: 1;
+    margin: 20px 0;
+    order: 0;
+
+    @include breakpoint($desktop) {
+      margin: 85px 0;
+      order: unset;
+    }
+  }
+
+  &__link {
+    align-items: flex-end;
+    color: inherit;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 30px 0;
+    order: 1;
+    text-decoration: none;
+
+    &:focus,
+    &:hover {
+      .project-block__image {
+        filter: grayscale(0);
+      }
+
+      .project-block__name {
+        color: $yellow;
+      }
+    }
+
+    @include breakpoint($desktop) {
+      flex-wrap: no-wrap;
+      margin: 85px 0;
+      order: unset;
+    }
+  }
+
+  &__location {
+    color: $gray;
+    font-size: 22px;
+    line-height: 1;
+    margin: 5px 0 0;
+  }
+
+  &__name {
+    color: $gray;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1;
+    margin: 0;
+    transition: color 0.2s ease-in-out;
+  }
+
+  &__content {
+    margin: 10px 0 0;
+
+    @include breakpoint($desktop) {
+      margin: 0 40px;
+    }
+  }
+
+  &__image {
+    filter: grayscale(1);
+    max-width: 100%;
+    transition: filter 0.2s ease-in-out;
+
+    @include breakpoint($desktop) {
+      max-width: 764px;
+    }
+  }
+}

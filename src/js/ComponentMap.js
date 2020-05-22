@@ -3,6 +3,7 @@
 // Import all required modules
 // import Header from './components/views/Header';
 import Nav from './components/views/Nav';
+import Video from './components/views/Video';
 // import Form from './components/views/Form';
 // import Filter from './components/views/Filter';
 // import Video from './components/views/Video';
@@ -16,6 +17,7 @@ import Nav from './components/views/Nav';
 export default {
     // Header,
     Nav,
+    Video,
     // Form,
     // Filter,
     // Video

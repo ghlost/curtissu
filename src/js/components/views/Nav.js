@@ -86,7 +86,6 @@ export default class Nav {
     // handle nav trigger click
     this.navTrigger.addEventListener(EVENTS.CLICK, this.onClickHandler);
     this.navTrigger.addEventListener(EVENTS.KEY_DOWN, this.onClickHandler);
-    window.addEventListener(EVENTS.KEY_DOWN, this.onClickHandler);
 
     return this;
   }

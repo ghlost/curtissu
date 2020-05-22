@@ -1,0 +1,15 @@
+{% extends "base.twig" %}
+
+{% block content %}
+  <main class="page-content">
+    <section class="project-list">
+      <div class="project-list__inner">
+        {% block post_list %}
+          {% for post in posts %}
+            {% include ['components/_project-block.twig'] %}
+          {% endfor %}
+        {% endblock %}
+      </div>
+    </section> <!-- /.project-list -->
+  </main> <!-- /.page-content.row -->
+{% endblock %}

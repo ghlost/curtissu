@@ -1,11 +1,19 @@
 {% extends "base.twig" %}
 
 {% block content %}
-  <section class="project-grid">
+  <main class="project-grid">
     <div class="project-grid__inner">
       {% for post in posts %}
         {% include 'components/_teaser.twig' %}
       {% endfor %}
     </div>
-  </section>
+  </main>
+  <div class="video" data-loadcomponent="Video">
+    <div class="video__inner">
+      <video autoplay muted loop class="video__content">
+        <source src="{{ home.get_field('home_video').url }}" type="video/mp4">
+        Sorry, your browser doesn't support embedded videos.
+      </video>
+    </div>
+  </div>
 {% endblock %}
