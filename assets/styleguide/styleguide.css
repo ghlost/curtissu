@@ -11,7 +11,7 @@ Description: Custom theme starter kit
   box-sizing: border-box; }
 
 body {
-  font-family: 'SegoeUI', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 18px;
   height: 100%;
   margin: 0;
@@ -21,9 +21,17 @@ body {
     overflow: hidden; }
 
 p {
-  font-family: 'SegoeUI', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 18px;
   line-height: 1.6; }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Impact", sans-serif; }
 
 a {
   transition: all 0.1s ease-in-out; }
@@ -52,6 +60,12 @@ a {
   font-style: italic;
   font-weight: normal;
   src: url("assets/fonts/SegoeUI-Italic.eot") format("embedded-opentype"), url("assets/fonts/SegoeUI-Italic.woff") format("woff"), url("assets/fonts/SegoeUI-Italic.ttf") format("truetype"), url("assets/fonts/SegoeUI-Italic.svg#SegoeUI") format("svg"); }
+
+@font-face {
+  font-family: 'Impact';
+  font-style: normal;
+  font-weight: normal;
+  src: url("assets/fonts/Impact.eot?#iefix") format("embedded-opentype"), url("assets/fonts/Impact.woff") format("woff"), url("assets/fonts/Impact.ttf") format("truetype"), url("assets/fonts/Impact.svg#Impact") format("svg"); }
 
 .footer {
   clear: both;
@@ -318,6 +332,9 @@ a {
   transition: filter 0.2s ease-in-out; }
   @media screen and (min-width: 1024px) {
     .project-block__image {
+      max-width: 50%; } }
+  @media screen and (min-width: 1440px) {
+    .project-block__image {
       max-width: 764px; } }
 
 .project-grid {
@@ -428,8 +445,8 @@ a {
   width: 100%;
   z-index: 2; }
   .video.fade {
-    opacity: 0;
-    z-index: -999; }
+    animation: fade-out 0.1s 0.5s forwards;
+    opacity: 0; }
   .video__inner {
     align-items: center;
     display: flex; }
@@ -437,3 +454,7 @@ a {
     height: 100vh;
     margin: auto;
     max-width: 100vw; }
+
+@keyframes fade-out {
+  100% {
+    z-index: -999; } }

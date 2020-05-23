@@ -75,6 +75,10 @@
     transition: filter 0.2s ease-in-out;
 
     @include breakpoint($desktop) {
+      max-width: 50%;
+    }
+
+    @include breakpoint($xldesktop) {
       max-width: 764px;
     }
   }

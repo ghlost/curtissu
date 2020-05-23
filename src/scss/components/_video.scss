@@ -10,8 +10,8 @@
   z-index: 2;
 
   &.fade {
+    animation: fade-out 0.1s 0.5s forwards;
     opacity: 0;
-    z-index: -999;
   }
 
   &__inner {
@@ -23,5 +23,11 @@
     height: 100vh;
     margin: auto;
     max-width: 100vw;
+  }
+}
+
+@keyframes fade-out {
+  100% {
+    z-index: -999;
   }
 }
