@@ -1,0 +1,28 @@
+.location {
+  .map {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+
+    &__wrapper {
+      height: 0;
+      overflow: hidden;
+      padding-top: 64.4%;
+      position: relative;
+    }
+  }
+
+  .address {
+    a {
+      color: $gray-other;
+      text-decoration: none;
+
+      &:focus,
+      &:hover {
+        color: $gold;
+      }
+    }
+  }
+}

@@ -10,15 +10,18 @@ Description: Custom theme starter kit
 // =====================
 @import "variables";
 @import "mixins";
+@import "utility";
 
 // Site Styles
 // ======================
 @import "base/global";
 @import "base/icons";
 @import "base/typography";
+@import "components/contact";
 @import "components/footer";
 @import "components/header";
 @import "components/gallery";
+@import "components/location";
 @import "components/navigation";
 @import "components/project-block";
 @import "components/project-grid";

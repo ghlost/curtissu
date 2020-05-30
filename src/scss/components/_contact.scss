@@ -1,0 +1,88 @@
+.contact {
+  color: $gray-other;
+  padding: 150px 30px 100px;
+
+  h3 {
+    font-family: $font-headline;
+    font-size: 26px;
+  }
+
+  @include breakpoint($tablet) {
+    padding-top: 200px;
+  }
+
+  &__inner {
+    display: grid;
+    grid-template-columns: 1fr;
+
+    @include breakpoint($tablet) {
+      display: grid;
+      grid-column-gap: 80px;
+      grid-template-columns: 7fr 3fr;
+    }
+
+    @include breakpoint($desktop) {
+      grid-column-gap: 100px;
+    }
+
+    @include breakpoint($xldesktop) {
+      grid-column-gap: 150px;
+      grid-template-columns: 976px 1fr;
+    }
+  }
+}
+
+.form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+
+  .text {
+    border: none;
+    border-bottom: 1px solid $gold;
+    display: inline-block;
+    font-size: 18px;
+    margin: 10px 0;
+    padding: 5px;
+    text-align: right;
+    width: 100%;
+
+    &--half {
+      width: 50%;
+    }
+
+    &--area {
+      background-image: linear-gradient($gold 1px, transparent 1px);
+      background-position: bottom;
+      background-size: 100% 41px;
+      height: 200px;
+      line-height: 40px;
+      outline: 0;
+    }
+
+    @include breakpoint($tablet) {
+      font-size: 20px;
+    }
+  }
+
+  .button {
+    background: transparent;
+    border: 1px solid $gold;
+    border-radius: 40px;
+    color: $gray-other;
+    cursor: pointer;
+    display: inline-block;
+    font-family: $font-headline;
+    font-size: 21px;
+    margin-top: 30px;
+    max-width: 175px;
+    padding: 10px 25px;
+    transition: all 0.1s ease-in-out;
+
+    &:focus,
+    &:hover {
+      background: $gold;
+      color: $white;
+    }
+  }
+}

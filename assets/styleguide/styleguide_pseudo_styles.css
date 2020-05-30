@@ -1,3 +1,14 @@
+.form .button.pseudo-class-focus,
+.form .button.pseudo-class-hover {
+  background: #e5ae00;
+  color: #fff;
+}
+
+.location .address a.pseudo-class-focus,
+.location .address a.pseudo-class-hover {
+  color: #e5ae00;
+}
+
 .navigation__link.pseudo-class-focus,
 .navigation__link.pseudo-class-hover {
   color: #fecb00;

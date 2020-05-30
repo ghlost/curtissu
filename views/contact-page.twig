@@ -2,26 +2,44 @@
 
 {% block content %}
   <main class="contact">
-    <section class="location">
-      <div class="location__inner">
-        <div class="location__map">
-          <svg class="map"><title>map</title><use xlink:href="#map"></use></svg>
-        </div> <!-- /.location__map -->
-        <div class="address">
-          <h3 class="address__title">Find us here</h3>
-          <p class="address__set">
-            309 E 8th St.<br>
-            Los Angeles, CA 90014<br>
-            United States
-          </p>
-          <p class="address__set">
-            +1 (818) 835-6623
-            <a href="mailto:contact@grandvisualization.com">contact@grandvisualization.com</a>
-          </p>
-        </div> <!-- /.address -->
-      </div> <!-- /.location__inner -->
-    </section>
-    <section class="contact-form">
-    </section>
+    <div class="contact__inner">
+      <section class="location">
+        <div class="location__inner">
+          <div class="location__map">
+            <div class="map__wrapper">
+              <svg class="map"><title>map</title><use xlink:href="#map"></use></svg>
+            </div> <!-- /.map__wrapper -->
+          </div> <!-- /.location__map -->
+          <div class="address">
+            <h3 class="address__title">Find us here</h3>
+            <p class="address__set">
+              309 E 8th St.<br>
+              Los Angeles, CA 90014<br>
+              United States
+            </p>
+            <p class="address__set">
+              +1 (818) 835-6623<br>
+              <a href="mailto:contact@grandvisualization.com">contact@grandvisualization.com</a>
+            </p>
+          </div> <!-- /.address -->
+        </div> <!-- /.location__inner -->
+      </section>
+      <section class="contact-form">
+        <div class="contact-form__inner">
+          <h3 class="contact-form__title">Any Questions? We’d Love to Help!</h3>
+          <form class="form">
+            <label for="name" class="screen-reader">Your name</label>
+            <input class="text text--half" id="name" type="text" name="name" placeholder="Your name">
+            <label for="email" class="screen-reader">Email address</label>
+            <input class="text" id="email" type="text" name="email" placeholder="Email address">
+            <label for="description" class="screen-reader">Tell us something about the project</label>
+            <textarea class="text text--area" id="description" name="description" placeholder="Tell us something about the project"></textarea>
+            <label for="file" class="screen-reader">Any attachment</label>
+            <input class="text" id="file" type="file" name="file" placeholder="Any attachment">
+            <button class="button button--contact">Let's Start</button>
+          </form>
+        </div> <!-- /.contact-form__inner -->
+      </section>
+    </div> <!-- /.contact__inner -->
   </main>
 {% endblock %}
