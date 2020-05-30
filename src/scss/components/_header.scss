@@ -1,11 +1,27 @@
 .header {
   align-items: center;
+  background: $white;
   display: flex;
   justify-content: space-between;
   padding: 0 25px;
+  position: fixed;
+  right: 0;
+  top: 0;
+  transition: all 0.3s ease-in-out;
+  width: 100%;
+  z-index: 1;
+
+  .opened & {
+    right: 75vw;
+  }
 
   @include breakpoint($tablet) {
     padding: 0 30px;
+
+    .opened & {
+      left: auto;
+      right: 533px;
+    }
   }
 }
 
@@ -14,8 +30,7 @@
     height: auto;
     width: 160px;
 
-    @include breakpoint($tablet) {
-      height: 90px;
+    @include breakpoint($xldesktop) {
       width: 320px;
     }
   }

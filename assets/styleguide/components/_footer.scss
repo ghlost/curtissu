@@ -13,7 +13,18 @@
 
       @include breakpoint($tablet) {
         display: grid;
-        grid-column-gap: 20px;
+        grid-column-gap: 40px;
+        grid-template-columns: repeat(3, 200px);
+        justify-content: flex-end;
+        max-width: 1200px;
+        width: 100%;
+      }
+
+      @include breakpoint($desktop) {
+        grid-template-columns: repeat(3, 275px);
+      }
+
+      @include breakpoint($xldesktop) {
         grid-template-columns: 1fr 1fr 1fr;
       }
     }

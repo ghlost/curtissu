@@ -1,21 +1,37 @@
 .project-grid {
   display: flex;
   justify-content: flex-end;
+  padding: 100px 0;
   width: 100%;
+
+  @include breakpoint($desktop) {
+    padding: 200px 0 100px;
+  }
 
   &__inner {
     display: grid;
     grid-row-gap: 20px;
     grid-template-columns: 1fr;
     max-width: 1200px;
+    padding: 0 20px;
     width: 100%;
 
-    @include breakpoint($tablet) {
-      grid-column-gap: 20px;
+    @include breakpoint($lmobile) {
+      grid-column-gap: 40px;
       grid-template-columns: 1fr 1fr;
     }
 
-    @include breakpoint($ldesktop) {
+    @include breakpoint($lmobile) {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    @include breakpoint($desktop) {
+      grid-template-columns: repeat(3, 250px);
+      justify-content: flex-end;
+      padding: 0;
+    }
+
+    @include breakpoint($xldesktop) {
       grid-template-columns: 1fr 1fr 1fr;
     }
   }
