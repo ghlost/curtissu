@@ -1,0 +1,27 @@
+{% extends "base.twig" %}
+
+{% block content %}
+  <main class="contact">
+    <section class="location">
+      <div class="location__inner">
+        <div class="location__map">
+          <svg class="map"><title>map</title><use xlink:href="#map"></use></svg>
+        </div> <!-- /.location__map -->
+        <div class="address">
+          <h3 class="address__title">Find us here</h3>
+          <p class="address__set">
+            309 E 8th St.<br>
+            Los Angeles, CA 90014<br>
+            United States
+          </p>
+          <p class="address__set">
+            +1 (818) 835-6623
+            <a href="mailto:contact@grandvisualization.com">contact@grandvisualization.com</a>
+          </p>
+        </div> <!-- /.address -->
+      </div> <!-- /.location__inner -->
+    </section>
+    <section class="contact-form">
+    </section>
+  </main>
+{% endblock %}
