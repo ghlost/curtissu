@@ -43,9 +43,13 @@
 
   &__image {
     border-radius: 50%;
-    filter: grayscale(1);
+    filter: grayscale(0);
     max-width: 100%;
     transition: filter 0.1s ease-in-out;
+
+    @include breakpoint($desktop) {
+      filter: grayscale(1);
+    }
   }
 
   &__link {
@@ -67,12 +71,12 @@
   &__name {
     color: #000;
     font-size: 16px;
-    opacity: 0;
     text-align: center;
     transition: opacity 0.1s ease-in-out;
 
     @include breakpoint($tablet) {
       font-size: 18px;
+      opacity: 0;
     }
   }
 }

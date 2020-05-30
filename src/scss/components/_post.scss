@@ -21,6 +21,7 @@
   }
 
   &__content {
+    color: $gray-other;
     padding: 20px;
 
     @include breakpoint($tablet) {

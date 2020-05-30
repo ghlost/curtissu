@@ -55,7 +55,7 @@
           <div class="gallery">
             {% for image in post.image_set %}
               <figure class="gallery__item gallery__item--{{ loop.index }}">
-                <img class="gallery__image" srcset="{{ Image(image).src }}, {{ Image(image).src }} 2x" alt="{{ image.alt }}">
+                <img class="gallery__image" srcset="{{ Image(image).srcset }}" alt="{{ image.alt }}">
               </figure>
             {% endfor %}
           </div>

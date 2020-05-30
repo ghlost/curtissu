@@ -31,7 +31,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Impact", sans-serif; }
+  font-family: "Open Sans", sans-serif; }
 
 a {
   transition: all 0.1s ease-in-out; }
@@ -406,9 +406,12 @@ a {
   text-align: center; }
   .project__image {
     border-radius: 50%;
-    filter: grayscale(1);
+    filter: grayscale(0);
     max-width: 100%;
     transition: filter 0.1s ease-in-out; }
+    @media screen and (min-width: 1024px) {
+      .project__image {
+        filter: grayscale(1); } }
   .project__link {
     text-decoration: none; }
     .project__link:hover {
@@ -420,12 +423,12 @@ a {
   .project__name {
     color: #000;
     font-size: 16px;
-    opacity: 0;
     text-align: center;
     transition: opacity 0.1s ease-in-out; }
     @media screen and (min-width: 768px) {
       .project__name {
-        font-size: 18px; } }
+        font-size: 18px;
+        opacity: 0; } }
 
 .project-list {
   max-width: 1500px;
@@ -454,6 +457,7 @@ a {
     width: 100%; }
 
 .post__content {
+  color: #646464;
   padding: 20px; }
   @media screen and (min-width: 768px) {
     .post__content {
