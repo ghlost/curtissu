@@ -8,6 +8,7 @@
       {% endfor %}
     </div>
   </main>
+  {% if home.get_field('home_video').url %}
   <div class="video" data-loadcomponent="Video">
     <div class="video__inner">
       <video autoplay muted loop class="video__content">
@@ -16,4 +17,5 @@
       </video>
     </div>
   </div>
+  {% endif %}
 {% endblock %}

@@ -28,7 +28,6 @@
     @include breakpoint($desktop) {
       grid-template-columns: repeat(3, 250px);
       justify-content: flex-end;
-      padding: 0;
     }
 
     @include breakpoint($xldesktop) {

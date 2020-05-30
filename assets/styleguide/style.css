@@ -395,8 +395,7 @@ a {
     @media screen and (min-width: 1024px) {
       .project-grid__inner {
         grid-template-columns: repeat(3, 250px);
-        justify-content: flex-end;
-        padding: 0; } }
+        justify-content: flex-end; } }
     @media screen and (min-width: 1440px) {
       .project-grid__inner {
         grid-template-columns: 1fr 1fr 1fr; } }
