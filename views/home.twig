@@ -11,7 +11,7 @@
   {% if home.get_field('home_video').url %}
   <div class="video" data-loadcomponent="Video">
     <div class="video__inner">
-      <video autoplay muted loop class="video__content">
+      <video playsinline autoplay muted loop class="video__content">
         <source src="{{ home.get_field('home_video').url }}" type="video/mp4">
         Sorry, your browser doesn't support embedded videos.
       </video>
