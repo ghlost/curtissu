@@ -1,9 +1,9 @@
 {
-    "key": "group_5ebee94bd969d",
-    "title": "Projects",
+    "key": "group_5ed4589d728fb",
+    "title": "Project posts",
     "fields": [
         {
-            "key": "field_5ebeeaf76ac5e",
+            "key": "field_5ed4589d77824",
             "label": "Hero",
             "name": "hero",
             "type": "image",
@@ -27,32 +27,7 @@
             "mime_types": ""
         },
         {
-            "key": "field_5ebee9539ec8c",
-            "label": "Image Set",
-            "name": "image_set",
-            "type": "gallery",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "min": "",
-            "max": "",
-            "insert": "append",
-            "library": "all",
-            "min_width": "",
-            "min_height": "",
-            "min_size": "",
-            "max_width": "",
-            "max_height": "",
-            "max_size": "",
-            "mime_types": ""
-        },
-        {
-            "key": "field_5ebeea103d7e6",
+            "key": "field_5ed4589d7797a",
             "label": "Location",
             "name": "location",
             "type": "text",
@@ -88,5 +63,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1589570317
+    "modified": 1590975284
 }

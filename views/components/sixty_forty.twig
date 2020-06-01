@@ -1,0 +1,8 @@
+<div class="gallery__row {% if module.flip_percentage %}gallery__row--forty-sixty{% else %}gallery__row--sixty-forty{% endif %}">
+  <figure class="gallery__item">
+    <img class="gallery__image" srcset="{{ Image(module.first_image).srcset }}" alt="{{ module.first_image.alt }}">
+  </figure>
+  <figure class="gallery__item">
+    <img class="gallery__image" srcset="{{ Image(module.second_image).srcset }}" alt="{{ module.second_image.alt }}">
+  </figure>
+</div>

@@ -53,10 +53,14 @@
       <section class="post__gallery">
         <div class="gallery__inner">
           <div class="gallery">
-            {% for image in post.image_set %}
+            {# {% for image in post.image_set %}
               <figure class="gallery__item gallery__item--{{ loop.index }}">
                 <img class="gallery__image" srcset="{{ Image(image).srcset }}" alt="{{ image.alt }}">
               </figure>
+            {% endfor %} #}
+
+            {% for module in post.get_field('project_gallery') %}
+              {% include ['components/'~module.acf_fc_layout~'.twig'] ignore missing %}
             {% endfor %}
           </div>
         </div>
