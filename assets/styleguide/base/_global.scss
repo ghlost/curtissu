@@ -47,8 +47,12 @@ a {
     // transform: translateX(-75vw);
 
     @include breakpoint($tablet) {
-      right: 533px;
+      right: 380px;
       // transform: translateX(-533px);
     }
   }
+}
+
+.page-content {
+  padding-top: 80px;
 }

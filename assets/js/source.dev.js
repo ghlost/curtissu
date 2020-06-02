@@ -5710,12 +5710,13 @@ document.body.classList.toggle(_Constants.CLASS_NAMES.OPENED);
 },{"../../Constants":18}],35:[function(require,module,exports){
 'use strict';Object.defineProperty(exports,"__esModule",{value:true});var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||false;descriptor.configurable=true;if("value"in descriptor)descriptor.writable=true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};}();
 
-var _Constants=require('../../Constants');function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}
+var _Constants=require('../../Constants');
+var _Utils=require('../../Utils');function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}
 
 
 /**
-                                                                                                                                                                                                   * A class which hides and reveals hidden menu content based on user click of a button.
-                                                                                                                                                                                                   */var
+                                                                                                                                                                                           * A class which hides and reveals hidden menu content based on user click of a button.
+                                                                                                                                                                                           */var
 Video=function(){
 /**
                       * Constructor for Video which simply assigns the ScrollService
@@ -5746,11 +5747,20 @@ this.init();
      * @chainable
      */_createClass(Video,[{key:'init',value:function init()
 {
+console.log((0,_Utils.getcookie)('video'));
+if((0,_Utils.getcookie)('video')!=='true'){
 this.cacheDomReferences().
 setupHandlers().
 enable();
 
+
 document.body.classList.add('video-open');
+document.cookie='video=true;';
+this.content.classList.remove('hidden');
+}else{
+this.element.classList.add('fade');
+this.element.classList.add('hidden');
+}
 
 return this;
 }
@@ -5764,6 +5774,8 @@ return this;
        * @chainable
        */},{key:'cacheDomReferences',value:function cacheDomReferences()
 {
+this.content=this.element.querySelector('.video__content');
+
 return this;
 }
 
@@ -5811,7 +5823,7 @@ this.element.classList.add('fade');
 document.body.classList.remove('video-open');
 }}]);return Video;}();exports.default=Video;
 
-},{"../../Constants":18}],36:[function(require,module,exports){
+},{"../../Constants":18,"../../Utils":24}],36:[function(require,module,exports){
 (function(global){
 /* eslint-env browser */
 'use strict';

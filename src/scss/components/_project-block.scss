@@ -2,18 +2,22 @@
   &__inner {
     align-items: flex-end;
     display: flex;
-    margin: 20px 0;
+    margin: 20px auto;
+    max-width: 1400px;
+    padding: 0 20px;
   }
 
   &__category {
     color: $black-other;
-    font-size: 22px;
+    font-family: $font-headline;
+    font-size: 15px;
+    font-weight: 400;
     line-height: 1;
     margin: 20px 0;
     order: 0;
 
     @include breakpoint($desktop) {
-      margin: 85px 0;
+      margin: 50px 0;
       order: unset;
     }
   }
@@ -39,47 +43,50 @@
     }
 
     @include breakpoint($desktop) {
-      flex-wrap: no-wrap;
-      margin: 85px 0;
+      flex-wrap: nowrap;
+      margin: 50px 0;
       order: unset;
+      width: 70%;
     }
   }
 
   &__location {
     color: $gray;
-    font-size: 22px;
+    font-size: 15px;
     line-height: 1;
     margin: 5px 0 0;
   }
 
   &__name {
-    color: $gray;
-    font-size: 28px;
-    font-weight: 700;
+    color: $yellow;
+    font-family: $font-headline;
+    font-size: 20px;
+    font-weight: 900;
     line-height: 1;
     margin: 0;
     transition: color 0.2s ease-in-out;
+
+    @include breakpoint($desktop) {
+      color: $gray;
+    }
   }
 
   &__content {
     margin: 10px 0 0;
 
     @include breakpoint($desktop) {
-      margin: 0 40px;
+      margin: 0 40px 0 100px;
     }
   }
 
   &__image {
-    filter: grayscale(1);
-    max-width: 100%;
+    filter: grayscale(0);
+    max-width: 450px;
     transition: filter 0.2s ease-in-out;
+    width: 100%;
 
     @include breakpoint($desktop) {
-      max-width: 50%;
-    }
-
-    @include breakpoint($xldesktop) {
-      max-width: 764px;
+      filter: grayscale(1);
     }
   }
 }

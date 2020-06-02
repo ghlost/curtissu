@@ -44,7 +44,8 @@
       align-items: center;
       display: flex;
       justify-content: space-between;
-      max-width: 1200px;
+      margin: auto;
+      max-width: 1400px;
       width: 100%;
     }
   }
@@ -62,13 +63,19 @@
   }
 
   &__social-links {
+    color: $gray-light;
+
+    &:hover {
+      color: $gold;
+    }
+
     .icon--insta {
       max-height: 20px;
       max-width: 20px;
 
       @include breakpoint($tablet) {
-        max-height: 33px;
-        max-width: 33px;
+        max-height: 27px;
+        max-width: 27px;
       }
     }
 
@@ -78,7 +85,7 @@
 
       @include breakpoint($tablet) {
         max-height: 27px;
-        max-width: 38px;
+        max-width: 32px;
       }
     }
 
@@ -87,19 +94,19 @@
       max-width: 17px;
 
       @include breakpoint($tablet) {
-        max-height: 32px;
-        max-width: 24px;
+        max-height: 30px;
+        max-width: 22px;
       }
     }
   }
 
   &__copy {
     color: $gray-light;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 1.2;
 
     @include breakpoint($tablet) {
-      font-size: 18px;
+      font-size: 16px;
     }
   }
 }

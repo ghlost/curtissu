@@ -1,10 +1,16 @@
 .project-grid {
   display: flex;
   justify-content: flex-end;
+  margin: auto;
+  max-width: 1400px;
   padding: 150px 0;
   width: 100%;
 
   @include breakpoint($desktop) {
+    padding: 150px 0 100px;
+  }
+
+  @include breakpoint($xldesktop) {
     padding: 200px 0 100px;
   }
 

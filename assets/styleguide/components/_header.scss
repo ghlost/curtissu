@@ -1,8 +1,5 @@
 .header {
-  align-items: center;
   background: $white;
-  display: flex;
-  justify-content: space-between;
   padding: 0 25px;
   position: fixed;
   right: 0;
@@ -20,8 +17,16 @@
 
     .opened & {
       left: auto;
-      right: 533px;
+      right: 380px;
     }
+  }
+
+  &__inner {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    max-width: 1400px;
   }
 }
 
@@ -31,7 +36,7 @@
     width: 160px;
 
     @include breakpoint($xldesktop) {
-      width: 320px;
+      width: 225px;
     }
   }
 }
@@ -57,7 +62,7 @@
     display: inline-block;
     height: 24px;
     position: relative;
-    width: 40px;
+    width: 27px;
   }
 
   &__inner {
@@ -71,7 +76,7 @@
     transition-duration: 0.15s;
     transition-property: transform;
     transition-timing-function: ease;
-    width: 40px;
+    width: 100%;
 
     &::before,
     &::after {
@@ -84,7 +89,7 @@
       transition-duration: 0.15s;
       transition-property: transform;
       transition-timing-function: ease;
-      width: 40px;
+      width: 100%;
     }
 
     &::before {
@@ -96,7 +101,7 @@
       bottom: -10px;
     }
 
-    .hamburger__wrapper--active & {
+    .hamburger__wrapper.open & {
       transform: rotate(45deg);
       transition-delay: 0.12s;
       transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);

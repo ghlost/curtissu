@@ -1,6 +1,7 @@
 'use strict';
 
 import { ARIA, SELECTORS, CLASS_NAMES, EVENTS, KEY_CODES } from '../../Constants';
+import { getcookie } from '../../Utils';
 
 
 /**
@@ -36,11 +37,20 @@ export default class Video {
    * @chainable
    */
   init() {
-    this.cacheDomReferences()
-      .setupHandlers()
-      .enable();
+    console.log(getcookie('video'))
+    if(getcookie('video') !== 'true') {
+      this.cacheDomReferences()
+        .setupHandlers()
+        .enable();
 
-    document.body.classList.add('video-open');
+        
+      document.body.classList.add('video-open');
+      document.cookie = 'video=true;';
+      this.content.classList.remove('hidden');
+    } else {
+      this.element.classList.add('fade');
+      this.element.classList.add('hidden');
+    }
 
     return this;
   }
@@ -54,6 +64,8 @@ export default class Video {
    * @chainable
    */
   cacheDomReferences() {
+    this.content = this.element.querySelector('.video__content');
+
     return this;
   }
 

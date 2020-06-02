@@ -4,6 +4,10 @@
   color: #fff;
 }
 
+.footer__social-links.pseudo-class-hover {
+  color: #e5ae00;
+}
+
 .location .address a.pseudo-class-focus,
 .location .address a.pseudo-class-hover {
   color: #e5ae00;

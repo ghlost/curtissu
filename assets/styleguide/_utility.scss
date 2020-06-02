@@ -26,6 +26,11 @@
   max-width: 100%;
 }
 
+.hidden {
+  display: none;
+  visibility: hidden;
+}
+
 .screen-reader {
   clip: rect(0 0 0 0);
   clip-path: inset(50%);

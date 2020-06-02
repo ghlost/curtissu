@@ -1,10 +1,14 @@
 .contact {
   color: $gray-other;
-  padding: 150px 30px 100px;
+  padding: 150px 0 100px;
 
   h3 {
     font-family: $font-headline;
-    font-size: 26px;
+    font-size: 20px;
+  }
+
+  p {
+    font-size: 16px;
   }
 
   @include breakpoint($tablet) {
@@ -14,6 +18,9 @@
   &__inner {
     display: grid;
     grid-template-columns: 1fr;
+    margin: auto;
+    max-width: 1400px;
+    padding: 0 20px;
 
     @include breakpoint($tablet) {
       display: grid;
@@ -24,11 +31,10 @@
     @include breakpoint($desktop) {
       grid-column-gap: 100px;
     }
+  }
 
-    @include breakpoint($xldesktop) {
-      grid-column-gap: 150px;
-      grid-template-columns: 976px 1fr;
-    }
+  &-form__title {
+    text-align: right;
   }
 }
 
@@ -41,7 +47,7 @@
     border: none;
     border-bottom: 1px solid $gold;
     display: inline-block;
-    font-size: 18px;
+    font-size: 16px;
     margin: 10px 0;
     padding: 5px;
     text-align: right;
@@ -61,7 +67,7 @@
     }
 
     @include breakpoint($tablet) {
-      font-size: 20px;
+      font-size: 16px;
     }
   }
 

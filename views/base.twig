@@ -16,15 +16,17 @@
       <div class="off-canvas-content" data-off-canvas-content>
         {% block header %}
           <header class="header">
-            <div class="logo">
-              <h1 class="logo__wrapper"><a href="/" class="logo__link"><img src="{{ site.theme.link }}/assets/img/logo@2x.png" alt="" class="logo__image"></a></h1>
-            </div>
-            <div class="hamburger" data-loadcomponent="Nav">
-              <a href="#" class="hamburger__wrapper nav-trigger">
-                <div class="hamburger__box">
-                  <div class="hamburger__inner"></div>
-                </div>
-              </a>
+            <div class="header__inner">
+              <div class="logo">
+                <h1 class="logo__wrapper"><a href="/" class="logo__link"><img src="{{ site.theme.link }}/assets/img/logo@2x.png" alt="" class="logo__image"></a></h1>
+              </div>
+              <div class="hamburger" data-loadcomponent="Nav">
+                <a href="#" class="hamburger__wrapper nav-trigger">
+                  <div class="hamburger__box">
+                    <div class="hamburger__inner"></div>
+                  </div>
+                </a>
+              </div>
             </div>
           </header>
         {% endblock %}
