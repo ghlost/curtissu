@@ -36,10 +36,6 @@
       grid-template-columns: repeat(3, 250px);
       justify-content: flex-end;
     }
-
-    @include breakpoint($xldesktop) {
-      grid-template-columns: 1fr 1fr 1fr;
-    }
   }
 }
 

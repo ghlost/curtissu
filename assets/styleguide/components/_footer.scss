@@ -36,6 +36,8 @@
   }
 
   &__inner {
+    padding: 20px;
+
     @include breakpoint($tablet) {
       align-items: center;
       display: flex;
