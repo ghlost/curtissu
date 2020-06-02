@@ -114,9 +114,6 @@ a {
     font-size: 20px; }
   .contact p {
     font-size: 16px; }
-  @media screen and (min-width: 768px) {
-    .contact {
-      padding-top: 200px; } }
   .contact__inner {
     display: grid;
     grid-template-columns: 1fr;
