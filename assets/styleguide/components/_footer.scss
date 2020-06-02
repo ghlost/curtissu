@@ -21,11 +21,7 @@
       }
 
       @include breakpoint($desktop) {
-        grid-template-columns: repeat(3, 275px);
-      }
-
-      @include breakpoint($xldesktop) {
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: repeat(3, 250px);
       }
     }
 

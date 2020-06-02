@@ -31,6 +31,10 @@
 }
 
 .logo {
+  &__wrapper {
+    margin: 0;
+  }
+
   &__image {
     height: auto;
     width: 160px;

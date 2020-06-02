@@ -1,12 +1,12 @@
 .post {
   &__inner {
     margin: 30px auto;
-    max-width: 1200px;
+    max-width: 1400px;
+    padding: 0 20px;
 
     @include breakpoint($xldesktop) {
       margin: 60px auto;
       max-width: 100%;
-      padding: 0 30px;
       width: 100%;
     }
   }
