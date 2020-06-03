@@ -1,5 +1,9 @@
 .post {
-  padding-top: 150px;
+  padding-top: 125px;
+
+  @include breakpoint($tablet) {
+    padding-top: 150px;
+  }
 
   &__inner {
     margin: 30px auto;
@@ -33,9 +37,13 @@
   }
 
   &__title {
-    font-size: 45px;
+    font-size: 24px;
     font-weight: 400;
     margin: 0 0 5px;
+
+    @include breakpoint($tablet) {
+      font-size: 32px;
+    }
   }
 
   &__location {

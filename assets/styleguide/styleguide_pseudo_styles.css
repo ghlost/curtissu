@@ -1,3 +1,5 @@
+.wpcf7-form .button.pseudo-class-focus,
+.wpcf7-form .button.pseudo-class-hover,
 .form .button.pseudo-class-focus,
 .form .button.pseudo-class-hover {
   background: #e5ae00;

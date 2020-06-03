@@ -4,18 +4,27 @@
   height: 100%;
   max-width: 100%;
   min-height: 100vh;
-  padding: 59px;
-  position: absolute;
-  right: -75vw;
+  overflow: scroll;
+  padding: 59px 0;
+  position: fixed;
+  right: 0;
   top: 0;
   transform: translateX(0);
-  transition: transform 0.3s ease-in-out;
-  width: 75vw;
+  transition: all 0.3s ease-in-out;
+  width: 0;
   z-index: 2;
 
+  .opened & {
+    padding: 59px;
+    width: 75vw;
+  }
+
   @include breakpoint($tablet) {
-    right: -380px;
-    width: 380px;
+    width: 0;
+
+    .opened & {
+      width: 380px;
+    }
   }
 
   &__set {

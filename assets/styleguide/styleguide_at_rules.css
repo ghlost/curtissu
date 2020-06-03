@@ -1,3 +1,17 @@
+@keyframes fade-in-out {
+  10% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
 @font-face {
   font-family: 'SegoeUI';
   font-style: normal;
