@@ -51,6 +51,15 @@
   }
 
   &__blurb {
+    p {
+      font-family: $font-headline;
+      margin: 5px 0;
+    }
+
+    em {
+      font-family: $font-body;
+    }
+
     @include breakpoint($tablet) {
       max-width: 650px;
       width: 40%;

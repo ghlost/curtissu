@@ -668,6 +668,11 @@ a {
         font-size: 32px; } }
   .post__location {
     margin: 0; }
+  .post__blurb p {
+    font-family: "Raleway", sans-serif;
+    margin: 5px 0; }
+  .post__blurb em {
+    font-family: "Open Sans", sans-serif; }
   @media screen and (min-width: 768px) {
     .post__blurb {
       max-width: 650px;

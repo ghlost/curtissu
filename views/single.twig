@@ -29,14 +29,7 @@
   <article class="post">
     <div class="post__inner">
       <section class="post__hero">
-        <picture class="post__hero-picture">
-          <!--[if IE 9]><hero style="display: none;"><![endif]-->
-          <source srcset="{{ Image(post.hero).src|resize(600, 300) }}, {{ Image(post.hero).src|resize(600, 300)|retina(2) }} 2x" media="(max-width: 599px)">
-          <source srcset="{{ Image(post.hero).src|resize(1200) }}, {{ Image(post.hero).src|resize(1200)|retina(2) }} 2x" media="(min-width: 600px)">
-          <source srcset="{{ Image(post.hero).src|resize(1400) }}, {{ Image(post.hero).src|resize(1400)|retina(2) }} 2x" media="(min-width: 1200px)">
-          <!--[if IE 9]></hero><![endif]-->
-          <img srcset="{{ Image(post.hero).src|resize(1400) }}, {{ Image(post.hero).src|resize(1400)|retina(2) }} 2x" alt="{{ post.hero.alt }}">
-        </picture>
+        <img class="post__hero-picture" srcset="{{ Image(post.hero).srcset }}" alt="{{ post.alt }}">
       </section>
       <section class="post__content">
         <div class="post__headline">
