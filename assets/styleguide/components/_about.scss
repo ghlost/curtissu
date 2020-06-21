@@ -1,0 +1,129 @@
+// General About Page styles
+.about {
+  padding: 100px 0 0;
+
+  &__inner {
+    margin: auto;
+    max-width: 1460px;
+    padding: 0 30px;
+  }
+
+  &__headline {
+    color: $yellow;
+    font-size: 36px;
+    line-height: 1;
+    margin: 0 0 25px;
+    text-transform: uppercase;
+
+    @include breakpoint($tablet) {
+      margin: 50px 0;
+    }
+  }
+}
+
+// Story section styles
+.story {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0 0 50px;
+
+  @include breakpoint($tablet) {
+    flex-direction: row;
+    margin: 0 0 100px;
+  }
+
+  &__content {
+    max-width: 1100px;
+    order: 0;
+
+    @include breakpoint($tablet) {
+      width: 70%;
+    }
+
+    p {
+      font-size: 14px;
+      line-height: 2.06;
+      margin: 0 0 25px;
+    }
+  }
+
+  &__header {
+    order: 0;
+
+    @include breakpoint($tablet) {
+      order: 1;
+    }
+  }
+}
+
+// People section styles
+.people {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 50px 0 0;
+
+  @include breakpoint($tablet) {
+    flex-direction: row;
+    margin: 100px 0 0;
+  }
+
+  &__content {
+    max-width: 1100px;
+    order: 0;
+
+    @include breakpoint($tablet) {
+      width: 70%;
+    }
+  }
+
+  &__header {
+    order: 0;
+
+    @include breakpoint($tablet) {
+      order: 1;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+
+    @include breakpoint($lmobile) {
+      grid-column-gap: 20px;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @include breakpoint($tablet) {
+      grid-column-gap: 20px;
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    @include breakpoint($ldesktop) {
+      grid-column-gap: 50px;
+    }
+
+    @include breakpoint($xldesktop) {
+      grid-column-gap: 100px;
+    }
+  }
+}
+
+// Person bit styles
+.person {
+  margin: 0 0 50px;
+
+  &__photo {
+    max-width: 100%;
+    padding: 20px;
+  }
+
+  &__bio {
+    p {
+      font-size: 14px;
+      line-height: 2.06;
+      margin: 10px 0;
+    }
+  }
+}

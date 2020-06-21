@@ -9,7 +9,7 @@
 
   &__category {
     color: $black-other;
-    font-family: $font-headline;
+    font-family: $font-body;
     font-size: 15px;
     font-weight: 400;
     line-height: 1;
@@ -59,7 +59,7 @@
 
   &__name {
     color: $yellow;
-    font-family: $font-headline;
+    font-family: $font-body;
     font-size: 20px;
     font-weight: 900;
     line-height: 1;
@@ -80,6 +80,7 @@
   }
 
   &__image {
+    border-radius: 50%;
     filter: grayscale(0);
     max-width: 450px;
     transition: filter 0.2s ease-in-out;

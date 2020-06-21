@@ -1,0 +1,6 @@
+<figure class="project">
+  <a href="{{post.link}}" class="project__link">
+    <img srcset="{{post.thumbnail.src|resize(660, 660)}}, {{post.thumbnail.src|resize(660, 660)|retina(2)}} 2x" alt="{{post.thumbnail.alt}}"  alt="project name" class="project__image">
+    <figcaption class="project__name">{{ post.title }}</figcaption>
+  </a>
+</figure>

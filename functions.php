@@ -23,6 +23,7 @@ class BSDStarterSite extends TimberSite
         add_filter('timber_context', array( $this, 'addToContext' ));
         add_action('wp_enqueue_scripts', array( $this, 'addStylesAndScripts' ), 999);
         add_action('widgets_init', array( $this, 'addSidebars' ));
+        add_action('add_meta_boxes', array($this, 'defaultPageTemplate'), 1);
         parent::__construct();
     }
 

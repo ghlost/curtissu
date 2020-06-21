@@ -1,0 +1,35 @@
+{% extends "base.twig" %}
+
+{% block content %}
+  <main class="about">
+    <div class="about__inner">
+      <section class="story">
+        <div class="story__header">
+          <h3 class="about__headline story__headline">Story</h3>
+        </div> <!-- /.story__header -->
+        <div class="story__content">
+          {{post.content}}
+        </div> <!-- /.story__content -->
+      </section>
+      <section class="people">
+        <div class="people__header">
+          <h3 class="about__headline people__headline">People</h3>
+        </div> <!-- /.people__header -->
+        <div class="people__content">
+          <div class="people__grid">
+            {% for person in post.get_field('people') %}
+              <figure class="person">
+                <div class="person__photo-wrapper">
+                  <img class="person__photo" srcset="{{ Image(person.bio_photo).src|resize(300) }}, {{ Image(person.bio_photo).src|resize(300)|retina(2) }} 2x" alt="{{ person.bio_photo.alt }}">
+                </div> <!-- /.person__photo-wrapper -->
+                <div class="person__bio">
+                  <p>{{ person.bio_content }}</p>
+                </div> <!-- /.person__bio -->
+              </figure> <!-- /.person -->
+            {% endfor %}
+          </div> <!-- /.people__grid -->
+        </div> <!-- /.people__content -->
+      </section>
+    </div>
+  </main>
+{% endblock %}

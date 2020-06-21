@@ -52,12 +52,12 @@
 
   &__blurb {
     p {
-      font-family: $font-headline;
+      font-family: $font-body;
       margin: 5px 0;
     }
 
     em {
-      font-family: $font-body;
+      font-family: $font-emphasis;
     }
 
     @include breakpoint($tablet) {
