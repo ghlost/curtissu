@@ -2,12 +2,16 @@
 .wpcf7-form .button.pseudo-class-hover,
 .form .button.pseudo-class-focus,
 .form .button.pseudo-class-hover {
-  background: #e5ae00;
+  background: #fecb00;
   color: #fff;
 }
 
 .footer__social-links.pseudo-class-hover {
   color: #e5ae00;
+}
+
+.location .map.pseudo-class-hover + .tooltip {
+  opacity: 1;
 }
 
 .location .address a.pseudo-class-focus,
@@ -36,6 +40,14 @@
 
 .project__link.pseudo-class-hover .project__image {
   filter: grayscale(0);
+}
+
+.project__link.pseudo-class-hover .project__image--nonhover {
+  opacity: 0;
+}
+
+.project__link.pseudo-class-hover .project__image--hover {
+  opacity: 1;
 }
 
 .project__link.pseudo-class-hover .project__name {

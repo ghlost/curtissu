@@ -96,7 +96,7 @@
 
   .button {
     background: transparent;
-    border: 1px solid $gold;
+    border: 1px solid $yellow;
     border-radius: 40px;
     color: $gray-other;
     cursor: pointer;
@@ -110,7 +110,7 @@
 
     &:focus,
     &:hover {
-      background: $gold;
+      background: $yellow;
       color: $white;
     }
   }

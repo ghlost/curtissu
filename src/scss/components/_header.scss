@@ -55,7 +55,7 @@
     font: inherit;
     margin: 0;
     overflow: visible;
-    padding: 15px;
+    padding: 0;
     text-transform: none;
     transition-duration: 0.15s;
     transition-property: opacity, filter;
@@ -66,14 +66,14 @@
     display: inline-block;
     height: 24px;
     position: relative;
-    width: 27px;
+    width: 24px;
   }
 
   &__inner {
     background-color: #000;
-    border-radius: 4px;
+    border-radius: 3px;
     display: block;
-    height: 4px;
+    height: 3px;
     margin-top: -2px;
     position: absolute;
     top: 50%;
@@ -85,10 +85,10 @@
     &::before,
     &::after {
       background-color: #000;
-      border-radius: 4px;
+      border-radius: 3px;
       content: '';
       display: block;
-      height: 4px;
+      height: 3px;
       position: absolute;
       transition-duration: 0.15s;
       transition-property: transform;
@@ -97,12 +97,12 @@
     }
 
     &::before {
-      top: -10px;
+      top: -8px;
       transition: top 75ms ease 0.12s, opacity 75ms ease;
     }
 
     &::after {
-      bottom: -10px;
+      bottom: -8px;
     }
 
     .hamburger__wrapper.open & {

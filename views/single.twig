@@ -1,31 +1,6 @@
 {% extends "base.twig" %}
 
 {% block content %}
-  {# <main id="content" class="row">
-    <div class="page-content small-12 large-8 columns">
-      <article id="post-{{post.ID}}" class="article post-type-{{post.post_type}}" role="article" itemscope itemtype="http://schema.org/BlogPosting">
-        <header class="article-header">
-          {% block article_header %}
-            <h1 class="page-title">{{post.title}}</h1>
-          {% endblock %}
-        </header> <!-- /.article-header -->
-        <section class="entry-content" itemprop="articleBody">
-          {% if post.get_thumbnail %} 
-            <img src="{{post.thumbnail.src}}" alt="{{post.thumbnail.alt}}">
-          {% endif %}
-          {{post.content}}
-        </section> <!-- /.entry-content -->
-        {% block article_footer %}
-        {% endblock %}
-      </article> <!-- /.article -->
-    </div> <!-- /.page-content.small-12.large-8.columns -->
-
-    {% block sidebar %}
-      <aside class="page-sidebar small-12 large-4 columns">
-        {{sidebar}}
-      </aside> <!-- /.page-sidebar -->
-    {% endblock %}
-  </main> <!-- /#content --> #}
   <article class="post">
     <div class="post__inner">
       <section class="post__hero">
@@ -46,11 +21,6 @@
       <section class="post__gallery">
         <div class="gallery__inner">
           <div class="gallery">
-            {# {% for image in post.image_set %}
-              <figure class="gallery__item gallery__item--{{ loop.index }}">
-                <img class="gallery__image" srcset="{{ Image(image).srcset }}" alt="{{ image.alt }}">
-              </figure>
-            {% endfor %} #}
 
             {% for module in post.get_field('project_gallery') %}
               {% include ['components/'~module.acf_fc_layout~'.twig'] ignore missing %}

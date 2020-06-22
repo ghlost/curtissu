@@ -43,11 +43,34 @@
   margin: 0;
   text-align: center;
 
+  &--contact {
+    .project__image {
+      filter: grayscale(0);
+
+      @include breakpoint($desktop) {
+        filter: grayscale(0);
+      }
+    }
+  }
+
   &__image {
     border-radius: 50%;
     filter: grayscale(0);
     max-width: 100%;
     transition: filter 0.1s ease-in-out;
+
+    &--nonhover {
+      opacity: 1;
+      transition: opacity 0.1s ease-in-out;
+    }
+
+    &--hover {
+      left: 0;
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      transition: opacity 0.1s ease-in-out;
+    }
 
     @include breakpoint($desktop) {
       filter: grayscale(1);
@@ -55,6 +78,8 @@
   }
 
   &__link {
+    display: inline-block;
+    position: relative;
     text-decoration: none;
 
     &:hover {
@@ -62,6 +87,14 @@
 
       .project__image {
         filter: grayscale(0);
+
+        &--nonhover {
+          opacity: 0;
+        }
+
+        &--hover {
+          opacity: 1;
+        }
       }
 
       .project__name {

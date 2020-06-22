@@ -5,6 +5,21 @@
     <div class="project-grid__inner">
       {% for post in posts %}
         {% include 'components/teaser.twig' %}
+        {% if loop.index == 2 %}
+          <figure class="project project--about">
+            <a href="/about-us" class="project__link">
+              <img src="/wp-content/uploads/2020/05/oreo.png" alt=""  alt="project name" class="project__image project__image--nonhover">
+              <img src="/wp-content/uploads/2020/05/kitty.png" alt=""  alt="project name" class="project__image project__image--hover">
+              <figcaption class="project__name">About Us</figcaption>
+            </a>
+          </figure>
+          <figure class="project project--contact">
+            <a href="/contact-us" class="project__link">
+              <img src="/wp-content/uploads/2020/06/Contact-Us.png" alt=""  alt="project name" class="project__image">
+              <figcaption class="project__name">Contact Us</figcaption>
+            </a>
+          </figure>
+        {% endif %}
       {% endfor %}
     </div>
   </main>

@@ -16,9 +16,11 @@
     margin: 20px 0;
     order: 0;
 
-    @include breakpoint($desktop) {
-      margin: 50px 0;
-      order: unset;
+    @include breakpoint($tablet) {
+      bottom: 20px;
+      margin: 0;
+      position: fixed;
+      right: 30px;
     }
   }
 
