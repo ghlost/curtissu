@@ -4659,12 +4659,13 @@ new _ComponentMap2.default[element.getAttribute(attribute)](element,_this.Servic
 });
 }}]);return App;}();exports.default=App;
 
-},{"./ComponentMap":12,"./components/services":32,"./components/views/InViewport":33}],12:[function(require,module,exports){
+},{"./ComponentMap":12,"./components/services":32,"./components/views/InViewport":34}],12:[function(require,module,exports){
 'use strict';
 
 // Import all required modules
 // import Header from './components/views/Header';
-Object.defineProperty(exports,"__esModule",{value:true});var _Nav=require('./components/views/Nav');var _Nav2=_interopRequireDefault(_Nav);
+Object.defineProperty(exports,"__esModule",{value:true});var _File=require('./components/views/File');var _File2=_interopRequireDefault(_File);
+var _Nav=require('./components/views/Nav');var _Nav2=_interopRequireDefault(_Nav);
 var _Video=require('./components/views/Video');var _Video2=_interopRequireDefault(_Video);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}
 // import Form from './components/views/Form';
 // import Filter from './components/views/Filter';
@@ -4678,6 +4679,7 @@ var _Video=require('./components/views/Video');var _Video2=_interopRequireDefaul
 // Export reference to all modules in an object
 exports.default={
 // Header,
+File:_File2.default,
 Nav:_Nav2.default,
 Video:_Video2.default
 // Form,
@@ -4690,7 +4692,7 @@ Video:_Video2.default
 // Banner,
 };
 
-},{"./components/views/Nav":34,"./components/views/Video":35}],13:[function(require,module,exports){
+},{"./components/views/File":33,"./components/views/Nav":35,"./components/views/Video":36}],13:[function(require,module,exports){
 'use strict';Object.defineProperty(exports,"__esModule",{value:true});//* ------------------------------------*\
 //    $ARIA STRINGS
 //* ------------------------------------*/
@@ -5435,6 +5437,106 @@ this.ScrollService=new _ScrollService2.default();
 },{"./ClickService":29,"./ResizeService":30,"./ScrollService":31}],33:[function(require,module,exports){
 'use strict';Object.defineProperty(exports,"__esModule",{value:true});var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||false;descriptor.configurable=true;if("value"in descriptor)descriptor.writable=true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};}();
 
+var _Constants=require('../../Constants');function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}
+
+/**
+                                                                                                                                                                                                   * A class that shows the first file uploaded to file field on matching label
+                                                                                                                                                                                                   */var
+File=function(){
+/**
+                     * Constructor for File
+                     *
+                     * @param {HTMLElement} element - REQUIRED - the module's container
+                     */
+function File(element){_classCallCheck(this,File);
+/**
+                                                        * DOM node that is passed into the constructor
+                                                        *
+                                                        * @property {Object} element DOM node that is passed into the constructor
+                                                        */
+this.element=element;
+
+// Initialize the view
+this.init();
+}
+
+/**
+     * Initializes the view by calling the functions to
+     * create DOM references, setup event handlers and
+     * then create the event listeners
+     *
+     * @return {Object} Header A reference to the current instance of the class
+     * @chainable
+     */_createClass(File,[{key:'init',value:function init()
+{
+this.cacheDomReferences().
+setupHandlers().
+enable();
+
+return this;
+}
+
+/**
+       * Cache DOM References
+       *
+       * Find all necessary DOM elements used in the view and cache them
+       *
+       * @return {Object} Header A reference to the current instance of the class
+       * @chainable
+       */},{key:'cacheDomReferences',value:function cacheDomReferences()
+{
+this.file=document.getElementById(this.element.getAttribute('for'));
+
+return this;
+}
+
+/**
+       * Bind event handlers with the proper context of `this`.
+       *
+       * @return {Object} Nav A reference to the current instance of the class
+       * @chainable
+       */},{key:'setupHandlers',value:function setupHandlers()
+{
+/**
+       * A reference to the `scrollTo` function with the proper
+       * context bound to the SVGScrollAnimations class.
+       *
+       * @property {Function}
+       */
+this.onChangeHandler=this.onChange.bind(this);
+
+return this;
+}
+
+/**
+       * Create event handlers to enable interaction with view
+       *
+       * @return {Object} Nav A reference to the current instance of the class
+       * @chainable
+       */},{key:'enable',value:function enable()
+{
+this.file.addEventListener(_Constants.EVENTS.CHANGE,this.onChangeHandler);
+
+return this;
+}
+
+/**
+       * Changing file uploaded will replace the name
+       *
+       * @return {Object} A reference to the current instance of this class
+       * @chainable
+       */},{key:'onChange',value:function onChange(
+event){
+console.log('changed');
+
+this.element.innerText=this.file.files.length>0?this.file.files[0].name:'Any Attachment?';
+
+return this;
+}}]);return File;}();exports.default=File;
+
+},{"../../Constants":18}],34:[function(require,module,exports){
+'use strict';Object.defineProperty(exports,"__esModule",{value:true});var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||false;descriptor.configurable=true;if("value"in descriptor)descriptor.writable=true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};}();
+
 var _Utils=require('../../Utils');
 var _Constants=require('Constants');function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}
 
@@ -5585,7 +5687,7 @@ this.cacheDomReferences().onScroll();
 return this;
 }}]);return InViewport;}();exports.default=InViewport;
 
-},{"../../Utils":24,"Constants":18}],34:[function(require,module,exports){
+},{"../../Utils":24,"Constants":18}],35:[function(require,module,exports){
 'use strict';Object.defineProperty(exports,"__esModule",{value:true});var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||false;descriptor.configurable=true;if("value"in descriptor)descriptor.writable=true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};}();
 
 var _Constants=require('../../Constants');function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}
@@ -5707,7 +5809,7 @@ this.siteNav.setAttribute(_Constants.ARIA.HIDDEN,isOpen);
 document.body.classList.toggle(_Constants.CLASS_NAMES.OPENED);
 }}]);return Nav;}();exports.default=Nav;
 
-},{"../../Constants":18}],35:[function(require,module,exports){
+},{"../../Constants":18}],36:[function(require,module,exports){
 'use strict';Object.defineProperty(exports,"__esModule",{value:true});var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||false;descriptor.configurable=true;if("value"in descriptor)descriptor.writable=true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};}();
 
 var _Constants=require('../../Constants');
@@ -5823,7 +5925,7 @@ this.element.classList.add('fade');
 document.body.classList.remove('video-open');
 }}]);return Video;}();exports.default=Video;
 
-},{"../../Constants":18,"../../Utils":24}],36:[function(require,module,exports){
+},{"../../Constants":18,"../../Utils":24}],37:[function(require,module,exports){
 (function(global){
 /* eslint-env browser */
 'use strict';
@@ -5868,7 +5970,7 @@ window.App=new _App2.default();
 
 }).call(this,typeof global!=="undefined"?global:typeof self!=="undefined"?self:typeof window!=="undefined"?window:{});
 
-},{"./App":11,"foundation-sites/js/foundation.core.js":1,"foundation-sites/js/foundation.offcanvas.js":2,"foundation-sites/js/foundation.util.box.js":3,"foundation-sites/js/foundation.util.keyboard.js":4,"foundation-sites/js/foundation.util.mediaQuery.js":5,"foundation-sites/js/foundation.util.motion.js":6,"foundation-sites/js/foundation.util.nest.js":7,"foundation-sites/js/foundation.util.timerAndImageLoader.js":8,"foundation-sites/js/foundation.util.touch.js":9,"foundation-sites/js/foundation.util.triggers.js":10,"modules/socialShare.js":37}],37:[function(require,module,exports){
+},{"./App":11,"foundation-sites/js/foundation.core.js":1,"foundation-sites/js/foundation.offcanvas.js":2,"foundation-sites/js/foundation.util.box.js":3,"foundation-sites/js/foundation.util.keyboard.js":4,"foundation-sites/js/foundation.util.mediaQuery.js":5,"foundation-sites/js/foundation.util.motion.js":6,"foundation-sites/js/foundation.util.nest.js":7,"foundation-sites/js/foundation.util.timerAndImageLoader.js":8,"foundation-sites/js/foundation.util.touch.js":9,"foundation-sites/js/foundation.util.triggers.js":10,"modules/socialShare.js":38}],38:[function(require,module,exports){
 (function(global){
 /* eslint-env browser */
 'use strict';Object.defineProperty(exports,"__esModule",{value:true});
@@ -5979,4 +6081,4 @@ socialShare;
 
 }).call(this,typeof global!=="undefined"?global:typeof self!=="undefined"?self:typeof window!=="undefined"?window:{});
 
-},{}]},{},[36]);
+},{}]},{},[37]);

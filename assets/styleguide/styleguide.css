@@ -249,6 +249,7 @@ a {
     border: none;
     border-bottom: 1px solid #e5ae00;
     display: inline-block;
+    font-family: "Raleway", sans-serif;
     font-size: 16px;
     margin: 10px 0;
     padding: 5px;
@@ -265,6 +266,20 @@ a {
       height: 200px;
       line-height: 40px;
       outline: 0; }
+    .wpcf7-form .text--file,
+    .form .text--file {
+      border: 0;
+      clip: rect(0 0 0 0);
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+      width: 1px; }
+    .wpcf7-form .text--label,
+    .form .text--label {
+      cursor: pointer;
+      width: 220px; }
     @media screen and (min-width: 768px) {
       .wpcf7-form .text,
       .form .text {

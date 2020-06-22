@@ -2,6 +2,7 @@
 
 // Import all required modules
 // import Header from './components/views/Header';
+import File from './components/views/File';
 import Nav from './components/views/Nav';
 import Video from './components/views/Video';
 // import Form from './components/views/Form';
@@ -16,6 +17,7 @@ import Video from './components/views/Video';
 // Export reference to all modules in an object
 export default {
     // Header,
+    File,
     Nav,
     Video,
     // Form,
