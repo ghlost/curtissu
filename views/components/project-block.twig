@@ -6,7 +6,7 @@
   {% endif %}
 {% endif %}
 <a href="{{post.link}}" class="project-block__link">
-  <img srcset="{{post.thumbnail.src|resize(764, 764)}}, {{post.thumbnail.src|resize(764, 764)|retina(2)}} 2x" alt="{{post.thumbnail.alt}}"  alt="project name" class="project-block__image">
+  <img srcset="{{post.thumbnail.src|resize(450, 450)}}, {{post.thumbnail.src|resize(450, 450)|retina(2)}} 2x" alt="{{post.thumbnail.alt}}"  alt="project name" class="project-block__image">
   <div class="project-block__content">
     <p class="project-block__name">{{ post.title }}</p>
     {% if post.location %}

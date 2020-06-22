@@ -679,7 +679,6 @@ em {
       margin: 0 40px 0 100px; } }
 
 .project-block__image {
-  border-radius: 50%;
   filter: grayscale(0);
   max-width: 450px;
   transition: filter 0.2s ease-in-out;
