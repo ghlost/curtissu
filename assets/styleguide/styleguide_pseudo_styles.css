@@ -10,10 +10,6 @@
   color: #e5ae00;
 }
 
-.location .map.pseudo-class-hover + .tooltip {
-  opacity: 1;
-}
-
 .location .address a.pseudo-class-focus,
 .location .address a.pseudo-class-hover {
   color: #e5ae00;

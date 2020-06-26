@@ -100,9 +100,11 @@
     border-radius: 40px;
     color: $gray-other;
     cursor: pointer;
-    display: inline-block;
+    display: block;
+    float: right;
     font-family: $font-body;
     font-size: 21px;
+    font-weight: 700;
     margin-top: 30px;
     max-width: 175px;
     padding: 10px 25px;
@@ -123,5 +125,9 @@
     border: none;
     border-left: 1px solid $yellow;
     opacity: 0;
+  }
+
+  div.wpcf7 .ajax-loader {
+    display: none;
   }
 }

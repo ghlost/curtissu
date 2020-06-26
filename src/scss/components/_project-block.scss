@@ -15,12 +15,14 @@
     line-height: 1;
     margin: 20px 0;
     order: 0;
+    width: 100%;
 
-    @include breakpoint($tablet) {
-      bottom: 20px;
+    @include breakpoint($desktop) {
       margin: 0;
       position: fixed;
       right: 30px;
+      top: 600px;
+      width: auto;
     }
   }
 
@@ -48,7 +50,7 @@
       flex-wrap: nowrap;
       margin: 50px 0;
       order: unset;
-      width: 70%;
+      width: calc(100% - 100px);
     }
   }
 
@@ -76,6 +78,10 @@
   &__content {
     margin: 10px 0 0;
 
+    @include breakpoint($tablet) {
+      margin: 0 40px 0 50px;
+    }
+
     @include breakpoint($desktop) {
       margin: 0 40px 0 100px;
     }
@@ -83,12 +89,16 @@
 
   &__image {
     filter: grayscale(0);
-    max-width: 450px;
     transition: filter 0.2s ease-in-out;
     width: 100%;
 
+    @include breakpoint($tablet) {
+      max-width: 300px;
+    }
+
     @include breakpoint($desktop) {
       filter: grayscale(1);
+      max-width: 450px;
     }
   }
 }

@@ -294,9 +294,11 @@ em {
     border-radius: 40px;
     color: #646464;
     cursor: pointer;
-    display: inline-block;
+    display: block;
+    float: right;
     font-family: "Raleway", sans-serif;
     font-size: 21px;
+    font-weight: 700;
     margin-top: 30px;
     max-width: 175px;
     padding: 10px 25px;
@@ -318,11 +320,17 @@ em {
     border: none;
     border-left: 1px solid #fecb00;
     opacity: 0; }
+  .wpcf7-form div.wpcf7 .ajax-loader,
+  .form div.wpcf7 .ajax-loader {
+    display: none; }
 
 .footer {
+  background: #fff;
   clear: both;
   margin: 100px 0 0;
-  padding: 0 30px; }
+  padding: 0 30px;
+  position: relative;
+  z-index: 5; }
   .home .footer {
     justify-content: flex-end;
     padding: 0; }
@@ -366,9 +374,20 @@ em {
       .footer__logos {
         max-width: 195px; } }
   .footer__social-links {
-    color: #afafaf; }
+    color: #afafaf;
+    display: inline-block; }
     .footer__social-links:hover {
       color: #e5ae00; }
+    .footer__social-links--mobile {
+      display: inline-block; }
+      @media screen and (min-width: 1024px) {
+        .footer__social-links--mobile {
+          display: none; } }
+    .footer__social-links--desktop {
+      display: none; }
+      @media screen and (min-width: 1024px) {
+        .footer__social-links--desktop {
+          display: inline-block; } }
     .footer__social-links .icon--insta {
       max-height: 22px;
       max-width: 22px; }
@@ -536,26 +555,21 @@ em {
 .location__inner {
   max-width: 700px; }
 
-.location .tooltip {
-  left: 22%;
-  opacity: 0;
-  position: absolute;
-  top: 12%;
-  transition: all 0.1s ease-in-out; }
-
-.location .map {
+.location #map {
+  color: #fecb00;
   height: 100%;
-  left: 0;
-  position: absolute;
-  top: 0;
   width: 100%; }
-  .location .map__wrapper {
-    height: 0;
-    overflow: hidden;
-    padding-top: 64.4%;
-    position: relative; }
-  .location .map:hover + .tooltip {
-    opacity: 1; }
+  .location #map .tooltip {
+    fill: #fecb00; }
+  @media screen and (min-width: 1024px) {
+    .location #map {
+      color: #c0cb03; }
+      .location #map .tooltip {
+        opacity: 0; }
+      .location #map:hover {
+        color: #fecb00; }
+        .location #map:hover .tooltip {
+          opacity: 1; } }
 
 .location .address a {
   color: #646464;
@@ -627,13 +641,15 @@ em {
   font-weight: 400;
   line-height: 1;
   margin: 20px 0;
-  order: 0; }
-  @media screen and (min-width: 768px) {
+  order: 0;
+  width: 100%; }
+  @media screen and (min-width: 1024px) {
     .project-block__category {
-      bottom: 20px;
       margin: 0;
       position: fixed;
-      right: 30px; } }
+      right: 30px;
+      top: 600px;
+      width: auto; } }
 
 .project-block__link {
   align-items: flex-end;
@@ -652,7 +668,7 @@ em {
       flex-wrap: nowrap;
       margin: 50px 0;
       order: unset;
-      width: 70%; } }
+      width: calc(100% - 100px); } }
 
 .project-block__location {
   color: #878482;
@@ -674,18 +690,24 @@ em {
 
 .project-block__content {
   margin: 10px 0 0; }
+  @media screen and (min-width: 768px) {
+    .project-block__content {
+      margin: 0 40px 0 50px; } }
   @media screen and (min-width: 1024px) {
     .project-block__content {
       margin: 0 40px 0 100px; } }
 
 .project-block__image {
   filter: grayscale(0);
-  max-width: 450px;
   transition: filter 0.2s ease-in-out;
   width: 100%; }
+  @media screen and (min-width: 768px) {
+    .project-block__image {
+      max-width: 300px; } }
   @media screen and (min-width: 1024px) {
     .project-block__image {
-      filter: grayscale(1); } }
+      filter: grayscale(1);
+      max-width: 450px; } }
 
 .project-grid {
   display: flex;
