@@ -21,8 +21,12 @@
       margin: 0;
       position: fixed;
       right: 30px;
-      top: 600px;
+      top: 500px;
       width: auto;
+    }
+
+    @include breakpoint($xldesktop) {
+      right: calc(50% - 680px);
     }
   }
 

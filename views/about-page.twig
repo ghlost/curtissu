@@ -19,9 +19,14 @@
           <div class="people__grid">
             {% for person in post.get_field('people') %}
               <figure class="person">
-                <div class="person__photo-wrapper">
-                  <img class="person__photo" srcset="{{ Image(person.bio_photo).src|resize(300) }}, {{ Image(person.bio_photo).src|resize(300)|retina(2) }} 2x" alt="{{ person.bio_photo.alt }}">
-                </div> <!-- /.person__photo-wrapper -->
+                <div class="person__identifier">
+                  <div class="person__name-wrapper">
+                    <h3 class="person__name">{{ person.bio_name }}</h3>
+                  </div>
+                  <div class="person__photo-wrapper">
+                    <img class="person__photo" srcset="{{ Image(person.bio_photo).src|resize(500, 500) }}, {{ Image(person.bio_photo).src|resize(500, 500)|retina(2) }} 2x" alt="{{ person.bio_photo.alt }}">
+                  </div> <!-- /.person__photo-wrapper -->
+                </div>
                 <div class="person__bio">
                   <p>{{ person.bio_content }}</p>
                 </div> <!-- /.person__bio -->

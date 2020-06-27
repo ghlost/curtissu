@@ -1,3 +1,11 @@
+.person.pseudo-class-hover .person__name-wrapper {
+  opacity: 1;
+}
+
+.person.pseudo-class-hover .person__photo {
+  opacity: 0;
+}
+
 .wpcf7-form .button.pseudo-class-focus,
 .wpcf7-form .button.pseudo-class-hover,
 .form .button.pseudo-class-focus,

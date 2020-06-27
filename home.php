@@ -16,14 +16,16 @@ $context['home'] = Timber::get_post();
 
 $postArgs = array(
   'post_type' => ['post'],
-  'posts_per_page' => 20,
+  'posts_per_page' => 100,
   'orderby' => array(
-    'date' => 'DESC'
+    'menu_order' => 'ASC'
   )
 );
 
 $context['posts'] = new Timber\PostQuery($postArgs);
 $templates = array( 'home.twig' );
+
+var_dump($context['posts']);
 
 if (is_post_type_archive('people')) {
     array_unshift($templates, 'index-grid.twig');
