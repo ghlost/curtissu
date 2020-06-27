@@ -669,7 +669,7 @@ em {
       margin: 0;
       position: fixed;
       right: 30px;
-      top: 500px;
+      top: 600px;
       width: auto; } }
   @media screen and (min-width: 1440px) {
     .project-block__category {
