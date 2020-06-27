@@ -25,8 +25,6 @@ $postArgs = array(
 $context['posts'] = new Timber\PostQuery($postArgs);
 $templates = array( 'home.twig' );
 
-var_dump($context['posts']);
-
 if (is_post_type_archive('people')) {
     array_unshift($templates, 'index-grid.twig');
 }
