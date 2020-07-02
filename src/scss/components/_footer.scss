@@ -39,7 +39,8 @@
   }
 
   &__inner {
-    padding: 20px;
+    padding: 0;
+    text-align: center;
 
     @include breakpoint($tablet) {
       align-items: center;
@@ -55,10 +56,12 @@
     align-items: center;
     display: flex;
     justify-content: space-between;
+    margin: auto;
     max-width: 120px;
     width: 100%;
 
     @include breakpoint($tablet) {
+      margin: 0;
       max-width: 195px;
     }
   }
