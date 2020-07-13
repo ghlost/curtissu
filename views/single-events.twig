@@ -1,0 +1,26 @@
+{% extends "base.twig" %}
+
+{% block content %}
+  <article class="event">
+    <div class="event__inner">
+      <section class="event__hero">
+        <img class="event__hero-picture" srcset="{{ Image(post.hero).srcset }}" alt="{{ post.hero.alt }}">
+        {% if post.subtitle %}
+        <div class="event__headline">
+          <h2 class="event__title">{{ post.title }}</h2>
+          <h3 class="event__subtitle">{{ post.subtitle }}</h3>
+        </div>
+        {% endif %}
+      </section>
+      <section class="event__content">
+        <div class="event__collage">
+        <img class="event__collage-picture" srcset="{{ Image(post.collage).srcset }}" sizes="(min-width: 768px) 70vw, 100vw" alt="{{ post.alt }}">
+        </div>
+        <div class="event__description">
+          {% if post.event_date %}<p class="event__date">{{ post.event_date }}</p>{% endif %}
+          {{ post.content }}
+        </div>
+      </section>
+    </div>
+  </article>
+{% endblock %}

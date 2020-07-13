@@ -1,0 +1,79 @@
+.event {
+  padding-top: 100px;
+
+  @include breakpoint($tablet) {
+    padding-top: 125px;
+  }
+
+  &__inner {
+    margin: auto;
+    max-width: 1400px;
+    padding: 0 20px;
+  }
+
+  &__hero {
+    position: relative;
+
+    &-picture {
+      width: 100%;
+    }
+  }
+
+  &__headline {
+    bottom: 25px;
+    color: $white;
+    left: 50%;
+    max-width: 100%;
+    padding-left: 25px;
+    position: absolute;
+    transform: translateX(-50%);
+    width: 1400px;
+  }
+
+  &__title {
+    font-family: $font-extra;
+    font-size: 32px;
+    margin: 0;
+  }
+
+  &__subtitle {
+    font-size: 16px;
+    font-weight: 400;
+    margin: 0;
+  }
+
+  &__content {
+    margin: 50px 0;
+
+    @include breakpoint($tablet) {
+      display: flex;
+      justify-content: space-between;
+      margin: 100px 0;
+    }
+  }
+
+  &__collage {
+    &-picture {
+      max-width: 100%;
+    }
+
+    @include breakpoint($tablet) {
+      max-width: 70%;
+    }
+  }
+
+  &__description {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-top: 50px;
+
+    @include breakpoint($tablet) {
+      margin-top: 0;
+      max-width: 25%;
+    }
+  }
+
+  &__date {
+    margin-top: 0;
+  }
+}
