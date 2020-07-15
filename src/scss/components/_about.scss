@@ -124,6 +124,10 @@
     position: relative;
   }
 
+  &__photo-wrapper {
+    line-height: 0;
+  }
+
   &__name-wrapper {
     align-items: center;
     border: 2px solid $yellow;

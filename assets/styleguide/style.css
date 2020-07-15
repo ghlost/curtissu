@@ -211,6 +211,8 @@ em {
     opacity: 0; }
   .person__identifier {
     position: relative; }
+  .person__photo-wrapper {
+    line-height: 0; }
   .person__name-wrapper {
     align-items: center;
     border: 2px solid #fecb00;
@@ -366,9 +368,14 @@ em {
     .event {
       padding-top: 125px; } }
   .event__inner {
-    margin: auto;
+    margin: 30px auto;
     max-width: 1400px;
     padding: 0 20px; }
+    @media screen and (min-width: 1440px) {
+      .event__inner {
+        margin: 60px auto;
+        max-width: 100%;
+        width: 100%; } }
   .event__hero {
     position: relative; }
     .event__hero-picture {
@@ -396,12 +403,24 @@ em {
       .event__content {
         display: flex;
         justify-content: space-between;
-        margin: 100px 0; } }
+        margin: 100px auto;
+        max-width: 1400px; }
+        .event__content--full {
+          flex-wrap: wrap; } }
   .event__collage-picture {
-    max-width: 100%; }
+    max-width: 100%;
+    width: 100%; }
   @media screen and (min-width: 768px) {
     .event__collage {
-      max-width: 70%; } }
+      max-width: 70%; }
+      .event__content--left .event__collage {
+        order: 0; }
+      .event__content--right .event__collage {
+        order: 1; }
+      .event__content--full .event__collage {
+        max-width: 100%;
+        order: 0;
+        width: 100%; } }
   .event__description {
     font-size: 16px;
     line-height: 1.6;
@@ -409,7 +428,15 @@ em {
     @media screen and (min-width: 768px) {
       .event__description {
         margin-top: 0;
-        max-width: 25%; } }
+        max-width: 25%; }
+        .event__content--left .event__description {
+          order: 1; }
+        .event__content--right .event__description {
+          order: 0; }
+        .event__content--full .event__description {
+          margin-top: 50px;
+          max-width: 100%;
+          order: 1; } }
   .event__date {
     margin-top: 0; }
 
@@ -511,7 +538,7 @@ em {
 
 .header {
   background: #fff;
-  padding: 0 25px;
+  padding: 0 20px;
   position: fixed;
   right: 0;
   top: 0;
@@ -522,7 +549,7 @@ em {
     right: 75vw; }
   @media screen and (min-width: 768px) {
     .header {
-      padding: 0 30px; }
+      padding: 0 20px; }
       .opened .header {
         left: auto;
         right: 380px; } }
@@ -887,6 +914,7 @@ em {
         opacity: 0; } }
 
 .project-list {
+  padding: 0 20px;
   position: relative;
   width: 100%; }
   .project-list__inner {
@@ -894,8 +922,7 @@ em {
     display: flex;
     flex-wrap: wrap;
     margin: auto;
-    max-width: 1400px;
-    padding: 0 20px; }
+    max-width: 1400px; }
 
 .post {
   padding-top: 125px; }
