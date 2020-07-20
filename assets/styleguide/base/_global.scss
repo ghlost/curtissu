@@ -41,6 +41,11 @@ em {
   font-family: $font-emphasis;
 }
 
+.off-canvas-content {
+  min-height: calc(100vh - 44px);
+  position: relative;
+}
+
 .off-canvas-wrapper {
   overflow: hidden;
 }

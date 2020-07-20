@@ -1,8 +1,11 @@
 <div class="gallery__row {% if module.flip_percentage %}gallery__row--forty-sixty{% else %}gallery__row--sixty-forty{% endif %}">
   <figure class="gallery__item">
-    <img class="gallery__image" srcset="{{ Image(module.first_image).srcset }}" sizes="(min-width: 768px) 60vw, 100vw" alt="{{ module.first_image.alt }}">
+    {# <img class="gallery__image" srcset="{{ Image(module.first_image).srcset }}" sizes="(min-width: 768px) 60vw, 100vw" alt="{{ module.first_image.alt }}"> #}
+    <img class="gallery__image lazy" data-src="{{ Image(module.first_image).src }}" alt="{{ module.first_image.alt }}">
+
   </figure>
   <figure class="gallery__item">
-    <img class="gallery__image" srcset="{{ Image(module.second_image).srcset }}" sizes="(min-width: 768px) 60vw, 100vw" alt="{{ module.second_image.alt }}">
+    {# <img class="gallery__image" srcset="{{ Image(module.second_image).srcset }}" sizes="(min-width: 768px) 60vw, 100vw" alt="{{ module.second_image.alt }}"> #}
+    <img class="gallery__image lazy" data-src="{{ Image(module.second_image).src }}" alt="{{ module.second_image.alt }}">
   </figure>
 </div>

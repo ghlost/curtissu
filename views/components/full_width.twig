@@ -1,5 +1,6 @@
 <div class="gallery__row">
   <figure class="gallery__item">
-    <img class="gallery__image" srcset="{{ Image(module.full_width_image).srcset }}" alt="{{ module.full_width_image.alt }}">
+    {# <img class="gallery__image" srcset="{{ Image(module.full_width_image).srcset }}" alt="{{ module.full_width_image.alt }}"> #}
+    <img class="gallery__image lazy" data-src="{{ Image(module.full_width_image).src }}" alt="{{ module.full_width_image.alt }}">
   </figure>
 </div>
