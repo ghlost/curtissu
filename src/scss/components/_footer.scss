@@ -41,8 +41,10 @@
   }
 
   @include breakpoint($xldesktop) {
-    bottom: 0;
-    position: absolute;
+    .post-type-archive-events & {
+      bottom: 0;
+      position: absolute;
+    }
   }
 
   &__inner {

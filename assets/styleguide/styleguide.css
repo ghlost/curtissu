@@ -477,7 +477,7 @@ em {
       justify-content: center;
       width: 100%; } }
   @media screen and (min-width: 1440px) {
-    .footer {
+    .post-type-archive-events .footer {
       bottom: 0;
       position: absolute; } }
   .footer__inner {
@@ -924,7 +924,7 @@ em {
         opacity: 0; } }
 
 .project-list {
-  padding: 0 20px;
+  padding: 0 20px 100px;
   position: relative;
   width: 100%; }
   .project-list__inner {
