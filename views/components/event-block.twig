@@ -1,0 +1,16 @@
+{% if loop.first %}
+  {% if cat_title %}
+    <p class="project-block__category">{{ cat_title }}</p>
+  {% else %}
+    <p class="project-block__category">Events</p>
+  {% endif %}
+{% endif %}
+<a href="{{post.link}}" class="project-block__link">
+  <img srcset="{{post.thumbnail.src|resize(450, 450)}}, {{post.thumbnail.src|resize(450, 450)|retina(2)}} 2x" alt="{{post.thumbnail.alt}}"  alt="project name" class="project-block__image">
+  <div class="project-block__content">
+    <p class="project-block__name">{{ post.title }}</p>
+    {% if post.location %}
+      <p class="project-block__location"><em>{{ post.location }}</em></p>
+    {% endif %}
+  </div>
+</a>

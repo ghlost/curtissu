@@ -1,6 +1,6 @@
 <?php
 /**
-* Post Archives
+* Events Archives
 *
 * A fallback list template used if a more specific template is not available
 *
@@ -12,7 +12,7 @@ if (! class_exists('Timber')) {
     return;
 }
 $context = Timber::get_context();
-$context['page'] = Timber::get_post();
+$context['post'] = Timber::get_post();
 
 $postArgs = array(
   'post_type' => ['post'],
@@ -27,6 +27,6 @@ if ( is_category() ) {
 }
 
 $context['posts'] = new Timber\PostQuery();
-$templates = array( 'projects.twig' );
+$templates = array( 'events.twig' );
 
 Timber::render($templates, $context);
