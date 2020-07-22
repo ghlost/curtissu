@@ -1,0 +1,60 @@
+.services {
+  background: $green-pale;
+  padding: 50px 0;
+
+  @include breakpoint($tablet) {
+    padding: 75px 0;
+  }
+
+  &__inner {
+    background: url(assets/img/shapes.svg) no-repeat;
+    background-position: 90% center;
+    background-size: contain;
+    margin: 30px auto;
+    max-width: 1400px;
+    padding: 0 20px;
+
+    @include breakpoint($xldesktop) {
+      margin: 60px auto;
+      max-width: 100%;
+      width: 100%;
+    }
+  }
+
+  &__headline {
+    color: $orange-burnt;
+    font-family: $font-heavy;
+    font-size: 40px;
+    font-weight: 400;
+    margin: 0 0 10px;
+    text-transform: uppercase;
+
+    span {
+      display: inline-block;
+      position: relative;
+
+      &::before {
+        background: $white;
+        bottom: 0;
+        content: '';
+        height: 5px;
+        position: absolute;
+        right: 0;
+        width: calc(100% - 8px);
+      }
+    }
+  }
+
+  &__content {
+    font-size: 20px;
+    line-height: 1.44;
+    margin-top: 30px;
+    max-width: 800px;
+
+    span {
+      background: #edf1e7;
+      border-radius: 5px;
+      display: inline-block;
+    }
+  }
+}

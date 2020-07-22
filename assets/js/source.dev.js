@@ -5857,7 +5857,7 @@ enable();
 
 
 document.body.classList.add('video-open');
-document.cookie='video=true;';
+document.cookie='video=true;max-age=1200;';
 this.content.classList.remove('hidden');
 }else{
 this.element.classList.add('fade');
