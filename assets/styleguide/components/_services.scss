@@ -13,11 +13,10 @@
     margin: 30px auto;
     max-width: 1400px;
     padding: 0 20px;
+    width: 100%;
 
     @include breakpoint($xldesktop) {
       margin: 60px auto;
-      max-width: 100%;
-      width: 100%;
     }
   }
 
