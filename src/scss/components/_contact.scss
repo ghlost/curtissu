@@ -35,6 +35,10 @@
     @include breakpoint($desktop) {
       grid-column-gap: 100px;
     }
+
+    @include breakpoint($xldesktop) {
+      padding: 0;
+    }
   }
 
   &-form__title {

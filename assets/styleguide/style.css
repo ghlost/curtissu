@@ -267,6 +267,9 @@ em {
     @media screen and (min-width: 1024px) {
       .contact__inner {
         grid-column-gap: 100px; } }
+    @media screen and (min-width: 1440px) {
+      .contact__inner {
+        padding: 0; } }
   @media screen and (min-width: 768px) {
     .contact-form__title {
       text-align: right; } }
@@ -1013,7 +1016,8 @@ em {
     width: 100%; }
     @media screen and (min-width: 1440px) {
       .services__inner {
-        margin: 60px auto; } }
+        margin: 60px auto;
+        padding: 0; } }
   .services__headline {
     color: #d35e39;
     font-family: "Impact", sans-serif;
