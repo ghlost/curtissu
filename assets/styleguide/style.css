@@ -611,7 +611,7 @@ em {
   width: 24px; }
 
 .hamburger__inner {
-  background-color: #000;
+  background-color: #d35e39;
   border-radius: 3px;
   display: block;
   height: 3px;
@@ -623,7 +623,7 @@ em {
   transition-timing-function: ease;
   width: 100%; }
   .hamburger__inner::before, .hamburger__inner::after {
-    background-color: #000;
+    background-color: #d35e39;
     border-radius: 3px;
     content: '';
     display: block;
@@ -1002,17 +1002,26 @@ em {
 
 .services {
   background: #d3ddc3;
-  padding: 50px 0; }
+  padding: 50px 0;
+  position: relative; }
+  .services::before {
+    background: url(assets/img/shapes.svg) no-repeat;
+    background-position: right;
+    background-size: contain;
+    content: '';
+    height: 100%;
+    position: absolute;
+    right: 10%;
+    top: 10%;
+    width: 100%; }
   @media screen and (min-width: 768px) {
     .services {
       padding: 75px 0; } }
   .services__inner {
-    background: url(assets/img/shapes.svg) no-repeat;
-    background-position: 90% center;
-    background-size: contain;
     margin: 30px auto;
     max-width: 1400px;
     padding: 0 20px;
+    position: relative;
     width: 100%; }
     @media screen and (min-width: 1440px) {
       .services__inner {

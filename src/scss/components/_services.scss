@@ -1,18 +1,29 @@
 .services {
   background: $green-pale;
   padding: 50px 0;
+  position: relative;
+
+  &::before {
+    background: url(assets/img/shapes.svg) no-repeat;
+    background-position: right;
+    background-size: contain;
+    content: '';
+    height: 100%;
+    position: absolute;
+    right: 10%;
+    top: 10%;
+    width: 100%;
+  }
 
   @include breakpoint($tablet) {
     padding: 75px 0;
   }
 
   &__inner {
-    background: url(assets/img/shapes.svg) no-repeat;
-    background-position: 90% center;
-    background-size: contain;
     margin: 30px auto;
     max-width: 1400px;
     padding: 0 20px;
+    position: relative;
     width: 100%;
 
     @include breakpoint($xldesktop) {

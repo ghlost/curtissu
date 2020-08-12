@@ -70,7 +70,7 @@
   }
 
   &__inner {
-    background-color: #000;
+    background-color: $orange-burnt;
     border-radius: 3px;
     display: block;
     height: 3px;
@@ -84,7 +84,7 @@
 
     &::before,
     &::after {
-      background-color: #000;
+      background-color: $orange-burnt;
       border-radius: 3px;
       content: '';
       display: block;
