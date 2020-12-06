@@ -3,13 +3,18 @@
 {% block content %}
   <main class="contact-us">
     <section class="services" id="services">
-      <div class="services__inner">
-        <h1 class="services__headline"><span>Services.</span></h1>
-        <h1 class="services__headline"><span>Value.</span></h1>
-        <div class="services__content">
-          {{ post.wysiwyg }}
-        </div> <!-- /.services__content -->
-      </div> <!-- /.services__inner -->
+      <div class="services__parallax">
+        <div class="services__inner parallax__layer">
+          <h1 class="services__headline"><span>Services.</span></h1>
+          <h1 class="services__headline"><span>Value.</span></h1>
+          <div class="services__content">
+            {{ post.wysiwyg }}
+          </div> <!-- /.services__content -->
+        </div> <!-- /.services__inner -->
+        <div class="parallax__layer parallax__layer--base">
+          <img src="{{ theme.path }}/assets/img/shapes.svg" alt="">
+        </div> <!-- /.parallax__layer -->
+      </div> <!-- /.services__parallax -->
     </section>
     <section class="contact">
       <div class="contact__inner">

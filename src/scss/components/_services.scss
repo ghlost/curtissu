@@ -1,35 +1,58 @@
 .services {
   background: $green-pale;
-  padding: 50px 0;
-  position: relative;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  // padding: 50px 0;
+  perspective: 1px;
+  // position: relative;
 
-  &::before {
-    background: url(assets/img/shapes.svg) no-repeat;
-    background-position: right;
-    background-size: contain;
-    content: '';
-    height: 100%;
-    position: absolute;
-    right: 10%;
-    top: 10%;
-    width: 100%;
-  }
+  // &::before {
+  //   background: url(assets/img/shapes.svg) no-repeat;
+  //   background-position: right;
+  //   background-size: contain;
+  //   content: '';
+  //   height: 100%;
+  //   position: absolute;
+  //   right: 10%;
+  //   top: 10%;
+  //   width: 100%;
+  // }
 
   @include breakpoint($tablet) {
-    padding: 75px 0;
+    // padding: 75px 0;
   }
 
   &__inner {
     margin: 30px auto;
     max-width: 1400px;
     padding: 0 20px;
-    position: relative;
+    // position: relative;
+    transform: translateZ(0);
     width: 100%;
 
     @include breakpoint($xldesktop) {
       margin: 60px auto;
       padding: 0;
     }
+  }
+
+  &__parallax {
+    height: 100vh;
+    position: relative;
+    transform-style: preserve-3d;
+  }
+
+  .parallax__layer {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+  }
+
+  .parallax__layer--base {
+    position: absolute;
+    transform: translateZ(-1px) scale(2);
   }
 
   &__headline {

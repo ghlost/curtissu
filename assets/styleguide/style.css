@@ -1002,31 +1002,32 @@ em {
 
 .services {
   background: #d3ddc3;
-  padding: 50px 0;
-  position: relative; }
-  .services::before {
-    background: url(assets/img/shapes.svg) no-repeat;
-    background-position: right;
-    background-size: contain;
-    content: '';
-    height: 100%;
-    position: absolute;
-    right: 10%;
-    top: 10%;
-    width: 100%; }
-  @media screen and (min-width: 768px) {
-    .services {
-      padding: 75px 0; } }
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  perspective: 1px; }
   .services__inner {
     margin: 30px auto;
     max-width: 1400px;
     padding: 0 20px;
-    position: relative;
+    transform: translateZ(0);
     width: 100%; }
     @media screen and (min-width: 1440px) {
       .services__inner {
         margin: 60px auto;
         padding: 0; } }
+  .services__parallax {
+    height: 100vh;
+    position: relative;
+    transform-style: preserve-3d; }
+  .services .parallax__layer {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0; }
+  .services .parallax__layer--base {
+    position: absolute;
+    transform: translateZ(-1px) scale(2); }
   .services__headline {
     color: #d35e39;
     font-family: "Impact", sans-serif;
