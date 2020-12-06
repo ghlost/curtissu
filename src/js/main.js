@@ -19,7 +19,7 @@ import 'foundation-sites/js/foundation.util.triggers.js';
 import 'foundation-sites/js/foundation.offcanvas.js';
 
 import jquery from 'jquery';
-// import prepInputs from 'modules/prepinputs.js';
+import 'vendor/_rellax.js';
 import socialShare from 'modules/socialShare.js';
 // import carousel from 'modules/carousel.js';
 
@@ -38,3 +38,5 @@ import App from './App';
   // Attach App to the window
   window.App = new App();
 })(jquery);
+
+var rellax = new Rellax('.rellax');
