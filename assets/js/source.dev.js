@@ -2314,6 +2314,503 @@ jQuery('#meerkat-wrap').replaceWith(jQuery('#meerkat-container').contents().hide
 * http://scottjehl.github.io/picturefill
 * Copyright (c) 2015 https://github.com/scottjehl/picturefill/blob/master/Authors.txt; Licensed MIT */
 window.matchMedia||(window.matchMedia=function(){"use strict";var a=window.styleMedia||window.media;if(!a){var b=document.createElement("style"),c=document.getElementsByTagName("script")[0],d=null;b.type="text/css",b.id="matchmediajs-test",c.parentNode.insertBefore(b,c),d="getComputedStyle"in window&&window.getComputedStyle(b,null)||b.currentStyle,a={matchMedium:function matchMedium(a){var c="@media "+a+"{ #matchmediajs-test { width: 1px; } }";return b.styleSheet?b.styleSheet.cssText=c:b.textContent=c,"1px"===d.width;}};}return function(b){return{matches:a.matchMedium(b||"all"),media:b||"all"};};}()),function(a,b,c){"use strict";function d(b){"object"==(typeof module==="undefined"?"undefined":_typeof(module))&&"object"==_typeof(module.exports)?module.exports=b:"function"==typeof define&&define.amd&&define("picturefill",function(){return b;}),"object"==(typeof a==="undefined"?"undefined":_typeof(a))&&(a.picturefill=b);}function e(a){var b,c,d,e,f,i=a||{};b=i.elements||g.getAllElements();for(var j=0,k=b.length;k>j;j++){if(c=b[j],d=c.parentNode,e=void 0,f=void 0,"IMG"===c.nodeName.toUpperCase()&&(c[g.ns]||(c[g.ns]={}),i.reevaluate||!c[g.ns].evaluated)){if(d&&"PICTURE"===d.nodeName.toUpperCase()){if(g.removeVideoShim(d),e=g.getMatch(c,d),e===!1)continue;}else e=void 0;(d&&"PICTURE"===d.nodeName.toUpperCase()||!g.sizesSupported&&c.srcset&&h.test(c.srcset))&&g.dodgeSrcset(c),e?(f=g.processSourceSet(e),g.applyBestCandidate(f,c)):(f=g.processSourceSet(c),(void 0===c.srcset||c[g.ns].srcset)&&g.applyBestCandidate(f,c)),c[g.ns].evaluated=!0;}}}function f(){function c(){clearTimeout(d),d=setTimeout(h,60);}g.initTypeDetects(),e();var d,f=setInterval(function(){return e(),/^loaded|^i|^c/.test(b.readyState)?void clearInterval(f):void 0;},250),h=function h(){e({reevaluate:!0});};a.addEventListener?a.addEventListener("resize",c,!1):a.attachEvent&&a.attachEvent("onresize",c);}if(a.HTMLPictureElement)return void d(function(){});b.createElement("picture");var g=a.picturefill||{},h=/\s+\+?\d+(e\d+)?w/;g.ns="picturefill",function(){g.srcsetSupported="srcset"in c,g.sizesSupported="sizes"in c,g.curSrcSupported="currentSrc"in c;}(),g.trim=function(a){return a.trim?a.trim():a.replace(/^\s+|\s+$/g,"");},g.makeUrl=function(){var a=b.createElement("a");return function(b){return a.href=b,a.href;};}(),g.restrictsMixedContent=function(){return"https:"===a.location.protocol;},g.matchesMedia=function(b){return a.matchMedia&&a.matchMedia(b).matches;},g.getDpr=function(){return a.devicePixelRatio||1;},g.getWidthFromLength=function(a){var c;if(!a||a.indexOf("%")>-1!=!1||!(parseFloat(a)>0||a.indexOf("calc(")>-1))return!1;a=a.replace("vw","%"),g.lengthEl||(g.lengthEl=b.createElement("div"),g.lengthEl.style.cssText="border:0;display:block;font-size:1em;left:0;margin:0;padding:0;position:absolute;visibility:hidden",g.lengthEl.className="helper-from-picturefill-js"),g.lengthEl.style.width="0px";try{g.lengthEl.style.width=a;}catch(d){}return b.body.appendChild(g.lengthEl),c=g.lengthEl.offsetWidth,0>=c&&(c=!1),b.body.removeChild(g.lengthEl),c;},g.detectTypeSupport=function(b,c){var d=new a.Image();return d.onerror=function(){g.types[b]=!1,e();},d.onload=function(){g.types[b]=1===d.width,e();},d.src=c,"pending";},g.types=g.types||{},g.initTypeDetects=function(){g.types["image/jpeg"]=!0,g.types["image/gif"]=!0,g.types["image/png"]=!0,g.types["image/svg+xml"]=b.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#Image","1.1"),g.types["image/webp"]=g.detectTypeSupport("image/webp","data:image/webp;base64,UklGRh4AAABXRUJQVlA4TBEAAAAvAAAAAAfQ//73v/+BiOh/AAA=");},g.verifyTypeSupport=function(a){var b=a.getAttribute("type");if(null===b||""===b)return!0;var c=g.types[b];return"string"==typeof c&&"pending"!==c?(g.types[b]=g.detectTypeSupport(b,c),"pending"):"function"==typeof c?(c(),"pending"):c;},g.parseSize=function(a){var b=/(\([^)]+\))?\s*(.+)/g.exec(a);return{media:b&&b[1],length:b&&b[2]};},g.findWidthFromSourceSize=function(c){for(var d,e=g.trim(c).split(/\s*,\s*/),f=0,h=e.length;h>f;f++){var i=e[f],j=g.parseSize(i),k=j.length,l=j.media;if(k&&(!l||g.matchesMedia(l))&&(d=g.getWidthFromLength(k)))break;}return d||Math.max(a.innerWidth||0,b.documentElement.clientWidth);},g.parseSrcset=function(a){for(var b=[];""!==a;){a=a.replace(/^\s+/g,"");var c,d=a.search(/\s/g),e=null;if(-1!==d){c=a.slice(0,d);var f=c.slice(-1);if((","===f||""===c)&&(c=c.replace(/,+$/,""),e=""),a=a.slice(d+1),null===e){var g=a.indexOf(",");-1!==g?(e=a.slice(0,g),a=a.slice(g+1)):(e=a,a="");}}else c=a,a="";(c||e)&&b.push({url:c,descriptor:e});}return b;},g.parseDescriptor=function(a,b){var c,d=b||"100vw",e=a&&a.replace(/(^\s+|\s+$)/g,""),f=g.findWidthFromSourceSize(d);if(e)for(var h=e.split(" "),i=h.length-1;i>=0;i--){var j=h[i],k=j&&j.slice(j.length-1);if("h"!==k&&"w"!==k||g.sizesSupported){if("x"===k){var l=j&&parseFloat(j,10);c=l&&!isNaN(l)?l:1;}}else c=parseFloat(parseInt(j,10)/f);}return c||1;},g.getCandidatesFromSourceSet=function(a,b){for(var c=g.parseSrcset(a),d=[],e=0,f=c.length;f>e;e++){var h=c[e];d.push({url:h.url,resolution:g.parseDescriptor(h.descriptor,b)});}return d;},g.dodgeSrcset=function(a){a.srcset&&(a[g.ns].srcset=a.srcset,a.srcset="",a.setAttribute("data-pfsrcset",a[g.ns].srcset));},g.processSourceSet=function(a){var b=a.getAttribute("srcset"),c=a.getAttribute("sizes"),d=[];return"IMG"===a.nodeName.toUpperCase()&&a[g.ns]&&a[g.ns].srcset&&(b=a[g.ns].srcset),b&&(d=g.getCandidatesFromSourceSet(b,c)),d;},g.backfaceVisibilityFix=function(a){var b=a.style||{},c="webkitBackfaceVisibility"in b,d=b.zoom;c&&(b.zoom=".999",c=a.offsetWidth,b.zoom=d);},g.setIntrinsicSize=function(){var c={},d=function d(a,b,c){b&&a.setAttribute("width",parseInt(b/c,10));};return function(e,f){var h;e[g.ns]&&!a.pfStopIntrinsicSize&&(void 0===e[g.ns].dims&&(e[g.ns].dims=e.getAttribute("width")||e.getAttribute("height")),e[g.ns].dims||(f.url in c?d(e,c[f.url],f.resolution):(h=b.createElement("img"),h.onload=function(){if(c[f.url]=h.width,!c[f.url])try{b.body.appendChild(h),c[f.url]=h.width||h.offsetWidth,b.body.removeChild(h);}catch(a){}e.src===f.url&&d(e,c[f.url],f.resolution),e=null,h.onload=null,h=null;},h.src=f.url)));};}(),g.applyBestCandidate=function(a,b){var c,d,e;a.sort(g.ascendingSort),d=a.length,e=a[d-1];for(var f=0;d>f;f++){if(c=a[f],c.resolution>=g.getDpr()){e=c;break;}}e&&(e.url=g.makeUrl(e.url),b.src!==e.url&&(g.restrictsMixedContent()&&"http:"===e.url.substr(0,"http:".length).toLowerCase()?void 0!==window.console&&console.warn("Blocked mixed content image "+e.url):(b.src=e.url,g.curSrcSupported||(b.currentSrc=b.src),g.backfaceVisibilityFix(b))),g.setIntrinsicSize(b,e));},g.ascendingSort=function(a,b){return a.resolution-b.resolution;},g.removeVideoShim=function(a){var b=a.getElementsByTagName("video");if(b.length){for(var c=b[0],d=c.getElementsByTagName("source");d.length;){a.insertBefore(d[0],c);}c.parentNode.removeChild(c);}},g.getAllElements=function(){for(var a=[],c=b.getElementsByTagName("img"),d=0,e=c.length;e>d;d++){var f=c[d];("PICTURE"===f.parentNode.nodeName.toUpperCase()||null!==f.getAttribute("srcset")||f[g.ns]&&null!==f[g.ns].srcset)&&a.push(f);}return a;},g.getMatch=function(a,b){for(var c,d=b.childNodes,e=0,f=d.length;f>e;e++){var h=d[e];if(1===h.nodeType){if(h===a)return c;if("SOURCE"===h.nodeName.toUpperCase()){null!==h.getAttribute("src")&&void 0!==(typeof console==="undefined"?"undefined":_typeof(console))&&console.warn("The `src` attribute is invalid on `picture` `source` element; instead, use `srcset`.");var i=h.getAttribute("media");if(h.getAttribute("srcset")&&(!i||g.matchesMedia(i))){var j=g.verifyTypeSupport(h);if(j===!0){c=h;break;}if("pending"===j)return!1;}}}}return c;},f(),e._=g,d(e);}(window,window.document,new window.Image());
+'use strict';var _typeof=typeof Symbol==="function"&&typeof Symbol.iterator==="symbol"?function(obj){return typeof obj;}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==Symbol.prototype?"symbol":typeof obj;};
+// ------------------------------------------
+// Rellax.js
+// Buttery smooth parallax library
+// Copyright (c) 2016 Moe Amaya (@moeamaya)
+// MIT license
+//
+// Thanks to Paraxify.js and Jaime Cabllero
+// for parallax concepts
+// ------------------------------------------
+
+(function(root,factory){
+if(typeof define==='function'&&define.amd){
+// AMD. Register as an anonymous module.
+define([],factory);
+}else if((typeof module==='undefined'?'undefined':_typeof(module))==='object'&&module.exports){
+// Node. Does not work with strict CommonJS, but
+// only CommonJS-like environments that support module.exports,
+// like Node.
+module.exports=factory();
+}else{
+// Browser globals (root is window)
+root.Rellax=factory();
+}
+})(typeof window!=="undefined"?window:global,function(){
+var Rellax=function Rellax(el,options){
+"use strict";
+
+var self=Object.create(Rellax.prototype);
+
+var posY=0;
+var screenY=0;
+var posX=0;
+var screenX=0;
+var blocks=[];
+var pause=true;
+
+// check what requestAnimationFrame to use, and if
+// it's not supported, use the onscroll event
+var loop=window.requestAnimationFrame||
+window.webkitRequestAnimationFrame||
+window.mozRequestAnimationFrame||
+window.msRequestAnimationFrame||
+window.oRequestAnimationFrame||
+function(callback){return setTimeout(callback,1000/60);};
+
+// store the id for later use
+var loopId=null;
+
+// Test via a getter in the options object to see if the passive property is accessed
+var supportsPassive=false;
+try{
+var opts=Object.defineProperty({},'passive',{
+get:function get(){
+supportsPassive=true;
+}});
+
+window.addEventListener("testPassive",null,opts);
+window.removeEventListener("testPassive",null,opts);
+}catch(e){}
+
+// check what cancelAnimation method to use
+var clearLoop=window.cancelAnimationFrame||window.mozCancelAnimationFrame||clearTimeout;
+
+// check which transform property to use
+var transformProp=window.transformProp||function(){
+var testEl=document.createElement('div');
+if(testEl.style.transform===null){
+var vendors=['Webkit','Moz','ms'];
+for(var vendor in vendors){
+if(testEl.style[vendors[vendor]+'Transform']!==undefined){
+return vendors[vendor]+'Transform';
+}
+}
+}
+return'transform';
+}();
+
+// Default Settings
+self.options={
+speed:-2,
+verticalSpeed:null,
+horizontalSpeed:null,
+breakpoints:[576,768,1201],
+center:false,
+wrapper:null,
+relativeToWrapper:false,
+round:true,
+vertical:true,
+horizontal:false,
+verticalScrollAxis:"y",
+horizontalScrollAxis:"x",
+callback:function callback(){}};
+
+
+// User defined options (might have more in the future)
+if(options){
+Object.keys(options).forEach(function(key){
+self.options[key]=options[key];
+});
+}
+
+function validateCustomBreakpoints(){
+if(self.options.breakpoints.length===3&&Array.isArray(self.options.breakpoints)){
+var isAscending=true;
+var isNumerical=true;
+var lastVal;
+self.options.breakpoints.forEach(function(i){
+if(typeof i!=='number')isNumerical=false;
+if(lastVal!==null){
+if(i<lastVal)isAscending=false;
+}
+lastVal=i;
+});
+if(isAscending&&isNumerical)return;
+}
+// revert defaults if set incorrectly
+self.options.breakpoints=[576,768,1201];
+console.warn("Rellax: You must pass an array of 3 numbers in ascending order to the breakpoints option. Defaults reverted");
+}
+
+if(options&&options.breakpoints){
+validateCustomBreakpoints();
+}
+
+// By default, rellax class
+if(!el){
+el='.rellax';
+}
+
+// check if el is a className or a node
+var elements=typeof el==='string'?document.querySelectorAll(el):[el];
+
+// Now query selector
+if(elements.length>0){
+self.elems=elements;
+}
+
+// The elements don't exist
+else{
+console.warn("Rellax: The elements you're trying to select don't exist.");
+return;
+}
+
+// Has a wrapper and it exists
+if(self.options.wrapper){
+if(!self.options.wrapper.nodeType){
+var wrapper=document.querySelector(self.options.wrapper);
+
+if(wrapper){
+self.options.wrapper=wrapper;
+}else{
+console.warn("Rellax: The wrapper you're trying to use doesn't exist.");
+return;
+}
+}
+}
+
+// set a placeholder for the current breakpoint
+var currentBreakpoint;
+
+// helper to determine current breakpoint
+var getCurrentBreakpoint=function getCurrentBreakpoint(w){
+var bp=self.options.breakpoints;
+if(w<bp[0])return'xs';
+if(w>=bp[0]&&w<bp[1])return'sm';
+if(w>=bp[1]&&w<bp[2])return'md';
+return'lg';
+};
+
+// Get and cache initial position of all elements
+var cacheBlocks=function cacheBlocks(){
+for(var i=0;i<self.elems.length;i++){
+var block=createBlock(self.elems[i]);
+blocks.push(block);
+}
+};
+
+
+// Let's kick this script off
+// Build array for cached element values
+var init=function init(){
+for(var i=0;i<blocks.length;i++){
+self.elems[i].style.cssText=blocks[i].style;
+}
+
+blocks=[];
+
+screenY=window.innerHeight;
+screenX=window.innerWidth;
+currentBreakpoint=getCurrentBreakpoint(screenX);
+
+setPosition();
+
+cacheBlocks();
+
+animate();
+
+// If paused, unpause and set listener for window resizing events
+if(pause){
+window.addEventListener('resize',init);
+pause=false;
+// Start the loop
+update();
+}
+};
+
+// We want to cache the parallax blocks'
+// values: base, top, height, speed
+// el: is dom object, return: el cache values
+var createBlock=function createBlock(el){
+var dataPercentage=el.getAttribute('data-rellax-percentage');
+var dataSpeed=el.getAttribute('data-rellax-speed');
+var dataXsSpeed=el.getAttribute('data-rellax-xs-speed');
+var dataMobileSpeed=el.getAttribute('data-rellax-mobile-speed');
+var dataTabletSpeed=el.getAttribute('data-rellax-tablet-speed');
+var dataDesktopSpeed=el.getAttribute('data-rellax-desktop-speed');
+var dataVerticalSpeed=el.getAttribute('data-rellax-vertical-speed');
+var dataHorizontalSpeed=el.getAttribute('data-rellax-horizontal-speed');
+var dataVericalScrollAxis=el.getAttribute('data-rellax-vertical-scroll-axis');
+var dataHorizontalScrollAxis=el.getAttribute('data-rellax-horizontal-scroll-axis');
+var dataZindex=el.getAttribute('data-rellax-zindex')||0;
+var dataMin=el.getAttribute('data-rellax-min');
+var dataMax=el.getAttribute('data-rellax-max');
+var dataMinX=el.getAttribute('data-rellax-min-x');
+var dataMaxX=el.getAttribute('data-rellax-max-x');
+var dataMinY=el.getAttribute('data-rellax-min-y');
+var dataMaxY=el.getAttribute('data-rellax-max-y');
+var mapBreakpoints;
+var breakpoints=true;
+
+if(!dataXsSpeed&&!dataMobileSpeed&&!dataTabletSpeed&&!dataDesktopSpeed){
+breakpoints=false;
+}else{
+mapBreakpoints={
+'xs':dataXsSpeed,
+'sm':dataMobileSpeed,
+'md':dataTabletSpeed,
+'lg':dataDesktopSpeed};
+
+}
+
+// initializing at scrollY = 0 (top of browser), scrollX = 0 (left of browser)
+// ensures elements are positioned based on HTML layout.
+//
+// If the element has the percentage attribute, the posY and posX needs to be
+// the current scroll position's value, so that the elements are still positioned based on HTML layout
+var wrapperPosY=self.options.wrapper?self.options.wrapper.scrollTop:window.pageYOffset||document.documentElement.scrollTop||document.body.scrollTop;
+// If the option relativeToWrapper is true, use the wrappers offset to top, subtracted from the current page scroll.
+if(self.options.relativeToWrapper){
+var scrollPosY=window.pageYOffset||document.documentElement.scrollTop||document.body.scrollTop;
+wrapperPosY=scrollPosY-self.options.wrapper.offsetTop;
+}
+var posY=self.options.vertical?dataPercentage||self.options.center?wrapperPosY:0:0;
+var posX=self.options.horizontal?dataPercentage||self.options.center?self.options.wrapper?self.options.wrapper.scrollLeft:window.pageXOffset||document.documentElement.scrollLeft||document.body.scrollLeft:0:0;
+
+var blockTop=posY+el.getBoundingClientRect().top;
+var blockHeight=el.clientHeight||el.offsetHeight||el.scrollHeight;
+
+var blockLeft=posX+el.getBoundingClientRect().left;
+var blockWidth=el.clientWidth||el.offsetWidth||el.scrollWidth;
+
+// apparently parallax equation everyone uses
+var percentageY=dataPercentage?dataPercentage:(posY-blockTop+screenY)/(blockHeight+screenY);
+var percentageX=dataPercentage?dataPercentage:(posX-blockLeft+screenX)/(blockWidth+screenX);
+if(self.options.center){percentageX=0.5;percentageY=0.5;}
+
+// Optional individual block speed as data attr, otherwise global speed
+var speed=breakpoints&&mapBreakpoints[currentBreakpoint]!==null?Number(mapBreakpoints[currentBreakpoint]):dataSpeed?dataSpeed:self.options.speed;
+var verticalSpeed=dataVerticalSpeed?dataVerticalSpeed:self.options.verticalSpeed;
+var horizontalSpeed=dataHorizontalSpeed?dataHorizontalSpeed:self.options.horizontalSpeed;
+
+// Optional individual block movement axis direction as data attr, otherwise gobal movement direction
+var verticalScrollAxis=dataVericalScrollAxis?dataVericalScrollAxis:self.options.verticalScrollAxis;
+var horizontalScrollAxis=dataHorizontalScrollAxis?dataHorizontalScrollAxis:self.options.horizontalScrollAxis;
+
+var bases=updatePosition(percentageX,percentageY,speed,verticalSpeed,horizontalSpeed);
+
+// ~~Store non-translate3d transforms~~
+// Store inline styles and extract transforms
+var style=el.style.cssText;
+var transform='';
+
+// Check if there's an inline styled transform
+var searchResult=/transform\s*:/i.exec(style);
+if(searchResult){
+// Get the index of the transform
+var index=searchResult.index;
+
+// Trim the style to the transform point and get the following semi-colon index
+var trimmedStyle=style.slice(index);
+var delimiter=trimmedStyle.indexOf(';');
+
+// Remove "transform" string and save the attribute
+if(delimiter){
+transform=" "+trimmedStyle.slice(11,delimiter).replace(/\s/g,'');
+}else{
+transform=" "+trimmedStyle.slice(11).replace(/\s/g,'');
+}
+}
+
+return{
+baseX:bases.x,
+baseY:bases.y,
+top:blockTop,
+left:blockLeft,
+height:blockHeight,
+width:blockWidth,
+speed:speed,
+verticalSpeed:verticalSpeed,
+horizontalSpeed:horizontalSpeed,
+verticalScrollAxis:verticalScrollAxis,
+horizontalScrollAxis:horizontalScrollAxis,
+style:style,
+transform:transform,
+zindex:dataZindex,
+min:dataMin,
+max:dataMax,
+minX:dataMinX,
+maxX:dataMaxX,
+minY:dataMinY,
+maxY:dataMaxY};
+
+};
+
+// set scroll position (posY, posX)
+// side effect method is not ideal, but okay for now
+// returns true if the scroll changed, false if nothing happened
+var setPosition=function setPosition(){
+var oldY=posY;
+var oldX=posX;
+
+posY=self.options.wrapper?self.options.wrapper.scrollTop:(document.documentElement||document.body.parentNode||document.body).scrollTop||window.pageYOffset;
+posX=self.options.wrapper?self.options.wrapper.scrollLeft:(document.documentElement||document.body.parentNode||document.body).scrollLeft||window.pageXOffset;
+// If option relativeToWrapper is true, use relative wrapper value instead.
+if(self.options.relativeToWrapper){
+var scrollPosY=(document.documentElement||document.body.parentNode||document.body).scrollTop||window.pageYOffset;
+posY=scrollPosY-self.options.wrapper.offsetTop;
+}
+
+
+if(oldY!=posY&&self.options.vertical){
+// scroll changed, return true
+return true;
+}
+
+if(oldX!=posX&&self.options.horizontal){
+// scroll changed, return true
+return true;
+}
+
+// scroll did not change
+return false;
+};
+
+// Ahh a pure function, gets new transform value
+// based on scrollPosition and speed
+// Allow for decimal pixel values
+var updatePosition=function updatePosition(percentageX,percentageY,speed,verticalSpeed,horizontalSpeed){
+var result={};
+var valueX=(horizontalSpeed?horizontalSpeed:speed)*(100*(1-percentageX));
+var valueY=(verticalSpeed?verticalSpeed:speed)*(100*(1-percentageY));
+
+result.x=self.options.round?Math.round(valueX):Math.round(valueX*100)/100;
+result.y=self.options.round?Math.round(valueY):Math.round(valueY*100)/100;
+
+return result;
+};
+
+// Remove event listeners and loop again
+var deferredUpdate=function deferredUpdate(){
+window.removeEventListener('resize',deferredUpdate);
+window.removeEventListener('orientationchange',deferredUpdate);
+(self.options.wrapper?self.options.wrapper:window).removeEventListener('scroll',deferredUpdate);
+(self.options.wrapper?self.options.wrapper:document).removeEventListener('touchmove',deferredUpdate);
+
+// loop again
+loopId=loop(update);
+};
+
+// Loop
+var update=function update(){
+if(setPosition()&&pause===false){
+animate();
+
+// loop again
+loopId=loop(update);
+}else{
+loopId=null;
+
+// Don't animate until we get a position updating event
+window.addEventListener('resize',deferredUpdate);
+window.addEventListener('orientationchange',deferredUpdate);
+(self.options.wrapper?self.options.wrapper:window).addEventListener('scroll',deferredUpdate,supportsPassive?{passive:true}:false);
+(self.options.wrapper?self.options.wrapper:document).addEventListener('touchmove',deferredUpdate,supportsPassive?{passive:true}:false);
+}
+};
+
+// Transform3d on parallax element
+var animate=function animate(){
+var positions;
+for(var i=0;i<self.elems.length;i++){
+// Determine relevant movement directions
+var verticalScrollAxis=blocks[i].verticalScrollAxis.toLowerCase();
+var horizontalScrollAxis=blocks[i].horizontalScrollAxis.toLowerCase();
+var verticalScrollX=verticalScrollAxis.indexOf("x")!=-1?posY:0;
+var verticalScrollY=verticalScrollAxis.indexOf("y")!=-1?posY:0;
+var horizontalScrollX=horizontalScrollAxis.indexOf("x")!=-1?posX:0;
+var horizontalScrollY=horizontalScrollAxis.indexOf("y")!=-1?posX:0;
+
+var percentageY=(verticalScrollY+horizontalScrollY-blocks[i].top+screenY)/(blocks[i].height+screenY);
+var percentageX=(verticalScrollX+horizontalScrollX-blocks[i].left+screenX)/(blocks[i].width+screenX);
+
+// Subtracting initialize value, so element stays in same spot as HTML
+positions=updatePosition(percentageX,percentageY,blocks[i].speed,blocks[i].verticalSpeed,blocks[i].horizontalSpeed);
+var positionY=positions.y-blocks[i].baseY;
+var positionX=positions.x-blocks[i].baseX;
+
+// The next two "if" blocks go like this:
+// Check if a limit is defined (first "min", then "max");
+// Check if we need to change the Y or the X
+// (Currently working only if just one of the axes is enabled)
+// Then, check if the new position is inside the allowed limit
+// If so, use new position. If not, set position to limit.
+
+// Check if a min limit is defined
+if(blocks[i].min!==null){
+if(self.options.vertical&&!self.options.horizontal){
+positionY=positionY<=blocks[i].min?blocks[i].min:positionY;
+}
+if(self.options.horizontal&&!self.options.vertical){
+positionX=positionX<=blocks[i].min?blocks[i].min:positionX;
+}
+}
+
+// Check if directional min limits are defined
+if(blocks[i].minY!=null){
+positionY=positionY<=blocks[i].minY?blocks[i].minY:positionY;
+}
+if(blocks[i].minX!=null){
+positionX=positionX<=blocks[i].minX?blocks[i].minX:positionX;
+}
+
+// Check if a max limit is defined
+if(blocks[i].max!==null){
+if(self.options.vertical&&!self.options.horizontal){
+positionY=positionY>=blocks[i].max?blocks[i].max:positionY;
+}
+if(self.options.horizontal&&!self.options.vertical){
+positionX=positionX>=blocks[i].max?blocks[i].max:positionX;
+}
+}
+
+// Check if directional max limits are defined
+if(blocks[i].maxY!=null){
+positionY=positionY>=blocks[i].maxY?blocks[i].maxY:positionY;
+}
+if(blocks[i].maxX!=null){
+positionX=positionX>=blocks[i].maxX?blocks[i].maxX:positionX;
+}
+
+var zindex=blocks[i].zindex;
+
+// Move that element
+// (Set the new translation and append initial inline transforms.)
+var translate='translate3d('+(self.options.horizontal?positionX:'0')+'px,'+(self.options.vertical?positionY:'0')+'px,'+zindex+'px) '+blocks[i].transform;
+self.elems[i].style[transformProp]=translate;
+}
+self.options.callback(positions);
+};
+
+self.destroy=function(){
+for(var i=0;i<self.elems.length;i++){
+self.elems[i].style.cssText=blocks[i].style;
+}
+
+// Remove resize event listener if not pause, and pause
+if(!pause){
+window.removeEventListener('resize',init);
+pause=true;
+}
+
+// Clear the animation loop to prevent possible memory leak
+clearLoop(loopId);
+loopId=null;
+};
+
+// Init
+init();
+
+// Allow to recalculate the initial values whenever we want
+self.refresh=init;
+
+return self;
+};
+return Rellax;
+});
 "use strict";var _typeof2=typeof Symbol==="function"&&typeof Symbol.iterator==="symbol"?function(obj){return typeof obj;}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==Symbol.prototype?"symbol":typeof obj;};(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f;}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e);},l,l.exports,e,t,n,r);}return n[o].exports;}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++){s(r[o]);}return s;})({1:[function(require,module,exports){
 'use strict';var _typeof=typeof Symbol==="function"&&_typeof2(Symbol.iterator)==="symbol"?function(obj){return typeof obj==="undefined"?"undefined":_typeof2(obj);}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==Symbol.prototype?"symbol":typeof obj==="undefined"?"undefined":_typeof2(obj);};!function($){
 
@@ -5948,29 +6445,35 @@ require('foundation-sites/js/foundation.util.triggers.js');
 require('foundation-sites/js/foundation.offcanvas.js');
 
 var _jquery=typeof window!=="undefined"?window['jQuery']:typeof global!=="undefined"?global['jQuery']:null;var _jquery2=_interopRequireDefault(_jquery);
-
+require('vendor/_rellax.js');
 var _socialShare=require('modules/socialShare.js');var _socialShare2=_interopRequireDefault(_socialShare);
 
 
-var _App=require('./App');var _App2=_interopRequireDefault(_App);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}// import prepInputs from 'modules/prepinputs.js';
+var _App=require('./App');var _App2=_interopRequireDefault(_App);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}
+
+(function($){
+// Initialize Foundation
+$(document).foundation();
+
+// Prepare form inputs
+// prepInputs();
+// Initialize social share functionality
+// Replace the empty string parameter with your Facebook ID
+(0,_socialShare2.default)('');
+
+// Attach App to the window
+window.App=new _App2.default();
+})(_jquery2.default);// import carousel from 'modules/carousel.js';
 // Foundation Plugins. Add or remove as needed for your site
 // import 'foundation-sites/js/foundation.drilldown.js';
 // import 'foundation-sites/js/foundation.dropdownMenu.js';
 // import 'foundation-sites/js/foundation.responsiveMenu.js';
 // Foundation Utilities
-(function($){// Initialize Foundation
-$(document).foundation();// Prepare form inputs
-// prepInputs();
-// Initialize social share functionality
-// Replace the empty string parameter with your Facebook ID
-(0,_socialShare2.default)('');
-// Attach App to the window
-window.App=new _App2.default();
-})(_jquery2.default);// import carousel from 'modules/carousel.js';
+var rellax=new Rellax('.rellax');
 
 }).call(this,typeof global!=="undefined"?global:typeof self!=="undefined"?self:typeof window!=="undefined"?window:{});
 
-},{"./App":11,"foundation-sites/js/foundation.core.js":1,"foundation-sites/js/foundation.offcanvas.js":2,"foundation-sites/js/foundation.util.box.js":3,"foundation-sites/js/foundation.util.keyboard.js":4,"foundation-sites/js/foundation.util.mediaQuery.js":5,"foundation-sites/js/foundation.util.motion.js":6,"foundation-sites/js/foundation.util.nest.js":7,"foundation-sites/js/foundation.util.timerAndImageLoader.js":8,"foundation-sites/js/foundation.util.touch.js":9,"foundation-sites/js/foundation.util.triggers.js":10,"modules/socialShare.js":38}],38:[function(require,module,exports){
+},{"./App":11,"foundation-sites/js/foundation.core.js":1,"foundation-sites/js/foundation.offcanvas.js":2,"foundation-sites/js/foundation.util.box.js":3,"foundation-sites/js/foundation.util.keyboard.js":4,"foundation-sites/js/foundation.util.mediaQuery.js":5,"foundation-sites/js/foundation.util.motion.js":6,"foundation-sites/js/foundation.util.nest.js":7,"foundation-sites/js/foundation.util.timerAndImageLoader.js":8,"foundation-sites/js/foundation.util.touch.js":9,"foundation-sites/js/foundation.util.triggers.js":10,"modules/socialShare.js":38,"vendor/_rellax.js":39}],38:[function(require,module,exports){
 (function(global){
 /* eslint-env browser */
 'use strict';Object.defineProperty(exports,"__esModule",{value:true});
@@ -6078,6 +6581,508 @@ window.open(linkedinURL,'linkedin',
 };exports.default=
 
 socialShare;
+
+}).call(this,typeof global!=="undefined"?global:typeof self!=="undefined"?self:typeof window!=="undefined"?window:{});
+
+},{}],39:[function(require,module,exports){
+(function(global){
+'use strict';var _typeof=typeof Symbol==="function"&&_typeof2(Symbol.iterator)==="symbol"?function(obj){return typeof obj==="undefined"?"undefined":_typeof2(obj);}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==Symbol.prototype?"symbol":typeof obj==="undefined"?"undefined":_typeof2(obj);};
+// ------------------------------------------
+// Rellax.js
+// Buttery smooth parallax library
+// Copyright (c) 2016 Moe Amaya (@moeamaya)
+// MIT license
+//
+// Thanks to Paraxify.js and Jaime Cabllero
+// for parallax concepts
+// ------------------------------------------
+
+(function(root,factory){
+if(typeof define==='function'&&define.amd){
+// AMD. Register as an anonymous module.
+define([],factory);
+}else if((typeof module==='undefined'?'undefined':_typeof(module))==='object'&&module.exports){
+// Node. Does not work with strict CommonJS, but
+// only CommonJS-like environments that support module.exports,
+// like Node.
+module.exports=factory();
+}else{
+// Browser globals (root is window)
+root.Rellax=factory();
+}
+})(typeof window!=="undefined"?window:global,function(){
+var Rellax=function Rellax(el,options){
+"use strict";
+
+var self=Object.create(Rellax.prototype);
+
+var posY=0;
+var screenY=0;
+var posX=0;
+var screenX=0;
+var blocks=[];
+var pause=true;
+
+// check what requestAnimationFrame to use, and if
+// it's not supported, use the onscroll event
+var loop=window.requestAnimationFrame||
+window.webkitRequestAnimationFrame||
+window.mozRequestAnimationFrame||
+window.msRequestAnimationFrame||
+window.oRequestAnimationFrame||
+function(callback){return setTimeout(callback,1000/60);};
+
+// store the id for later use
+var loopId=null;
+
+// Test via a getter in the options object to see if the passive property is accessed
+var supportsPassive=false;
+try{
+var opts=Object.defineProperty({},'passive',{
+get:function get(){
+supportsPassive=true;
+}});
+
+window.addEventListener("testPassive",null,opts);
+window.removeEventListener("testPassive",null,opts);
+}catch(e){}
+
+// check what cancelAnimation method to use
+var clearLoop=window.cancelAnimationFrame||window.mozCancelAnimationFrame||clearTimeout;
+
+// check which transform property to use
+var transformProp=window.transformProp||function(){
+var testEl=document.createElement('div');
+if(testEl.style.transform===null){
+var vendors=['Webkit','Moz','ms'];
+for(var vendor in vendors){
+if(testEl.style[vendors[vendor]+'Transform']!==undefined){
+return vendors[vendor]+'Transform';
+}
+}
+}
+return'transform';
+}();
+
+// Default Settings
+self.options={
+speed:-2,
+verticalSpeed:null,
+horizontalSpeed:null,
+breakpoints:[576,768,1201],
+center:false,
+wrapper:null,
+relativeToWrapper:false,
+round:true,
+vertical:true,
+horizontal:false,
+verticalScrollAxis:"y",
+horizontalScrollAxis:"x",
+callback:function callback(){}};
+
+
+// User defined options (might have more in the future)
+if(options){
+Object.keys(options).forEach(function(key){
+self.options[key]=options[key];
+});
+}
+
+function validateCustomBreakpoints(){
+if(self.options.breakpoints.length===3&&Array.isArray(self.options.breakpoints)){
+var isAscending=true;
+var isNumerical=true;
+var lastVal;
+self.options.breakpoints.forEach(function(i){
+if(typeof i!=='number')isNumerical=false;
+if(lastVal!==null){
+if(i<lastVal)isAscending=false;
+}
+lastVal=i;
+});
+if(isAscending&&isNumerical)return;
+}
+// revert defaults if set incorrectly
+self.options.breakpoints=[576,768,1201];
+console.warn("Rellax: You must pass an array of 3 numbers in ascending order to the breakpoints option. Defaults reverted");
+}
+
+if(options&&options.breakpoints){
+validateCustomBreakpoints();
+}
+
+// By default, rellax class
+if(!el){
+el='.rellax';
+}
+
+// check if el is a className or a node
+var elements=typeof el==='string'?document.querySelectorAll(el):[el];
+
+// Now query selector
+if(elements.length>0){
+self.elems=elements;
+}
+
+// The elements don't exist
+else{
+console.warn("Rellax: The elements you're trying to select don't exist.");
+return;
+}
+
+// Has a wrapper and it exists
+if(self.options.wrapper){
+if(!self.options.wrapper.nodeType){
+var wrapper=document.querySelector(self.options.wrapper);
+
+if(wrapper){
+self.options.wrapper=wrapper;
+}else{
+console.warn("Rellax: The wrapper you're trying to use doesn't exist.");
+return;
+}
+}
+}
+
+// set a placeholder for the current breakpoint
+var currentBreakpoint;
+
+// helper to determine current breakpoint
+var getCurrentBreakpoint=function getCurrentBreakpoint(w){
+var bp=self.options.breakpoints;
+if(w<bp[0])return'xs';
+if(w>=bp[0]&&w<bp[1])return'sm';
+if(w>=bp[1]&&w<bp[2])return'md';
+return'lg';
+};
+
+// Get and cache initial position of all elements
+var cacheBlocks=function cacheBlocks(){
+for(var i=0;i<self.elems.length;i++){
+var block=createBlock(self.elems[i]);
+blocks.push(block);
+}
+};
+
+
+// Let's kick this script off
+// Build array for cached element values
+var init=function init(){
+for(var i=0;i<blocks.length;i++){
+self.elems[i].style.cssText=blocks[i].style;
+}
+
+blocks=[];
+
+screenY=window.innerHeight;
+screenX=window.innerWidth;
+currentBreakpoint=getCurrentBreakpoint(screenX);
+
+setPosition();
+
+cacheBlocks();
+
+animate();
+
+// If paused, unpause and set listener for window resizing events
+if(pause){
+window.addEventListener('resize',init);
+pause=false;
+// Start the loop
+update();
+}
+};
+
+// We want to cache the parallax blocks'
+// values: base, top, height, speed
+// el: is dom object, return: el cache values
+var createBlock=function createBlock(el){
+var dataPercentage=el.getAttribute('data-rellax-percentage');
+var dataSpeed=el.getAttribute('data-rellax-speed');
+var dataXsSpeed=el.getAttribute('data-rellax-xs-speed');
+var dataMobileSpeed=el.getAttribute('data-rellax-mobile-speed');
+var dataTabletSpeed=el.getAttribute('data-rellax-tablet-speed');
+var dataDesktopSpeed=el.getAttribute('data-rellax-desktop-speed');
+var dataVerticalSpeed=el.getAttribute('data-rellax-vertical-speed');
+var dataHorizontalSpeed=el.getAttribute('data-rellax-horizontal-speed');
+var dataVericalScrollAxis=el.getAttribute('data-rellax-vertical-scroll-axis');
+var dataHorizontalScrollAxis=el.getAttribute('data-rellax-horizontal-scroll-axis');
+var dataZindex=el.getAttribute('data-rellax-zindex')||0;
+var dataMin=el.getAttribute('data-rellax-min');
+var dataMax=el.getAttribute('data-rellax-max');
+var dataMinX=el.getAttribute('data-rellax-min-x');
+var dataMaxX=el.getAttribute('data-rellax-max-x');
+var dataMinY=el.getAttribute('data-rellax-min-y');
+var dataMaxY=el.getAttribute('data-rellax-max-y');
+var mapBreakpoints;
+var breakpoints=true;
+
+if(!dataXsSpeed&&!dataMobileSpeed&&!dataTabletSpeed&&!dataDesktopSpeed){
+breakpoints=false;
+}else{
+mapBreakpoints={
+'xs':dataXsSpeed,
+'sm':dataMobileSpeed,
+'md':dataTabletSpeed,
+'lg':dataDesktopSpeed};
+
+}
+
+// initializing at scrollY = 0 (top of browser), scrollX = 0 (left of browser)
+// ensures elements are positioned based on HTML layout.
+//
+// If the element has the percentage attribute, the posY and posX needs to be
+// the current scroll position's value, so that the elements are still positioned based on HTML layout
+var wrapperPosY=self.options.wrapper?self.options.wrapper.scrollTop:window.pageYOffset||document.documentElement.scrollTop||document.body.scrollTop;
+// If the option relativeToWrapper is true, use the wrappers offset to top, subtracted from the current page scroll.
+if(self.options.relativeToWrapper){
+var scrollPosY=window.pageYOffset||document.documentElement.scrollTop||document.body.scrollTop;
+wrapperPosY=scrollPosY-self.options.wrapper.offsetTop;
+}
+var posY=self.options.vertical?dataPercentage||self.options.center?wrapperPosY:0:0;
+var posX=self.options.horizontal?dataPercentage||self.options.center?self.options.wrapper?self.options.wrapper.scrollLeft:window.pageXOffset||document.documentElement.scrollLeft||document.body.scrollLeft:0:0;
+
+var blockTop=posY+el.getBoundingClientRect().top;
+var blockHeight=el.clientHeight||el.offsetHeight||el.scrollHeight;
+
+var blockLeft=posX+el.getBoundingClientRect().left;
+var blockWidth=el.clientWidth||el.offsetWidth||el.scrollWidth;
+
+// apparently parallax equation everyone uses
+var percentageY=dataPercentage?dataPercentage:(posY-blockTop+screenY)/(blockHeight+screenY);
+var percentageX=dataPercentage?dataPercentage:(posX-blockLeft+screenX)/(blockWidth+screenX);
+if(self.options.center){percentageX=0.5;percentageY=0.5;}
+
+// Optional individual block speed as data attr, otherwise global speed
+var speed=breakpoints&&mapBreakpoints[currentBreakpoint]!==null?Number(mapBreakpoints[currentBreakpoint]):dataSpeed?dataSpeed:self.options.speed;
+var verticalSpeed=dataVerticalSpeed?dataVerticalSpeed:self.options.verticalSpeed;
+var horizontalSpeed=dataHorizontalSpeed?dataHorizontalSpeed:self.options.horizontalSpeed;
+
+// Optional individual block movement axis direction as data attr, otherwise gobal movement direction
+var verticalScrollAxis=dataVericalScrollAxis?dataVericalScrollAxis:self.options.verticalScrollAxis;
+var horizontalScrollAxis=dataHorizontalScrollAxis?dataHorizontalScrollAxis:self.options.horizontalScrollAxis;
+
+var bases=updatePosition(percentageX,percentageY,speed,verticalSpeed,horizontalSpeed);
+
+// ~~Store non-translate3d transforms~~
+// Store inline styles and extract transforms
+var style=el.style.cssText;
+var transform='';
+
+// Check if there's an inline styled transform
+var searchResult=/transform\s*:/i.exec(style);
+if(searchResult){
+// Get the index of the transform
+var index=searchResult.index;
+
+// Trim the style to the transform point and get the following semi-colon index
+var trimmedStyle=style.slice(index);
+var delimiter=trimmedStyle.indexOf(';');
+
+// Remove "transform" string and save the attribute
+if(delimiter){
+transform=" "+trimmedStyle.slice(11,delimiter).replace(/\s/g,'');
+}else{
+transform=" "+trimmedStyle.slice(11).replace(/\s/g,'');
+}
+}
+
+return{
+baseX:bases.x,
+baseY:bases.y,
+top:blockTop,
+left:blockLeft,
+height:blockHeight,
+width:blockWidth,
+speed:speed,
+verticalSpeed:verticalSpeed,
+horizontalSpeed:horizontalSpeed,
+verticalScrollAxis:verticalScrollAxis,
+horizontalScrollAxis:horizontalScrollAxis,
+style:style,
+transform:transform,
+zindex:dataZindex,
+min:dataMin,
+max:dataMax,
+minX:dataMinX,
+maxX:dataMaxX,
+minY:dataMinY,
+maxY:dataMaxY};
+
+};
+
+// set scroll position (posY, posX)
+// side effect method is not ideal, but okay for now
+// returns true if the scroll changed, false if nothing happened
+var setPosition=function setPosition(){
+var oldY=posY;
+var oldX=posX;
+
+posY=self.options.wrapper?self.options.wrapper.scrollTop:(document.documentElement||document.body.parentNode||document.body).scrollTop||window.pageYOffset;
+posX=self.options.wrapper?self.options.wrapper.scrollLeft:(document.documentElement||document.body.parentNode||document.body).scrollLeft||window.pageXOffset;
+// If option relativeToWrapper is true, use relative wrapper value instead.
+if(self.options.relativeToWrapper){
+var scrollPosY=(document.documentElement||document.body.parentNode||document.body).scrollTop||window.pageYOffset;
+posY=scrollPosY-self.options.wrapper.offsetTop;
+}
+
+
+if(oldY!=posY&&self.options.vertical){
+// scroll changed, return true
+return true;
+}
+
+if(oldX!=posX&&self.options.horizontal){
+// scroll changed, return true
+return true;
+}
+
+// scroll did not change
+return false;
+};
+
+// Ahh a pure function, gets new transform value
+// based on scrollPosition and speed
+// Allow for decimal pixel values
+var updatePosition=function updatePosition(percentageX,percentageY,speed,verticalSpeed,horizontalSpeed){
+var result={};
+var valueX=(horizontalSpeed?horizontalSpeed:speed)*(100*(1-percentageX));
+var valueY=(verticalSpeed?verticalSpeed:speed)*(100*(1-percentageY));
+
+result.x=self.options.round?Math.round(valueX):Math.round(valueX*100)/100;
+result.y=self.options.round?Math.round(valueY):Math.round(valueY*100)/100;
+
+return result;
+};
+
+// Remove event listeners and loop again
+var deferredUpdate=function deferredUpdate(){
+window.removeEventListener('resize',deferredUpdate);
+window.removeEventListener('orientationchange',deferredUpdate);
+(self.options.wrapper?self.options.wrapper:window).removeEventListener('scroll',deferredUpdate);
+(self.options.wrapper?self.options.wrapper:document).removeEventListener('touchmove',deferredUpdate);
+
+// loop again
+loopId=loop(update);
+};
+
+// Loop
+var update=function update(){
+if(setPosition()&&pause===false){
+animate();
+
+// loop again
+loopId=loop(update);
+}else{
+loopId=null;
+
+// Don't animate until we get a position updating event
+window.addEventListener('resize',deferredUpdate);
+window.addEventListener('orientationchange',deferredUpdate);
+(self.options.wrapper?self.options.wrapper:window).addEventListener('scroll',deferredUpdate,supportsPassive?{passive:true}:false);
+(self.options.wrapper?self.options.wrapper:document).addEventListener('touchmove',deferredUpdate,supportsPassive?{passive:true}:false);
+}
+};
+
+// Transform3d on parallax element
+var animate=function animate(){
+var positions;
+for(var i=0;i<self.elems.length;i++){
+// Determine relevant movement directions
+var verticalScrollAxis=blocks[i].verticalScrollAxis.toLowerCase();
+var horizontalScrollAxis=blocks[i].horizontalScrollAxis.toLowerCase();
+var verticalScrollX=verticalScrollAxis.indexOf("x")!=-1?posY:0;
+var verticalScrollY=verticalScrollAxis.indexOf("y")!=-1?posY:0;
+var horizontalScrollX=horizontalScrollAxis.indexOf("x")!=-1?posX:0;
+var horizontalScrollY=horizontalScrollAxis.indexOf("y")!=-1?posX:0;
+
+var percentageY=(verticalScrollY+horizontalScrollY-blocks[i].top+screenY)/(blocks[i].height+screenY);
+var percentageX=(verticalScrollX+horizontalScrollX-blocks[i].left+screenX)/(blocks[i].width+screenX);
+
+// Subtracting initialize value, so element stays in same spot as HTML
+positions=updatePosition(percentageX,percentageY,blocks[i].speed,blocks[i].verticalSpeed,blocks[i].horizontalSpeed);
+var positionY=positions.y-blocks[i].baseY;
+var positionX=positions.x-blocks[i].baseX;
+
+// The next two "if" blocks go like this:
+// Check if a limit is defined (first "min", then "max");
+// Check if we need to change the Y or the X
+// (Currently working only if just one of the axes is enabled)
+// Then, check if the new position is inside the allowed limit
+// If so, use new position. If not, set position to limit.
+
+// Check if a min limit is defined
+if(blocks[i].min!==null){
+if(self.options.vertical&&!self.options.horizontal){
+positionY=positionY<=blocks[i].min?blocks[i].min:positionY;
+}
+if(self.options.horizontal&&!self.options.vertical){
+positionX=positionX<=blocks[i].min?blocks[i].min:positionX;
+}
+}
+
+// Check if directional min limits are defined
+if(blocks[i].minY!=null){
+positionY=positionY<=blocks[i].minY?blocks[i].minY:positionY;
+}
+if(blocks[i].minX!=null){
+positionX=positionX<=blocks[i].minX?blocks[i].minX:positionX;
+}
+
+// Check if a max limit is defined
+if(blocks[i].max!==null){
+if(self.options.vertical&&!self.options.horizontal){
+positionY=positionY>=blocks[i].max?blocks[i].max:positionY;
+}
+if(self.options.horizontal&&!self.options.vertical){
+positionX=positionX>=blocks[i].max?blocks[i].max:positionX;
+}
+}
+
+// Check if directional max limits are defined
+if(blocks[i].maxY!=null){
+positionY=positionY>=blocks[i].maxY?blocks[i].maxY:positionY;
+}
+if(blocks[i].maxX!=null){
+positionX=positionX>=blocks[i].maxX?blocks[i].maxX:positionX;
+}
+
+var zindex=blocks[i].zindex;
+
+// Move that element
+// (Set the new translation and append initial inline transforms.)
+var translate='translate3d('+(self.options.horizontal?positionX:'0')+'px,'+(self.options.vertical?positionY:'0')+'px,'+zindex+'px) '+blocks[i].transform;
+self.elems[i].style[transformProp]=translate;
+}
+self.options.callback(positions);
+};
+
+self.destroy=function(){
+for(var i=0;i<self.elems.length;i++){
+self.elems[i].style.cssText=blocks[i].style;
+}
+
+// Remove resize event listener if not pause, and pause
+if(!pause){
+window.removeEventListener('resize',init);
+pause=true;
+}
+
+// Clear the animation loop to prevent possible memory leak
+clearLoop(loopId);
+loopId=null;
+};
+
+// Init
+init();
+
+// Allow to recalculate the initial values whenever we want
+self.refresh=init;
+
+return self;
+};
+return Rellax;
+});
 
 }).call(this,typeof global!=="undefined"?global:typeof self!=="undefined"?self:typeof window!=="undefined"?window:{});
 
