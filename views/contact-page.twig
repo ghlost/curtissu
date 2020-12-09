@@ -33,15 +33,15 @@
                 {{ post.content }}
               </p>
               <p class="address__set">
-                +1 (818) 835-6623<br>
-                <a href="mailto:contact@curtissu.com">contact@curtissu.com</a>
+                {{post.get_field('contact_number')}}<br>
+                <a href="mailto:{{ options.social_links.email }}">{{ options.social_links.email }}</a>
               </p>
             </div> <!-- /.address -->
           </div> <!-- /.location__inner -->
         </div>
         <div class="contact-form">
           <div class="contact-form__inner">
-            <h3 class="contact-form__title">Any Questions? We’d Love to Help!</h3>
+            <h3 class="contact-form__title">{{post.get_field('contact_form_title')}}</h3>
             {{ function('do_shortcode', '[contact-form-7 id="5" title="Contact form"]') }}
           </div> <!-- /.contact-form__inner -->
         </div>
